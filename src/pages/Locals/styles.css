@@ -1,0 +1,12 @@
+.leaflet-container {
+    position: absolute;
+    z-index: -999;
+    height: 100vh;
+    width: 100%
+}
+
+#btnOpen-Insti-Info {
+    background: transparent;
+    border: transparent;
+    outline: none;
+}

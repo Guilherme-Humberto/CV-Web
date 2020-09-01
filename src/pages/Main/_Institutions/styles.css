@@ -1,0 +1,69 @@
+.container-Institutions {
+    grid-area: _institutions;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    margin: 3% 0 ;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#texts-instituicao {
+    text-align: center;
+    max-width: 750px;
+}
+
+#image-inst {
+    height: 300px;
+    margin: 70px 0;
+}
+
+#title-insti {
+    font-size: 45px;
+    font-family: Alata;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+#desc-insti {
+    font-family: Alata;
+    font-size: 23px; 
+}
+
+#btnInst {
+    text-align: center;
+    width: 230px;
+    height: 50px;
+    margin: 30px 0;
+    color: white;
+    font-size: 16px;
+    border: transparent;
+    outline: none;
+    background: var(--background-button);
+    box-shadow: 5px 5px 10px rgb(71, 70, 70);
+}
+
+@media (max-width: 410px) {
+    #image-inst {
+        height: 100px;
+    }
+}
+@media (max-width: 500px) {
+    #title-insti {
+        font-size: 30px;
+    }
+    #desc-insti {
+        font-size: 16px;
+        margin: 20px;
+    }
+    #image-inst {
+        width: 400px;
+    }
+}
+
+@media (max-width: 700px) {
+    #image-inst {
+        height: 300px;
+    }
+}

@@ -1,0 +1,9 @@
+.container-about{
+    grid-area: _about;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background: green;
+}

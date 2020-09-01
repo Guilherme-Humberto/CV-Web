@@ -1,0 +1,32 @@
+.container-not-found {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#img-not-found {
+    height: 400px;
+}
+
+#title-not-found {
+    font-size: 30px;
+    font-family: Roboto;
+    font-weight: bold;
+}
+
+#text-not-found {
+    font-size: 25px;
+    font-family: Roboto;
+}
+
+#button-not-found {
+    font-size: 20px;
+    font-family: Roboto;
+    border-radius: 10px;
+    width: 150px;
+    border: transparent;
+    outline: none;
+    background: rgb(247, 108, 108);
+    padding: 6px 25px;
+}
