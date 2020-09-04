@@ -9,9 +9,9 @@ function NavBar(props) {
         <div id="links">
           <ul>
             <li>{props.title}</li>
-            <li>{props.nav1}</li>
-            <li>{props.nav2}</li>
-            <li>{props.nav3}</li>
+            <li><a href="#anc-inst">{props.nav1}</a></li>
+            <li><a href="#anc-camp">{props.nav2}</a></li>
+            <li><a href="#anc-about">{props.nav3}</a></li>
           </ul>
         </div>
         <div id="button-nav">

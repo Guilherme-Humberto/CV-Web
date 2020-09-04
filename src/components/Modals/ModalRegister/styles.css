@@ -4,14 +4,60 @@
     top: 0;
     right: 0;
     height: 100vh;
-    width: 380px;
+    width: 100%;
     transform: translate(0%);
     background: var(--background-modals);
     box-shadow: -20px 0px 30px rgba(0, 0, 0, 0.15);
 }
 
+#content-modal-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 18%;
+}
+#container-form-cad {
+    background: rgb(255, 191, 191);
+    box-shadow: -20px 0px 30px rgba(0, 0, 0, 0.308);
+    width: 500px;
+    padding: 20px 0;
+    border-radius: 10px;
+}
+
+#container-inputs-cad {
+    display: flex;
+    justify-content: space-between;
+}
+
+#input-age {
+    width: 220px;
+    background: rgb(241, 162, 162);
+    border: transparent;
+    outline: none;
+}
+#input-cpf {
+    width: 220px;
+    background: rgb(241, 162, 162);
+    border: transparent;
+    outline: none;
+}
+
+#icon-modal-decoration {
+    font-size: 35px;
+    font-family: Cookie;
+}
+#title-modal-decoration {
+    font-size: 45px;
+    max-width: 400px;
+    font-family: Roboto;
+}
+#text-modal-decoration {
+    font-size: 18px;
+    font-family: Roboto;
+}
+
 #content-modal {
-    margin-top: 50%;
+    margin-top: 10%;
 }
 #icon-top {
     position: absolute;
@@ -27,20 +73,21 @@ form {
     margin: 0 5%;
 }
 
-#formtitleLog {
+#formtitleCad {
     margin: 5%;
-    font-size: 30px;
+    font-size: 35px;
     font-family: Roboto;
 }
 
-input {
+#input-cad {
     width: 100%;
     height: 40px;
     padding: 10px;
     font-size: 18px;
-    background: transparent;
-    border: 2px solid black;
-    margin: 5px 0;
+    background: rgb(241, 162, 162);
+    border: transparent;
+    margin: 10px 0;
+    outline: none;
 }
 
 #infotext {
@@ -49,15 +96,17 @@ input {
     margin: 5%;
 }
 
-#btnEventLog {
+#btnEventCad {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 130px;
     height: 40px;
     margin: 20px 0;
-    color: white;
+    color: #fff;
     font-size: 20px;
+    font-family: Alata;
+    border-radius: 5px;
     border: transparent;
     outline: none;
     background: var(--background-button)

@@ -38,8 +38,8 @@ input {
     height: 40px;
     padding: 10px;
     font-size: 18px;
-    background: transparent;
-    border: 2px solid black;
+    background: rgb(243, 206, 206);
+    border: transparent;
     margin: 5px 0;
 }
 

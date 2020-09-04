@@ -31,6 +31,16 @@ li {
     padding: 0 10px;
     list-style:none;
     font-family: Alata;
+    background: transparent;
+}
+
+a {
+    text-decoration-style: none;
+    color: #000;
+}
+a:hover {
+    text-decoration: none;
+    color: #000;
 }
 
 #button-nav {
@@ -54,7 +64,7 @@ li {
     color: white;
     width: 170px;
     background: var(--background-button);
-    box-shadow: 5px 5px 10px rgb(71, 70, 70);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.308);
     outline: none;
     border: transparent;
     padding: 6px 25px;
