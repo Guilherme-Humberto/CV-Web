@@ -1,0 +1,31 @@
+.container-map-page {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+#container-content-map-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-left: 5%;
+}
+
+#texts-top-historic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 3%;
+}
+
+#title-top-his {
+    font-size: 40px;
+    font-family: Roboto;
+    font-weight: bold;
+}
+
+#desc-top-his {
+    font-size: 25px;
+    font-family: Alata;
+}

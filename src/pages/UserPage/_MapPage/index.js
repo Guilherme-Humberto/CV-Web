@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 import { AiFillPlusCircle, AiOutlineClose} from 'react-icons/ai'
-import ModalMap from "../../components/Modals/ModalMap";
+import ModalMap from "../../../components/Modals/ModalMap";
 import './styles.css'
 
 const teste = [

@@ -11,10 +11,9 @@ const cards = [
 function Campaigns() {
   return (
     <>
-        <div className="container-campaigns">
+        <div id="anc-camp" className="container-campaigns">
           <div id="container-texts-camp">
             <p id="title-page-camp">Campanhas</p>
-            <hr id="linha"/>
             <p id="desc-page-camp">
               Com a sua ajuda podemos conectar ainda mais vidas por meio de
               campanhas. Veja as disponíveis abaixo e ajude-nos a incentivar a

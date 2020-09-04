@@ -6,6 +6,7 @@ import Depoiments from './_Depoiments';
 import Institutions from './_Institutions';
 import Campaigns from './_Campaigns';
 import About from './_About';
+import Footer from '../../components/Footer';
 
 
 function Main() {
@@ -18,6 +19,7 @@ function Main() {
         <Depoiments />
         <Institutions />
         <About />
+        <Footer />
       </div>
     </>
   );
