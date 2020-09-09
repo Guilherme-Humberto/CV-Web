@@ -1,6 +1,12 @@
 import React from 'react';
 import './styles.css'
-import { BsFillPersonFill, BsBook, BsFileText, BsFillPeopleFill, BsMap, BsGridFill} from 'react-icons/bs'
+import { 
+  BsFillPersonFill, 
+  BsBook, 
+  BsFillPeopleFill, 
+  BsMap, 
+  BsGridFill 
+} from 'react-icons/bs'
 
 import { Link } from 'react-router-dom'
 function NavBarUserPage() {

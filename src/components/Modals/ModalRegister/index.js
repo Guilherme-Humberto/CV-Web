@@ -3,6 +3,7 @@
 import React from 'react';
 import './styles.css'
 import { slideInRight } from 'react-animations';
+import { useHistory } from 'react-router-dom'
 import axios from '../../../service/api'
 
 import Radium, {StyleRoot} from 'radium';
@@ -14,23 +15,27 @@ const styles = {
   }
 }
 
-const fields = {
-  name: '',
-  email: '',
-  password: '',
-  age: '',
-  cpf: ''
-}
 
 function ModalRegister(props) {
-  const [data, setData] = React.useState(fields)
+  const history = useHistory(null)
+  const [name, setName] = React.useState('')
+  const [email, setEmail] = React.useState('')
+  const [password, setPassword] = React.useState('')
+  const [age, setAge] = React.useState('')
+  const [cpf, setCfp] = React.useState('')
 
-  const handleSendEmail = async () => {
-    const response = await axios.post('/send-email', {
-      email: data.email
-    })
-
-    return console.log(response)
+  const handleSendEmail = async (e) => {
+    e.preventDefault()
+    try {
+      const response = await axios.post("/register", {
+        name, email, password, age, cpf
+      })
+      console.log(response)
+      history.push("/Home")
+    }
+    catch (error) {
+      console.log(`Erro ao cadastrar usuário`)
+    }
   }
   return (
     <>
@@ -44,40 +49,50 @@ function ModalRegister(props) {
                 <p id="infotext">
                   Informe seus dados abaixo e venha conectar vidas
                 </p>
-                <form onSubmit={handleSendEmail}>
+                <form autoComplete="off" onSubmit={handleSendEmail}>
                   <input
                     id="input-cad"
-                    type="text"
-                    onChange={(e) => setData({ name: e.target.value })}
+                    name="name"
+                    autoComplete="off"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     placeholder="Nome"
                   />
                   <input
                     id="input-cad"
-                    type="text"
-                    onChange={(e) => setData({ email: e.target.value })}
+                    name="email"
+                    value={email}
+                    autoComplete="off"
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="E-mail"
                   />
                   <input
                     id="input-cad"
-                    type="text"
-                    onChange={(e) => setData({ password: e.target.value })}
+                    name="password"
+                    value={password}
+                    autoComplete="off"
+                    onChange={(e) => setPassword(e.target.value)}
                     placeholder="Senha"
                   />
                   <div id="container-inputs-cad">
                     <input
                       id="input-age"
-                      type="text"
-                      onChange={(e) => setData({ age: e.target.value })}
+                      name="age"
+                      value={age}
+                      autoComplete="off"
+                      onChange={(e) => setAge(e.target.value)}
                       placeholder="Idade"
                     />
                     <input
                       id="input-cpf"
-                      type="text"
-                      onChange={(e) => setData({ cpf: e.target.value })}
+                      name="cpf"
+                      value={cpf}
+                      autoComplete="off"
+                      onChange={(e) => setCfp(e.target.value)}
                       placeholder="CPF"
                     />
                   </div>
-                  <button id="btnEventCad">Cadastrar</button>
+                  <button id="btnEventCad" type="submit">Cadastrar</button>
                 </form>
               </div>
               <div id="texts-modal-decoration">
