@@ -1,5 +1,6 @@
 import React from 'react';
 
+import PerfilSettings from './_PerfilSettings/index'
 import MainPage from './_MainPage/index'
 import HistoricPage from './_HistoricPage/index'
 import CampaignsPage from './_CampaignsPage/index'
@@ -12,6 +13,7 @@ function UserPage() {
     <>
     <Switch>
       <Route exact path="/Home" component={MainPage}/>
+      <Route path="/Home/perfil" component={PerfilSettings}/>
       <Route path="/Home/historic" component={HistoricPage}/>
       <Route path="/Home/campaigns" component={CampaignsPage}/>
       <Route path="/Home/map" component={MapPage}/>

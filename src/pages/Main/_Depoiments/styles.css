@@ -9,10 +9,9 @@
 }
 
 .content-card-all {
-    background: rgb(243, 241, 241);
-    box-shadow: -20px 0px 30px rgba(0, 0, 0, 0.15);
-    border-radius: 15px;
-    width: 90%;
+    background: rgb(245, 240, 240);
+    box-shadow: -10px 0px 20px rgba(0, 0, 0, 0.329);
+    width: 100%;
 }
 
 #card-depoiment {

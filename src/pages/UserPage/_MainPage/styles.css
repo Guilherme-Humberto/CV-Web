@@ -7,6 +7,7 @@
 #container-content-user-page {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     width: 100%;
     padding-left: 5%;
 }
@@ -20,6 +21,7 @@
 #content1 {
     display: flex;
     justify-content: space-around;
+    margin: 0 10%;
 }
 
 #title-content1 {

@@ -1,12 +1,12 @@
 import React from 'react';
 import './styles.css'
 
-import NavBar from '../../../components/NavBarUserPage/index'
+import NavBarUserPage from '../../../components/NavBarUserPage/index'
 
 function _HistoricPage() {
   return (
       <>
-        <NavBar />
+        <NavBarUserPage />
         
         <div className="container-map-page">
           <div id="container-content-map-page">
