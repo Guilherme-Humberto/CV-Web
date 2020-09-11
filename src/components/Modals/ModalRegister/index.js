@@ -4,8 +4,7 @@ import React from 'react';
 import './styles.css'
 import { slideInRight } from 'react-animations';
 import { useHistory } from 'react-router-dom'
-import axios from '../../../service/api'
-
+import axios from 'axios'
 import Radium, {StyleRoot} from 'radium';
  
 const styles = {
@@ -18,24 +17,30 @@ const styles = {
 
 function ModalRegister(props) {
   const history = useHistory(null)
-  const [name, setName] = React.useState('')
+  const [nome, setName] = React.useState('')
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
   const [age, setAge] = React.useState('')
   const [cpf, setCfp] = React.useState('')
 
   const handleSendEmail = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
-      const response = await axios.post("/register", {
-        name, email, password, age, cpf
-      })
-      console.log(response)
-      history.push("/Home")
+        const response = await axios.post("https://localhost:44308/api/Usuarios", {
+          nome: nome,
+          email: email,
+          password: password,
+          age: age,
+          cpf: cpf
+        })
+        console.log(response.data)
+        response.data.map(({ Nome, Email, Password }) => alert(Nome, Email, Password))
+        history.push("Home")
     }
     catch (error) {
       console.log(`Erro ao cadastrar usuário`)
     }
+    
   }
   return (
     <>
@@ -54,7 +59,7 @@ function ModalRegister(props) {
                     id="input-cad"
                     name="name"
                     autoComplete="off"
-                    value={name}
+                    value={nome}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Nome"
                   />
@@ -69,10 +74,12 @@ function ModalRegister(props) {
                   <input
                     id="input-cad"
                     name="password"
+                    type="password"
                     value={password}
                     autoComplete="off"
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Senha"
+                    color={"white"}
                   />
                   <div id="container-inputs-cad">
                     <input

@@ -13,7 +13,7 @@ function NavBarUserPage() {
   return (
       <>
         <div id="navbar-user-page">
-          <button id="btn-people-nav"><BsFillPersonFill size={30}/></button>
+          <Link to="/Home/perfil"><button id="btn-people-nav"><BsFillPersonFill size={30}/></button></Link>
           <div id="container-btn-navs">
             <Link to="/Home"><button id="btn-people-nav-access"><BsGridFill size={30}/></button></Link>
             <Link to="/Home/historic"><button id="btn-people-nav-access"><BsBook size={30}/></button></Link>

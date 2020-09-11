@@ -18,10 +18,9 @@
 }
 #container-form-cad {
     background: rgb(255, 191, 191);
-    box-shadow: -20px 0px 30px rgba(0, 0, 0, 0.308);
+    box-shadow: -20px 0px 30px rgba(0, 0, 0, 0.418);
     width: 500px;
     padding: 20px 0;
-    border-radius: 10px;
 }
 
 #container-inputs-cad {

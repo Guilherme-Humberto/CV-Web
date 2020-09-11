@@ -41,13 +41,20 @@ input {
     background: rgb(243, 206, 206);
     border: transparent;
     margin: 5px 0;
+    border-radius: 10px;
 }
 
 #esqsenha {
-    font-family: Alata;
-    font-weight: bold;
-    font-size: 18px;
+    width: 55%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     margin: 10px 0;
+    padding: 0 15px;
+    background: transparent;
+    border: transparent;
+    outline: none;
+    font-size: 16px
 }
 
 #infotext {
