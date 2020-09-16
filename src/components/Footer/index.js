@@ -1,3 +1,5 @@
+// Pasta Footer é chamada na página inicial
+
 import React from 'react';
 import './styles.css'
 import imgStore1 from '../../assets/imgs/store1.png'

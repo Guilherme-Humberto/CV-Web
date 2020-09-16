@@ -1,12 +1,13 @@
 // Este é o modal de cadastro (recebe informações via propriedades do _Content-Initial)
 
-import React from 'react';
+import React, { useState } from 'react';
 import './styles.css'
 import { slideInRight } from 'react-animations';
 import { useHistory } from 'react-router-dom'
-import axios from 'axios'
+import api from '../../../service/api'
 import Radium, {StyleRoot} from 'radium';
- 
+
+// Implementando código para gerar animação
 const styles = {
   fade: {
     animation: 'x 0.5s',
@@ -16,17 +17,20 @@ const styles = {
 
 
 function ModalRegister(props) {
+  // Variável para redirecionar usuário
   const history = useHistory(null)
-  const [nome, setName] = React.useState('')
-  const [email, setEmail] = React.useState('')
-  const [password, setPassword] = React.useState('')
-  const [age, setAge] = React.useState('')
-  const [cpf, setCfp] = React.useState('')
+
+  // Estado que guardam valores dos inputs
+  const [nome, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [age, setAge] = useState('')
+  const [cpf, setCfp] = useState('')
 
   const handleSendEmail = async (e) => {
     e.preventDefault();
     try {
-        const response = await axios.post("https://localhost:44308/api/Usuarios", {
+        const response = await api.post("/Usuarios", {
           nome: nome,
           email: email,
           password: password,

@@ -4,6 +4,7 @@
     padding-top: 2%;
     align-items: center;
     position: fixed;
+    z-index: 999;
     height: 100vh;
     width: 100px;
     background: rgb(243, 241, 241);
@@ -18,18 +19,26 @@
 }
 
 #btn-people-nav {
-    background: transparent;
+    background:  rgb(223, 221, 221);;
     outline: none;
-    border: 1px solid black;
+    border: none;
     border-radius: 50%;
-    padding: 5px
+    padding: 10px;
+    box-shadow: 5px 5px 10px #ccc;
 }
 
 #btn-people-nav-access {
-    background: transparent;
+    background: rgb(223, 221, 221);
     outline: none;
-    border: 1px solid black;
+    border: none;
     border-radius: 50%;
-    padding: 5px;
+    padding: 10px;
     margin-top: 20px;
+    box-shadow: 5px 5px 10px #ccc;
+}
+
+#title-nav-user {
+    font-size: 14px;
+    font-family: Alata;
+    margin: 10px 0;
 }

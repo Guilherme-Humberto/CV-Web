@@ -4,7 +4,8 @@ import React from 'react';
 import './styles.css'
 import { slideInRight } from 'react-animations';
 import Radium, {StyleRoot} from 'radium';
- 
+
+// Implementando código para realizar a animação
 const styles = {
   fade: {
     animation: 'x 0.5s',

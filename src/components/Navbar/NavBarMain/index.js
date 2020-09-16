@@ -1,6 +1,8 @@
+// Este é o navbar da página inicial
+// Recebe os links e os botões do content-initial
+
 import React from 'react';
 import './styles.css'
-
 
 function NavBar(props) {
   return (
