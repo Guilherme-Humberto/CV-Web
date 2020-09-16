@@ -1,3 +1,5 @@
+// Este é o componente com os depoimentos do doadores de sangue (Chamado no content-initial)
+
 import React from 'react';
 import './styles.css'
 

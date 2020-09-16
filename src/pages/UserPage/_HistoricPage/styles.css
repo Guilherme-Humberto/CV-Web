@@ -1,30 +1,102 @@
-.container-map-page {
-    display: flex;
-    justify-content: space-between;
-}
-
-#container-content-map-page {
+.container-historic-user {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    padding-left: 5%;
 }
 
-#texts-top-historic {
+#container-content {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    margin-top: 3%;
+    margin: 4% 10%;
+    width: 100%
 }
 
-#title-top-his {
-    font-size: 40px;
-    font-family: Roboto;
+#title-historic {
+    font-size: 45px;
+    font-family: Alata;
     font-weight: bold;
 }
 
-#desc-top-his {
-    font-size: 25px;
+#desc-historic {
+    font-size: 23px;
     font-family: Alata;
+    max-width: 600px;
+}
+
+#container-form-historic {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    gap: 10px
+}
+
+#input-add-historic {
+    max-width: 250px;
+    height: 40px;
+    padding: 10px;
+    font-size: 18px;
+    border: transparent;
+    margin: 5px 0;
+    box-shadow: 5px 5px 10px rgb(151, 150, 150);
+    background: rgb(230, 228, 228);
+}
+
+#input-add-historic-check {
+    height: 40px;
+    width: 150px;
+    background: rgb(230, 228, 228);
+    box-shadow: 5px 5px 10px rgb(151, 150, 150);
+    border: none;
+    padding: 10px;
+    outline: none;
+}
+#input-add-inst-check {
+    height: 40px;
+    width: 250px;
+    background: rgb(230, 228, 228);
+    box-shadow: 5px 5px 10px rgb(151, 150, 150);
+    border: none;
+    padding: 10px;
+    outline: none;
+}
+
+#btn-add-historic {
+    width: 100px;
+    
+    height: 40px;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    background: rgb(121, 120, 120);
+    box-shadow: 5px 5px 10px rgb(151, 150, 150);
+}
+
+#container-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1%;
+    padding: 0 10%;
+    width: 100%;
+    
+}
+
+#container-content-list {
+    display: flex;
+    width: 100%;
+}
+
+#header-table {
+    font-size: 23px;
+    font-family: Alata;
+    font-weight: bold;
+}
+
+#table-infos {
+    font-size: 18px;
+    font-family: Roboto;
 }

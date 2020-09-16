@@ -1,18 +1,23 @@
+// Este é componente responsável por passar os props para a navbar do página inicial
+
 import React, { useState } from 'react';
 import './styles.css'
 
 import imgHome from '../../../assets/imgs/imgHome.jpg'
 
-import NavBar from '../../../components/Navbar'
+import NavBar from '../../../components/Navbar/NavBarMain'
 import { BsArrowRight } from 'react-icons/bs'
 import { AiOutlineClose } from 'react-icons/ai'
 import ModalLogin from '../../../components/Modals/ModalLogin'
 import ModalRegister from '../../../components/Modals/ModalRegister'
 
 function Initial() {
+  // Estados para a abertura dos modais
+  // Falso fechados, True abertos
   const [isActiveLog, setIsActiveLog] = useState(false)
   const [isActiveCad, setIsActiveCad] = useState(false)
 
+  // Funcões para manipulação dos estados dos modais
   const OpenModalLog = () => setIsActiveLog(true)
   const CloseModalLog = () => setIsActiveLog(false)
   const OpenModalCad = () => setIsActiveCad(true)
@@ -21,6 +26,8 @@ function Initial() {
   return (
     <>
       <div id="nav-bar">
+
+        {/* Passando propriedades para o navbar */}
           <NavBar
             title="Conectando Vidas"
             nav1="Instituições"
@@ -56,6 +63,10 @@ function Initial() {
           </div>
         </div>
         <div className="modals">
+
+          {/* Condicional para abrir os modais */}
+          {/* Passando as props para fechar os modais */}
+          {/* Modal de Login */}
           {isActiveLog ? (
             <ModalLogin
               buttonclose={
@@ -65,6 +76,7 @@ function Initial() {
               }
             />
           ) : null}
+          {/* Modal de cadastro */}
           {isActiveCad ? (
             <ModalRegister
               buttonclose={

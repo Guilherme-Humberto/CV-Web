@@ -1,3 +1,5 @@
+// Este é componente responsável por falar sobre a aplicação
+
 import React from 'react';
 import './styles.css'
 

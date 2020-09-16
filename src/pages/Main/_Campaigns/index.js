@@ -1,6 +1,9 @@
+// Este é componente responsável por mostrar as campanhas disponíveis
+
 import React from 'react';
 import './styles.css'
 
+// Simulando um bando de dados
 const cards = [
   { id: 1, img: "https://images.pexels.com/photos/3791664/pexels-photo-3791664.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", title: "Nome da campanha1", desc: "Lorem Ipsum é simplesmente uma simulação de texto da " },
   { id: 2, img: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", title: "Nome da campanha2", desc: "Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos." },
@@ -21,6 +24,8 @@ function Campaigns() {
             </p>
           </div>
           <div id="container-cards">
+
+            {/* Percorrendo o array e renderizando os cards das campannhas */}
             {cards.map(({ id, img, title, desc }) => (
               <div key={id} id="containercard">
                 <div id="content">
