@@ -2,10 +2,11 @@
 
 import React, { useState } from 'react';
 import './styles.css'
+import Radium, {StyleRoot} from 'radium';
 import { slideInRight } from 'react-animations';
 import { useHistory } from 'react-router-dom'
 import api from '../../../service/api'
-import Radium, {StyleRoot} from 'radium';
+import { login } from '../../../config/auth'
 
 // Implementando código para gerar animação
 const styles = {
@@ -21,7 +22,7 @@ function ModalRegister(props) {
   const history = useHistory(null)
 
   // Estado que guardam valores dos inputs
-  const [nome, setName] = useState('')
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [age, setAge] = useState('')
@@ -30,19 +31,20 @@ function ModalRegister(props) {
   const handleSendEmail = async (e) => {
     e.preventDefault();
     try {
-        const response = await api.post("/Usuarios", {
-          nome: nome,
+        const response = await api.post("/register", {
+          name: name,
           email: email,
           password: password,
           age: age,
           cpf: cpf
         })
-        console.log(response.data)
-        response.data.map(({ Nome, Email, Password }) => alert(Nome, Email, Password))
+        const { token , user } = response.data
+        login(token)
+        localStorage.setItem("infos", JSON.stringify(user))
         history.push("Home")
     }
     catch (error) {
-      console.log(`Erro ao cadastrar usuário`)
+      console.log(`Erro ao cadastrar usuário ${error}`)
     }
     
   }
@@ -63,13 +65,14 @@ function ModalRegister(props) {
                     id="input-cad"
                     name="name"
                     autoComplete="off"
-                    value={nome}
+                    value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Nome"
                   />
                   <input
                     id="input-cad"
                     name="email"
+                    type="email"
                     value={email}
                     autoComplete="off"
                     onChange={(e) => setEmail(e.target.value)}

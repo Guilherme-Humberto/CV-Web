@@ -2,9 +2,12 @@
 
 import React, { useState } from 'react';
 import './styles.css'
+import { useHistory } from 'react-router-dom'
 import { BsArrowLeft } from 'react-icons/bs'
 import { slideInRight } from 'react-animations';
 import Radium, { StyleRoot } from 'radium';
+import api from '../../../service/api'
+import { login } from '../../../config/auth'
 
 // Realizando a animação quando o modal é aberto
 const styles = {
@@ -15,12 +18,37 @@ const styles = {
 }
 
 function ModalLogin(props) {
+  const history = useHistory(null)
   // Estado para alterar o formulario de login e esqueci minha senha
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
   const [section, setSection] = useState(true)
 
   // Funções que alterão o estado entre os formulários
   const handleSectionForgot = () => setSection(false)
   const handleSectionLogin = () => setSection(true)
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await api.post("/login", { email, password })
+        .then((response) => {
+          const { user, token } = response.data
+          if(token !== null || token !== undefined) {
+            login(token)
+            localStorage.setItem("infos", JSON.stringify(user))
+            history.push("Home")
+          }
+          else {
+            alert("Este usuário não existe")
+          }
+        })
+        .catch((err) => console.log(err))
+    }
+    catch (err) {
+      console.log(err)
+    }
+  }
 
   return (
     <>
@@ -36,11 +64,11 @@ function ModalLogin(props) {
             <div id="container-form">
               <p id="formtitleLog">Acessar</p>
               <p id="infotext">Bem vindo de volta</p>
-              <form>
-                <input id="input-modal-log" type="text" placeholder="E-mail"/>
-                <input id="input-modal-log" type="text" placeholder="Senha"/>
+              <form onSubmit={handleSubmit}>
+                <input onChange={(e) => setEmail(e.target.value)} id="input-modal-log" type="text" placeholder="E-mail"/>
+                <input onChange={(e) => setPassword(e.target.value)} id="input-modal-log" type="text" placeholder="Senha"/>
                 <button id="esqsenha" onClick={handleSectionForgot}>Esqueci minha senha</button>
-                <button id="btnEventLog">Acessar</button>
+                <button type="submit" id="btnEventLog">Acessar</button>
               </form>
             </div>
           ) : 
