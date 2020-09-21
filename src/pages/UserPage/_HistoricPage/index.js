@@ -1,15 +1,15 @@
 import React from 'react';
-import './styles.css'
-import axios from 'axios'
-import NavBarUserPage from '../../../components/Navbar/NavBarUserPage'
-import { bounceInLeft } from 'react-animations';
+import { fadeIn } from 'react-animations';
 import Radium, { StyleRoot } from 'radium';
+import './styles.css'
+import NavBarUserPage from '../../../components/Navbar/NavBarUserPage'
+import api from '../../../service/api'
 
 // Realizando a animação quando o modal é aberto
 const styles = {
   fade: {
     animation: 'x 1s',
-    animationName: Radium.keyframes(bounceInLeft, 'fade')
+    animationName: Radium.keyframes(fadeIn, 'fade')
   }
 }
 
@@ -21,8 +21,7 @@ function _HistoricPage() {
   const [hist, setHist] = React.useState([])
 
   async function handleSubmit(e) {
-    e.preventDefault()
-    const response = await axios.post("http://localhost:3333/historic", {
+    const response = await api.post("/historic", {
       local: local,
       date: date,
       typeDonation: typeDonation
@@ -32,7 +31,7 @@ function _HistoricPage() {
 
   React.useEffect(() => {
     async function fetchData() {
-      const response = await axios.get("http://localhost:3333/historic/list")
+      const response = await api.get("/historic/list")
       setHist(response.data.registros)
       console.log(response.data.registros)
     }
@@ -47,7 +46,7 @@ function _HistoricPage() {
           <div id="container-content">
             <p id="title-historic">Histórico</p>
             <p id="desc-historic">
-              Aqui você pode visualizar o seu histórico de doações. Basta preencher corretamente os campos abaixo
+              Aqui você pode visualizar o seu histórico de doações. Basta preencher corretamente os campos abaixo.
           </p>
             <form onSubmit={handleSubmit} id="container-form-historic">
               <select onChange={(e) => setLocal(e.target.value)} id="input-add-inst-check">

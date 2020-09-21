@@ -4,14 +4,14 @@ import NavBarUserPage from '../../../components/Navbar/NavBarUserPage'
 
 import { AiOutlinePhone } from 'react-icons/ai'
 import { BsPhone } from 'react-icons/bs'
-import { bounceInLeft } from 'react-animations';
+import { fadeIn } from 'react-animations';
 import Radium, { StyleRoot } from 'radium';
 
 // Realizando a animação quando o modal é aberto
 const styles = {
   fade: {
     animation: 'x 1s',
-    animationName: Radium.keyframes(bounceInLeft, 'fade')
+    animationName: Radium.keyframes(fadeIn, 'fade')
   }
 }
 
