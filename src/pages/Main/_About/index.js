@@ -3,7 +3,7 @@
 import React from 'react';
 import './styles.css'
 
-import ImgAbout from '../../../assets/imgs/imgAbout.jpg'
+import ImgAbout from '../../../assets/imgAbout.jpg'
 
 function About() {
   return (

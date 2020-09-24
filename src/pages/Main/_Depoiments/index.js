@@ -3,9 +3,9 @@
 import React from 'react';
 import './styles.css'
 
-import imgDepo1 from '../../../assets/imgs/depo1.jpg'
-import imgDepo2 from '../../../assets/imgs/depo2.jpg'
-import imgDepo3 from '../../../assets/imgs/depo3.jpg'
+import imgDepo1 from '../../../assets/depo1.jfif'
+import imgDepo2 from '../../../assets/depo2.jfif'
+import imgDepo3 from '../../../assets/depo3.jfif'
 
 function Depoiments() {
   return (

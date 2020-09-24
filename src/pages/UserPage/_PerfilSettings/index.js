@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom'
-import { AiOutlineLogout, AiOutlineMail, AiOutlineCalendar } from 'react-icons/ai'
-import { BsFillPersonFill } from 'react-icons/bs'
-import { VscPerson } from 'react-icons/vsc'
+import { AiOutlineLogout } from 'react-icons/ai'
 import './styles.css'
 import { logout } from '../../../config/auth'
 import NavBarUserPage from '../../../components/Navbar/NavBarUserPage'
@@ -41,7 +39,6 @@ function _PerfilSettings() {
 
           <div id="container-infos">
             <div id="infos-container-1">
-              <img id="img-perfil" src="https://avatars3.githubusercontent.com/u/55901431?s=400&u=e11d8ec66ccd8c3309877859b23eebeff37b5bbc&v=4" alt=""/>
               <p id="name-user-perfil">{test.name}</p>
             </div>
 

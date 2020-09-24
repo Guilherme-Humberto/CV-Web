@@ -3,7 +3,7 @@ import './styles.css'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 
-import imgNotFound from '../../assets/imgs/notfoundimg.gif'
+import imgNotFound from '../../assets/imgNotFound.jpg'
 
 function NotFound() {
   return (

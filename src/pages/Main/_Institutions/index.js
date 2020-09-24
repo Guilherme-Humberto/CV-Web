@@ -2,7 +2,7 @@ import React from 'react';
 import './styles.css'
 import { BsArrowRight } from 'react-icons/bs'
 
-import imgInts from '../../../assets/imgs/imgInst.png'
+import imgInts from '../../../assets/imgInst.png'
 
 function Institutions() {
   return (

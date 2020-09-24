@@ -1,6 +1,6 @@
 .container-content-initial {
     display: flex;
-    margin-top: 5%;
+    margin-top: 10%;
     height: 100%;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -24,12 +24,11 @@
 
 #Image-home {
     margin: 5% 0;
-    
 }
 
 #img-initial {
     display: flex;
-    height: 550px;
+    height: 400px;
 }
 
 @media (max-width: 410px) {

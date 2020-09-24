@@ -1,13 +1,12 @@
 // Este é componente responsável por passar os props para a navbar do página inicial
 
 import React, { useState } from 'react';
-import './styles.css'
-
-import imgHome from '../../../assets/imgs/imgHome.jpg'
-
-import NavBar from '../../../components/Navbar/NavBarMain'
 import { BsArrowRight } from 'react-icons/bs'
 import { AiOutlineClose } from 'react-icons/ai'
+
+import './styles.css'
+import imgHome from '../../../assets/imgHome.jpg'
+import NavBar from '../../../components/Navbar/NavBarMain'
 import ModalLogin from '../../../components/Modals/ModalLogin'
 import ModalRegister from '../../../components/Modals/ModalRegister'
 
@@ -16,12 +15,6 @@ function Initial() {
   // Falso fechados, True abertos
   const [isActiveLog, setIsActiveLog] = useState(false)
   const [isActiveCad, setIsActiveCad] = useState(false)
-
-  // Funcões para manipulação dos estados dos modais
-  const OpenModalLog = () => setIsActiveLog(true)
-  const CloseModalLog = () => setIsActiveLog(false)
-  const OpenModalCad = () => setIsActiveCad(true)
-  const CloseModalCad = () => setIsActiveCad(false)
 
   return (
     <>
@@ -34,12 +27,12 @@ function Initial() {
             nav2="Campanhas"
             nav3="Sobre"
             buttonAccess={
-              <button id="btnAcceNav" type="button" onClick={OpenModalLog}>
+              <button id="btnAcceNav" type="button" onClick={() => setIsActiveLog(true)}>
                 Acessar
               </button>
             }
             buttonRegister={
-              <button id="btnCadNav" onClick={OpenModalCad}>
+              <button id="btnCadNav" onClick={() => setIsActiveCad(true)}>
                 Cadastrar
                 <div id="arrowBtnCad">
                   <BsArrowRight size={30} />
@@ -67,25 +60,25 @@ function Initial() {
           {/* Condicional para abrir os modais */}
           {/* Passando as props para fechar os modais */}
           {/* Modal de Login */}
-          {isActiveLog ? (
+          {isActiveLog && (
             <ModalLogin
               buttonclose={
-                <button id="closeModalBtn" onClick={CloseModalLog}>
-                  <AiOutlineClose size={30} />
-                </button>
-              }
-            />
-          ) : null}
+              <button id="closeModalBtn" onClick={() => setIsActiveLog(false)}>
+                <AiOutlineClose size={30}/>
+              </button>
+            }
+          />
+          )}
           {/* Modal de cadastro */}
-          {isActiveCad ? (
+          {isActiveCad && (
             <ModalRegister
-              buttonclose={
-                <button id="closeModalBtn" onClick={CloseModalCad}>
-                  <AiOutlineClose size={30} />
+                buttonclose={
+                <button id="closeModalBtn" onClick={() => setIsActiveCad(false)}>
+                  <AiOutlineClose size={30}/>
                 </button>
               }
             />
-          ) : null}
+          )}
         </div>
     </>
   );
