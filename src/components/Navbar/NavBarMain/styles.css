@@ -3,12 +3,11 @@
     z-index: 999;
     top: 0;
     width: 100%;
-    padding: 5px 0;
+    padding: 10px 0;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background: #fff;
-
+    background: rgb(255, 232, 232);
 }
 
 #links {
@@ -22,8 +21,8 @@ ul {
 }
 
 li:nth-child(1) {
-    font-size: 50px;
-    font-family: Cookie;
+    font-size: 30px;
+    font-family: Raleway;
 }
 
 li {
@@ -49,11 +48,12 @@ a:hover {
     justify-content: center;
 }
 #btnAcceNav {
+    font-size: 20px;
     background: transparent;
     outline: none;
-    font-size: 20px;
-    border: transparent;
+    border: 2px solid #000;
     padding: 6px 25px;
+    border-radius: 25px;
     margin: 0 10px;
     color: #000;
 }
@@ -61,13 +61,13 @@ a:hover {
     display: flex;
     align-items: center;
     font-size: 18px;
-    color: white;
+    color: #fff;
     width: 170px;
-    background: var(--background-button);
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.308);
+    border-radius: 25px;
+    background: #E26868;
     outline: none;
     border: transparent;
-    padding: 6px 25px;
+    padding: 7px 25px;
     margin: 0 10px;
 }
 #arrowBtnCad {

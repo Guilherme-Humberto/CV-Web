@@ -2,8 +2,8 @@
 
 import React from 'react';
 import './styles.css'
-import imgStore1 from '../../assets/imgs/store1.png'
-import imgStore2 from '../../assets/imgs/store2.png'
+import imgStore1 from '../../assets/store1.png'
+import imgStore2 from '../../assets/store2.png'
 
 function Footer() {
   return (

@@ -43,26 +43,21 @@ form {
     background: rgb(243, 206, 206);
     border: transparent;
     margin: 5px 0;
+    outline: none;
     border-radius: 10px;
 }
 
 #esqsenha {
-    width: 55%;
+    width: 230px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: left;
     margin: 10px 0;
-    padding: 0 15px;
+    padding: 0 5px;
     background: transparent;
     border: transparent;
     outline: none;
     font-size: 16px
-}
-
-#infotext {
-    font-family: Alata;
-    font-size: 18px;
-    margin: 5%;
 }
 
 #btnEventLog {
@@ -82,4 +77,5 @@ form {
 #closeModalBtn {
     background: transparent;
     border: transparent;
+    outline: none;
 }

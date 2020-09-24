@@ -12,21 +12,29 @@
 
 #content-modal-container {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
-    margin: 0 auto;
+    margin: 0 15%;
 }
+
 #container-form-cad {
-    background: rgb(255, 207, 207);
-    box-shadow: -20px 0px 30px rgba(0, 0, 0, 0.418);
+    background: rgb(243, 206, 206);
+    border: transparent;
+    box-shadow: -10px 0px 30px rgba(0, 0, 0, 0.418);
     width: 500px;
     padding: 20px 0;
 }
 
 #container-inputs-cad {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     gap: 10px;
+}
+
+#text-decoration-top {
+    display: flex;
+    align-items: center;
+    justify-content: left;
 }
 
 #input-age {
@@ -35,8 +43,11 @@
     padding: 10px;
     font-size: 18px;
     font-family: Alata;
-    background: rgb(241, 162, 162);
-    border: transparent;
+    background:  transparent;
+    border-bottom: 2px solid #000;
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
     margin: 5px 0;
     outline: none;
 }
@@ -46,15 +57,18 @@
     padding: 10px;
     font-size: 18px;
     font-family: Alata;
-    background: rgb(241, 162, 162);
-    border: transparent;
+    background:  transparent;
+    border-bottom: 2px solid #000;
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
     margin: 5px 0;
     outline: none;
 }
 
 #icon-modal-decoration {
-    font-size: 35px;
-    font-family: Cookie;
+    font-size: 30px;
+    font-family: Raleway;
 }
 #title-modal-decoration {
     font-size: 45px;
@@ -85,8 +99,8 @@ form {
 
 #formtitleCad {
     margin: 5%;
-    font-size: 35px;
-    font-family: Roboto;
+    font-size: 40px;
+    font-family: Alata;
 }
 
 #input-cad {
@@ -95,9 +109,11 @@ form {
     padding: 10px;
     font-size: 18px;
     font-family: Alata;
-    background: rgb(241, 162, 162);
-    border-radius: 5px;
-    border: transparent;
+    background:  transparent;
+    border-bottom: 2px solid #000;
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
     margin: 10px 0;
     outline: none;
 }
@@ -110,18 +126,16 @@ form {
 
 #btnEventCad {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 130px;
-    height: 40px;
-    margin: 20px 0;
+    justify-content: space-around;
+    width: 120px;
+    padding: 10px 0;
+    margin: 10px 0;
     color: #fff;
-    font-size: 20px;
+    font-size: 18px;
     font-family: Alata;
-    border-radius: 5px;
     border: transparent;
     outline: none;
-    background: var(--background-button)
+    background: #af7878
 }
 
 #closeModalBtn {

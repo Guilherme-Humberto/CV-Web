@@ -1,10 +1,10 @@
 // Este é o modal de cadastro (recebe informações via propriedades do _Content-Initial)
 
 import React, { useState } from 'react';
-import './styles.css'
 import Radium, {StyleRoot} from 'radium';
 import { slideInRight } from 'react-animations';
 import { useHistory } from 'react-router-dom'
+import './styles.css'
 import api from '../../../service/api'
 import { login } from '../../../config/auth'
 
@@ -25,22 +25,24 @@ function ModalRegister(props) {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [ConfirmPassword, setConfirmPassword] = useState('')
   const [age, setAge] = useState('')
   const [cpf, setCfp] = useState('')
 
   const handleSendEmail = async (e) => {
     e.preventDefault();
     try {
-        const response = await api.post("/register", {
-          name: name,
-          email: email,
-          password: password,
-          age: age,
-          cpf: cpf
+        const response = await api.post("/usuarios", {
+          Nome: name,
+          Email: email,
+          Cpf: cpf,
+          Senha: password,
+          ComFirmaSenha: ConfirmPassword,
+          DataDeNacimente: age
         })
-        const { token , user } = response.data
-        login(token)
-        localStorage.setItem("infos", JSON.stringify(user))
+        const { item2 , item1 } = response.data
+        login(item2)
+        localStorage.setItem("infos", JSON.stringify(item1))
         history.push("Home")
     }
     catch (error) {
@@ -78,16 +80,28 @@ function ModalRegister(props) {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="E-mail"
                   />
-                  <input
-                    id="input-cad"
-                    name="password"
-                    type="password"
-                    value={password}
-                    autoComplete="off"
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Senha"
-                    color={"white"}
-                  />
+                  <div id="container-inputs-cad">
+                    <input
+                      id="input-cad"
+                      name="password"
+                      type="password"
+                      value={password}
+                      autoComplete="off"
+                      onChange={(e) => setPassword(e.target.value)}
+                      placeholder="Senha"
+                      color={"white"}
+                    />
+                    <input
+                      id="input-cad"
+                      name="Confirmpassword"
+                      type="password"
+                      value={ConfirmPassword}
+                      autoComplete="off"
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                      placeholder="Confirme sua senha"
+                      color={"white"}
+                    />
+                  </div>
                   <div id="container-inputs-cad">
                     <input
                       id="input-age"
@@ -106,7 +120,9 @@ function ModalRegister(props) {
                       placeholder="CPF"
                     />
                   </div>
-                  <button id="btnEventCad" type="submit">Cadastrar</button>
+                  <button id="btnEventCad" type="submit">
+                    Cadastrar
+                  </button>
                 </form>
               </div>
               <div id="texts-modal-decoration">
