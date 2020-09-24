@@ -1,4 +1,4 @@
-// Configuração de autenticação do usuário
+// Configuração de autenticação de usuários
 const STORAGE_KEY = ""
 
 export const isAuthenticated = () => !!localStorage.getItem(STORAGE_KEY)
