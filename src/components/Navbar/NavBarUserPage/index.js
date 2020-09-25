@@ -1,10 +1,11 @@
 // Este é navbar da página userpage
 
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import './styles.css'
 import { 
-  FiMapPin
+  FiMapPin,
+  FiLogOut
 } from 'react-icons/fi'
 
 import { 
@@ -13,8 +14,16 @@ import {
   AiOutlineAudit,
   AiOutlineUsergroupAdd
 } from 'react-icons/ai'
+import { logout } from '../../../config/auth'
 
 function NavBarUserPage() {
+  const history = useHistory(null)
+  const teste = () => {
+    logout()
+    localStorage.removeItem('infos')
+    history.push("/")
+  }
+
   return (
       <>
         <div id="navbar-user-page">
@@ -30,6 +39,9 @@ function NavBarUserPage() {
             <Link to="/Home/map"><button id="btn-people-nav-access"><FiMapPin size={35}/></button></Link>
             <label id="title-nav-user">Locais</label>
           </div>
+            <div id="btn-logout-nav">
+              <button onClick={teste} id="btnLogout"><FiLogOut size={25}/></button>
+            </div>
         </div>
       </>
   );

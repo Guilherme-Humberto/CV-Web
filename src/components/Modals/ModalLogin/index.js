@@ -61,8 +61,8 @@ function ModalLogin({ buttonclose }) {
               <p id="formtitleLog">Acessar</p>
               <p id="infotext">Bem vindo de volta</p>
               <form onSubmit={handleSubmit}>
-                <input onChange={(e) => setEmail(e.target.value)} id="input-modal-log" type="text" placeholder="E-mail"/>
-                <input onChange={(e) => setPassword(e.target.value)} id="input-modal-log" type="text" placeholder="Senha"/>
+                <input onChange={(e) => setEmail(e.target.value)} id="input-modal-log" type="email" placeholder="E-mail"/>
+                <input onChange={(e) => setPassword(e.target.value)} id="input-modal-log" type="password" placeholder="Senha"/>
                 <button id="esqsenha" 
                   onClick={() => setSection(false)}>
                   Esqueci minha senha
@@ -74,8 +74,9 @@ function ModalLogin({ buttonclose }) {
           <div id="container-form">
               <p id="formtitleLog">Alterar senha</p>
               <form>
-                <input id="input-modal-log" type="text" placeholder="Digite a nova senha"/>
-                <input id="input-modal-log" type="text" placeholder="Confirme a senha"/>
+                <input id="input-modal-log" type="email" placeholder="E-Mail"/>
+                <input id="input-modal-log" type="password" placeholder="Digite a nova senha"/>
+                <input id="input-modal-log" type="password" placeholder="Confirme a senha"/>
                 <button id="esqsenha" 
                   onClick={() => setSection(true)}>
                   Voltar para login
