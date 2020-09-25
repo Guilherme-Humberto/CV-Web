@@ -3,11 +3,10 @@
     flex-direction: column;
 }
 
-#container-content {
+#container-content-historic {
     display: flex;
     flex-direction: column;
     margin: 4% 10%;
-    width: 100%
 }
 
 #title-historic {

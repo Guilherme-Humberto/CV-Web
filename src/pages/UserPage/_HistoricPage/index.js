@@ -43,7 +43,7 @@ function _HistoricPage() {
       <NavBarUserPage />
       <StyleRoot>
         <div className="container-historic-user" style={styles.fade}>
-          <div id="container-content">
+          <div id="container-content-historic">
             <p id="title-historic">Histórico</p>
             <p id="desc-historic">
               Aqui você pode visualizar o seu histórico de doações. Basta preencher corretamente os campos abaixo.

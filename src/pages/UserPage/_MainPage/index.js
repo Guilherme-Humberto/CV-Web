@@ -25,7 +25,7 @@ function _MainPage() {
 
           <section id="sccard">
             <div id="texts-seccard">
-                <p id="title-sec1">Olá {info.nome}</p>
+                <p id="title-sec1">Olá {info.name}</p>
               <p id="desc-seccard">
                 Sabia que o Conectando Vidas também tem um aplicativo? Faça o download e continue sempre conectado
               </p>

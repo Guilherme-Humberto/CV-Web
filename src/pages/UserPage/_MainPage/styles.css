@@ -78,8 +78,9 @@
 }
 
 #container-content {
-    margin: 0 auto;
+    margin: 2% auto;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }

@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom'
-import { AiOutlineLogout } from 'react-icons/ai'
+import { VscEdit } from 'react-icons/vsc'
 import './styles.css'
-import { logout } from '../../../config/auth'
 import NavBarUserPage from '../../../components/Navbar/NavBarUserPage'
-
+import img from '../../../assets/depo1.jfif'
 
 function _PerfilSettings() {
+  const [infos, setInfos] = useState(true)
   const [test, setTest] = useState({ })
+
+  const handleChangeContent = () => setInfos(false)
 
   useEffect(() => {
     async function getInfos() {
@@ -18,35 +19,47 @@ function _PerfilSettings() {
     getInfos()
   }, [])
 
-  const history = useHistory(null)
-  const teste = () => {
-    logout()
-    localStorage.removeItem('infos')
-    history.push("/")
-  }
-  
   return (
     <>
       <div className="container-perfiluser">
         <NavBarUserPage />
 
-        <div id="container-content">
-          <div id="container-perfil-top">
-            <p id="title-top-user">Bem vindo {test.name} </p>
-            <button onClick={teste} id="btnLogout"><AiOutlineLogout size={30}/>Sair</button>
-          </div>
-          
-
-          <div id="container-infos">
-            <div id="infos-container-1">
-              <p id="name-user-perfil">{test.name}</p>
-            </div>
-
-            <div id="infos-container-2">
-              <h1>Sobre mim</h1>
-            </div>
-          </div>
+        <div id="container-header"></div>
+        <div id="container-content-infos">
+          <img src={img} id="imgPerfil" alt="Imagem"/>
         </div>
+        
+
+        {/* Troca de conteudo */}
+        {infos ? (
+          <div id="infos-user">
+            <button onClick={handleChangeContent} id="btn-edit-info">
+                <VscEdit color="white" size={25}/>
+            </button>
+            <p id="username-infos">{test.name}</p>
+            <p id="bio-infos">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, repellat.</p>
+            <input id="input-infos-user" readOnly defaultValue={test.email} placeholder="Seu Email" />
+            <div id="container-inputs-infos">
+              <input id="input-infos-user" placeholder="Celular" />
+              <input id="input-infos-user" placeholder="Telefone" />
+            </div>
+            <input id="input-infos-user" placeholder="Tipo sanguíneo" />
+          </div>
+        ): (
+          <div id="infos-user">
+            <p id="edit-infos-title">Edite suas informações</p>
+            <p id="bio-infos2">Edite suas informações</p>
+            <textarea placeholder="Conte-nos um pouco sobre você" id="bio-user-edit"/>
+            <input id="input-infos-user" readOnly defaultValue={test.email} placeholder="Seu Email"/>
+            <div id="container-inputs-infos">
+              <input id="input-infos-user" placeholder="Celular"/>
+              <input id="input-infos-user" placeholder="Telefone"/>
+            </div>
+            <input id="input-infos-user" placeholder="Tipo sanguíneo"/>
+            <button onClick={() => setInfos(true)}>Salvar</button>
+          </div>
+        )}
+
       </div>
     </>
   );
