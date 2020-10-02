@@ -29,21 +29,24 @@ function ModalRegister(props) {
   const [age, setAge] = useState('')
   const [cpf, setCfp] = useState('')
 
-  const handleSendEmail = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        const response = await api.post("/usuarios", {
-          Nome: name,
-          Email: email,
-          Cpf: cpf,
-          Senha: password,
-          ComFirmaSenha: ConfirmPassword,
-          DataDeNacimente: age
+        await api.post("/register", { 
+          name, 
+          email, 
+          cpf, 
+          password, 
+          age, 
+          bio: '', adress: '', cell: '', phone: '', bloodtype: ''
         })
-        const { item2 , item1 } = response.data
-        login(item2)
-        localStorage.setItem("infos", JSON.stringify(item1))
-        history.push("Home")
+        .then((response) => {
+          const { user, token } = response.data
+          login(token)
+          localStorage.setItem("infos", JSON.stringify(user))
+          history.push("Home")
+        })
+        .catch((err) => console.log(err))
     }
     catch (error) {
       console.log(`Erro ao cadastrar usuário ${error}`)
@@ -54,89 +57,45 @@ function ModalRegister(props) {
     <>
       <StyleRoot>
         <div className="container-modal" style={styles.fade}>
-          <div id="content-modal">
             <div id="icon-top">{props.buttonclose}</div>
-            <div id="content-modal-container">
-              <div id="container-form-cad">
-                <p id="formtitleCad">Criar Conta</p>
-                <p id="infotext">
-                  Informe seus dados abaixo e venha conectar vidas
-                </p>
-                <form autoComplete="off" onSubmit={handleSendEmail}>
-                  <input
-                    id="input-cad"
-                    name="name"
-                    autoComplete="off"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder="Nome"
-                  />
-                  <input
-                    id="input-cad"
-                    name="email"
-                    type="email"
-                    value={email}
-                    autoComplete="off"
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="E-mail"
-                  />
-                  <div id="container-inputs-cad">
-                    <input
-                      id="input-cad"
-                      name="password"
-                      type="password"
-                      value={password}
-                      autoComplete="off"
-                      onChange={(e) => setPassword(e.target.value)}
-                      placeholder="Senha"
-                      color={"white"}
-                    />
-                    <input
-                      id="input-cad"
-                      name="Confirmpassword"
-                      type="password"
-                      value={ConfirmPassword}
-                      autoComplete="off"
-                      onChange={(e) => setConfirmPassword(e.target.value)}
-                      placeholder="Confirme sua senha"
-                      color={"white"}
-                    />
-                  </div>
-                  <div id="container-inputs-cad">
-                    <input
-                      id="input-age"
-                      name="age"
-                      value={age}
-                      autoComplete="off"
-                      onChange={(e) => setAge(e.target.value)}
-                      placeholder="Idade"
-                    />
-                    <input
-                      id="input-cpf"
-                      name="cpf"
-                      value={cpf}
-                      autoComplete="off"
-                      onChange={(e) => setCfp(e.target.value)}
-                      placeholder="CPF"
-                    />
-                  </div>
-                  <button id="btnEventCad" type="submit">
-                    Cadastrar
-                  </button>
-                </form>
+            
+            <div id="container-form">
+              <div id="texts-container-modal-cad">
+                <p id="title-modal-cad">Porque doar sangue?</p>
+                <p id="text-modal-cad">A doação de sangue é um ato voluntario e altruísta de extrema importância, pois o sangue humano não pode ser fabricado artificialmente.</p>
               </div>
-              <div id="texts-modal-decoration">
-                <p id="icon-modal-decoration">Conectando Vidas</p>
-                <p id="title-modal-decoration">
-                  Junte-se a milhares de doadores.
-                </p>
-                <p id="text-modal-decoration">
-                  Mais de 200 mil doadores já estão conectados.
-                </p>
+              <hr id="linha-modal-cad"/>
+              <div id="texts-container-modal-cad">
+                <p id="title-modal-cad">Razões para doar sangue</p>
+                <p id="text-modal-cad">As bolsas de sangue coletadas anualmente no país – ao todo são 3,5 milhões – são insuficientes para atender à demanda. O ideal, segundo o Ministério da Saúde, é alcançar 5,7 milhões de bolsas a cada ano.</p>
+              </div>
+            </div>
+
+            <div id="form-container-cad">
+              <div id="content-form">
+                <p id="title-form-cad">Criar Conta</p>
+                <p id="desc-form-cad">Tem sempre alguém esperando sua doação. Não cruze os braços para esse problema. Crie sua conta e venha conectar vidas. </p>
+                
+                <form onSubmit={handleSubmit} id="formCad">
+                  <label id="label-form-cad">Nome</label>
+                  <input id="input-form-cad" onChange={(e) => setName(e.target.value)} autoComplete="off" placeholder="Nome"/>
+                  <label id="label-form-cad">Email</label>
+                  <input id="input-form-cad" type="email" onChange={(e) => setEmail(e.target.value)} autoComplete="off" placeholder="E-Mail"/>
+                  <label id="label-form-cad">CPF e Idade</label>
+                  <div id="inputs-infos">
+                    <input id="input-form-cad2" onChange={(e) => setCfp(e.target.value)} autoComplete="off" placeholder="CPF"/>
+                    <input id="input-form-cad2" onChange={(e) => setAge(e.target.value)} autoComplete="off" placeholder="Idade"/>
+                  </div>
+                  <label id="label-form-cad">Senha</label>
+                  <div id="inputs-password">
+                    <input id="input-form-cad2" type="password" onChange={(e) => setPassword(e.target.value)} autoComplete="off" placeholder="Senha"/>
+                    <input id="input-form-cad2" type="password" onChange={(e) => setConfirmPassword(e.target.value)} autoComplete="off" placeholder="Confirme a senha"/>
+                  </div> 
+                  <button id="btn-form-cad">Cadastrar</button>
+                </form>
               </div>
             </div>
           </div>
-        </div>
       </StyleRoot>
     </>
   );

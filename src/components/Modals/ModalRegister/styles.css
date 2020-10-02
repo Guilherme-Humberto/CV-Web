@@ -1,144 +1,143 @@
 .container-modal {
+    display: flex;
+    justify-content: space-between;
     position: fixed;
     z-index: 9999;
+    max-height: 100%;
     top: 0;
     right: 0;
-    height: 100vh;
+    height: 100%;
     width: 100%;
-    transform: translate(0%);
     background: var(--background-modals);
-    box-shadow: -20px 0px 30px rgba(0, 0, 0, 0.15);
-}
-
-#content-modal-container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0 15%;
-}
-
-#container-form-cad {
-    background: rgb(243, 206, 206);
-    border: transparent;
-    box-shadow: -10px 0px 30px rgba(0, 0, 0, 0.418);
-    width: 500px;
-    padding: 20px 0;
-}
-
-#container-inputs-cad {
-    display: flex;
-    justify-content: space-around;
-    gap: 10px;
-}
-
-#text-decoration-top {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-}
-
-#input-age {
-    width: 100%;
-    height: 40px;
-    padding: 10px;
-    font-size: 18px;
-    font-family: Alata;
-    background:  transparent;
-    border-bottom: 2px solid #000;
-    border-top: transparent;
-    border-left: transparent;
-    border-right: transparent;
-    margin: 5px 0;
-    outline: none;
-}
-#input-cpf {
-    width: 100%;
-    height: 40px;
-    padding: 10px;
-    font-size: 18px;
-    font-family: Alata;
-    background:  transparent;
-    border-bottom: 2px solid #000;
-    border-top: transparent;
-    border-left: transparent;
-    border-right: transparent;
-    margin: 5px 0;
-    outline: none;
-}
-
-#icon-modal-decoration {
-    font-size: 30px;
-    font-family: Raleway;
-}
-#title-modal-decoration {
-    font-size: 45px;
-    max-width: 400px;
-    font-family: Roboto;
-}
-#text-modal-decoration {
-    font-size: 18px;
-    font-family: Roboto;
-}
-
-#content-modal {
-    margin-top: 10%;
 }
 #icon-top {
     position: absolute;
+    z-index: 999;
     top: 2%;
     left: 2%;
 }
 
-form {
-    display: flex;
-    justify-content: center;
-    align-items: left;
-    flex-direction: column;
-    margin: 0 5%;
+div#texts-container-modal-cad {
+    
 }
 
-#formtitleCad {
-    margin: 5%;
+hr#linha-modal-cad {
+    border-radius: 5px;
+    border-width: 2px;
+    background-color: rgb(146, 143, 143)
+}
+
+#container-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    margin: 10% 4%;
+}
+
+p#title-modal-cad {
+    font-size: 35px;
+    font-family: Alata;
+    font-weight: bold;
+}
+
+p#text-modal-cad {
+    max-width: 740px;
+    font-size: 24px;
+    font-family: Alata;
+}
+div#form-container-cad {
+    background: rgb(253, 150, 150);
+    margin: 0;
+    height: 100vh;
+    width: 500px;
+    padding: 6px 25px;
+}
+
+div#content-form {
+    display: flex;
+    flex-direction: column;
+    margin: 5%
+}
+
+p#title-form-cad {
     font-size: 40px;
     font-family: Alata;
 }
-
-#input-cad {
-    width: 100%;
-    height: 40px;
-    padding: 10px;
-    font-size: 18px;
+p#desc-form-cad {
+    font-size: 20px;
     font-family: Alata;
-    background:  transparent;
-    border-bottom: 2px solid #000;
-    border-top: transparent;
-    border-left: transparent;
-    border-right: transparent;
-    margin: 10px 0;
-    outline: none;
 }
 
-#infotext {
-    font-family: Alata;
-    font-size: 18px;
-    margin: 5%;
-}
-
-#btnEventCad {
+form#formCad {
     display: flex;
-    justify-content: space-around;
-    width: 120px;
-    padding: 10px 0;
-    margin: 10px 0;
-    color: #fff;
-    font-size: 18px;
-    font-family: Alata;
-    border: transparent;
-    outline: none;
-    background: #af7878
+    flex-direction: column;
+    margin: 0;
 }
 
-#closeModalBtn {
-    background: transparent;
+label#label-form-cad {
+    font-size: 20px;
+    font-family: Alata;
+    margin-top: 10px;
+}
+
+div#inputs-password {
+    display: flex;
+}
+
+div#inputs-infos {
+    display: flex;
+    margin-top: 10px
+}
+
+input#input-form-cad {
+    padding: 8px 10px;
+    width: 400px;
+    outline: none;
     border: transparent;
+    background: rgb(252, 193, 193);
+}
+
+input#input-form-cad2 {
+    max-width: 195px;
+    margin-right: 10px;
+    padding: 8px 10px;
+    outline: none;
+    border: transparent;
+    background: rgb(252, 193, 193);
+}
+
+button#btn-form-cad {
+    width: 150px;
+    margin: 20px 0;
+    padding: 10px;
+    border: transparent;
+    outline: none;
+    color: #fff;
+    font-size: 20px;
+    font-family: Alata;
+    border-radius: 5px;
+    background: rgba(14, 1, 1, 0.603);
+}
+
+@media (max-width: 950px) {
+    .container-modal {
+        flex-wrap: wrap;
+    }
+    div#texts-container-modal-cad {
+        display: none;
+    }
+    hr#linha-modal-cad {
+        display: none;
+    }
+    div#form-container-cad {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        box-shadow: 10px 0px 20px rgb(150, 149, 149);
+    }
+    p#desc-form-cad {
+        max-width: 500px;
+    }
 }
