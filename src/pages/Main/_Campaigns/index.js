@@ -23,7 +23,7 @@ function Campaigns() {
               doação de sangue
             </p>
           </div>
-          <div id="container-cards">
+          <div id="container-cards-camps">
 
             {/* Percorrendo o array e renderizando os cards das campannhas */}
             {cards.map(({ id, img, title, desc }) => (

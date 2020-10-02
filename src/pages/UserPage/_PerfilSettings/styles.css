@@ -3,103 +3,194 @@
     justify-content: space-between;
 }
 
-#container-header {
-    height: 200px;
-    width: 100%;
-    opacity: 0.5;
-    filter: blur(2px);
-    background-image: url("https://images.pexels.com/photos/960137/pexels-photo-960137.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
-    background-position: center;
-    background-size: cover;
-}
-
-#container-content-infos {
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-#imgPerfil {
-    height: 180px;
-    border-radius: 50%;
-    box-shadow: 0px 20px 40px rgba(128, 128, 128, 0.658);
-}
-
-#btn-edit-info {
-    position: absolute;
-    top: -20%;
-    left: 63%;
-    border: none;
-    outline: none;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    padding: 10px;
-    background: rgb(142, 187, 113);
-}
-
-#infos-user {
-    position: absolute;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+div#infos-user {
+    margin: 0 13%;
     padding-top: 5%;
+    display: flex;
+    justify-content: space-between;
+    max-width: 700px;
+    flex-wrap: wrap;
+}
+
+p#title-perfil {
+    font-size: 44px;
+    font-family: Alata;
+    font-weight: bold;
+}
+
+p#desc-perfil {
+    font-size: 25px;
+    font-family: Alata;
+    max-width: 700px;
+}
+
+hr#linha-perfil {
+    border-width: 4px;
+    border-radius: 5px;
+}
+
+form#form-edit-perfil {
+    margin: 0;
+}
+
+label#label-form-perfil {
+    font-size: 24px;
+    font-family: Alata;
+    margin: 15px 0;
+}
+
+textarea#bio-user {
+    resize: none;
+    border: transparent;
+    padding: 10px;
+    outline: none;
+    height: 150px;
+    font-size: 20px;
+    font-family: Alata;
+    background: rgb(231, 223, 223);
+}
+
+div#inputs-perfil {
+    display: flex;
+    gap: 0 20px;
+}
+
+input#input-perfil {
+    width: 100%;
+    border: transparent;
+    outline: none;
+    padding: 15px;
+    background: rgb(231, 223, 223);
+}
+
+select#selected-bloodtype {
+    background: rgb(231, 223, 223);
+    padding: 10px;
+    width: 30%;
+    font-size: 20px;
+    font-family: Alata;
+    border: transparent;
+    outline: none;
+}
+
+div#inputs-adress {
+    display: flex;
+    gap: 0 20px;
+}
+
+input#input-perfil-num {
+    width: 30%;
+    border: transparent;
+    outline: none;
+    padding: 15px;
+    background: rgb(231, 223, 223);
+}
+
+button#btn-edit-perfil {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    margin: 20px 0;
+    width: 150px;
+    font-size: 22px;
+    border: transparent;
+    outline: none;
+    border-radius: 10px;
+    background: rgb(116, 206, 113);
+}
+
+p#text-btn-perfil {
+    margin: 10px 0;
+}
+
+img#ilustration-perfil {
+    position: fixed;
+    bottom: 0;
+    opacity: 0.8;
+}
+
+div#container-header {
+    margin: 0 auto;
+}
+
+div#container-form-perfil {
+    padding: 10% 0;
     display: flex;
     flex-direction: column;
 }
 
-#username-infos {
-    font-family: Alata;
+p#nameuser-perfil {
     font-size: 45px;
-    text-align: center;
-    font-weight: bold;
-}
-
-#bio-infos {
     font-family: Alata;
-    font-size: 25px;
+    text-transform: capitalize;
+    font-weight: bold;
     text-align: center;
-    max-width: 500px;
 }
 
-#container-inputs-infos {
+p#bio-user-perfil {
+    font-size: 25px;
+    font-family: Alata;
+    max-width: 550px;
+    text-align: center;
+}
+
+div#field-info {
     display: flex;
+    justify-content: left;
+    flex-direction: column;
+}
+
+div#field-info2 {
+    display: flex;
+    align-items: center;
+    gap: 0 10px;
     width: 100%;
 }
 
-#input-infos-user {
-    border-bottom: 2.5px solid #000;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    background: transparent;
-    outline: none;
+label#label-field {
     font-size: 20px;
-    padding-top: 5%;
-    margin: 10px;
-    max-width: 500px;
-}
-
-#edit-infos-title {
     font-family: Alata;
-    font-size: 30px;
-    text-align: center;
+    margin: 0 5px
 }
 
-#bio-infos2 {
-    font-family: Alata;
-    font-size: 20px;
-    text-align: center;
-    max-width: 500px;
+p#icon-field {
+    padding: 7px 5px;
+    margin: 10px 0;
 }
 
-#bio-user-edit {
-    resize: none;
-    border: transparent;
-    outline: none;
+input#input-field-info {
+    width: 100%;
+    margin: 10px 0;
     padding: 10px;
-    background: rgb(241, 238, 238);
-    font-family: Alata;
-    font-size: 20px;
-    box-shadow: 10px 10px 20px #ccc;
+    border: transparent;
+    background: #ccc;
+    outline: none;
+    border-radius: 25px;
+}
+
+input#input-field-info2 {
+    width: 30%;
+    margin: 10px 0;
+    padding: 10px;
+    border: transparent;
+    background: #ccc;
+    outline: none;
+    border-radius: 25px;
+}
+
+input#input-field-info3 {
+    width: 30%;
+    margin: 10px 0;
+    padding: 10px;
+    border: transparent;
+    background: #ccc;
+    outline: none;
+    border-radius: 25px;
+}
+
+@media (max-width: 920px) {
+    img#ilustration-perfil {
+        display: none;
+    }
 }

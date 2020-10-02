@@ -6,6 +6,7 @@
     justify-content: center;
     text-align: center;
     align-items: center;
+    margin-top: 5%
 }
 
 #container-texts-camp {
@@ -31,7 +32,7 @@
      
 }
 
-#container-cards {
+#container-cards-camps {
     display: flex;
     justify-content: center;
     align-items: center;
