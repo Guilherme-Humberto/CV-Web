@@ -77,11 +77,11 @@ function ModalRegister(props) {
                 <p id="desc-form-cad">Tem sempre alguém esperando sua doação. Não cruze os braços para esse problema. Crie sua conta e venha conectar vidas. </p>
                 
                 <form onSubmit={handleSubmit} id="formCad">
-                  <label id="label-form-cad">Nome</label>
-                  <input id="input-form-cad" onChange={(e) => setName(e.target.value)} autoComplete="off" placeholder="Nome"/>
-                  <label id="label-form-cad">Email</label>
-                  <input id="input-form-cad" type="email" onChange={(e) => setEmail(e.target.value)} autoComplete="off" placeholder="E-Mail"/>
-                  <label id="label-form-cad">CPF e Idade</label>
+                    <label id="label-form-cad">Nome</label>
+                    <input id="input-form-cad" onChange={(e) => setName(e.target.value)} autoComplete="off" placeholder="Nome"/>
+                    <label id="label-form-cad">Email</label>
+                    <input id="input-form-cad" type="email" onChange={(e) => setEmail(e.target.value)} autoComplete="off" placeholder="E-Mail"/>
+                    <label id="label-form-cad">CPF e Idade</label>
                   <div id="inputs-infos">
                     <input id="input-form-cad2" onChange={(e) => setCfp(e.target.value)} autoComplete="off" placeholder="CPF"/>
                     <input id="input-form-cad2" onChange={(e) => setAge(e.target.value)} autoComplete="off" placeholder="Idade"/>
