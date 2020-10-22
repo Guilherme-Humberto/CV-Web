@@ -1,23 +1,30 @@
-// Pasta Footer é chamada na página inicial
-
 import React from 'react';
-import './styles.css'
+
 import imgStore1 from '../../assets/store1.png'
 import imgStore2 from '../../assets/store2.png'
 
+import { 
+  Container,
+  Text,
+  ContainerButtons,
+  ImageStore
+ } from './styles';
+
 function Footer() {
   return (
-      <>
-        <div className="container-footer">
-            <p id="text-footer">
-                © 2020 Conectando Vidas - Todos os Direitos Reservados
-            </p>
-            <div id="container-contacts-footer">
-                <img id="imgFooter" src={imgStore1} alt="Imagem loja"/>
-                <img id="imgFooter" src={imgStore2} alt="Imagem loja"/>
-            </div>
-        </div>
-      </>
+    <Container>
+      <Text>© 2020 Conectando Vidas - Todos os Direitos Reservados</Text>
+      <ContainerButtons>
+        <ImageStore 
+          src={imgStore1} 
+          alt="Imagem store App"
+        />
+        <ImageStore 
+          src={imgStore2} 
+          alt="Imagem store App"
+        />
+      </ContainerButtons>
+    </Container>
   );
 }
 

@@ -1,28 +1,120 @@
-// Este é o navbar da página inicial
-// Recebe os links e os botões do content-initial
+import React, { useState } from 'react';
+import ModalAcess from '../../Modals/ModalAcess'
 
-import React from 'react';
-import './styles.css'
+import {
+  Container,
+  ContainerLinks,
+  ContainerButtons,
+  Logo,
+  Link,
+  Button,
+  Title,
+  Text,
+  Input,
+  ButtonModal
+} from './styles';
 
-function NavBar(props) {
+function NavBarMain() {
+  const [isActiveLog, setIsActiveLog] = useState(false)
+  const [isActiveCad, setIsActiveCad] = useState(false)
+  const [isForgotPassword, setIsForgotPassword] = useState(false)
+
   return (
     <>
-      <div className="container-navbar">
-        <div id="links">
-          <ul>
-            <li>{props.title}</li>
-            <li><a href="#anc-inst">{props.nav1}</a></li>
-            <li><a href="#anc-camp">{props.nav2}</a></li>
-            <li><a href="#anc-about">{props.nav3}</a></li>
-          </ul>
-        </div>
-        <div id="button-nav">
-          {props.buttonAccess}
-          {props.buttonRegister}
-        </div>
-      </div>
+      <Container
+        initial={{ y: "-100%", opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6 }}
+      >
+        <ContainerLinks>
+          <Logo>Conectando Vidas</Logo>
+          <Link>Quem Somos</Link>
+          <Link>Campanhas</Link>
+          <Link>Instituições</Link>
+        </ContainerLinks>
+        <ContainerButtons>
+          <Button
+            onClick={() => setIsActiveLog(true)}
+            style={{
+              background: "transparent",
+              outline: "none",
+              border: "1px solid #000"
+            }}>Acessa
+        </Button>
+          <Button
+            onClick={() => setIsActiveCad(true)}
+            style={{
+              background: "#e5989b",
+              outline: "none",
+              border: "none",
+              color: "#fff"
+            }}>Cadastrar
+        </Button>
+        </ContainerButtons>
+      </Container>
+
+      {isActiveLog && (
+        <ModalAcess
+          buttonclose={() => setIsActiveLog(false)}
+          form={
+            <>
+              {isForgotPassword ? (
+                <>
+                  <Title>Alterar Senha</Title>
+                  <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, vitae.</Text>
+                  <Input type="text" placeholder="Nova senha" />
+                  <Input type="text" placeholder="Confirmar Senha" />
+                  <Text
+                      onClick={() => setIsForgotPassword(false)}
+                      style={{
+                        color: "red",
+                        cursor: "pointer"
+                      }}>Voltar
+                  </Text>
+                  <ButtonModal>Alterar</ButtonModal>
+                </>
+              ) : (
+                  <>
+                    <Title>Acessar</Title>
+                    <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, vitae.</Text>
+                    <Input type="text" placeholder="Email" />
+                    <Input type="text" placeholder="Senha" />
+                    <Text
+                      onClick={() => setIsForgotPassword(true)}
+                      style={{
+                        color: "red",
+                        cursor: "pointer"
+                      }}>Esqueci minha senha
+                    </Text>
+                    <ButtonModal>Acessar</ButtonModal>
+                  </>
+                )}
+            </>
+          }
+        />
+      )}
+
+      {isActiveCad && (
+        <ModalAcess
+          buttonclose={() => setIsActiveCad(false)}
+          form={
+            <>
+              <Title>Criar Conta</Title>
+              <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, vitae.</Text>
+              <Input type="text" placeholder="Nome" />
+              <Input type="text" placeholder="Email" />
+              <Input type="text" placeholder="Idade" />
+              <div>
+                <Input type="text" placeholder="Senha" />
+                <Input type="text" placeholder="Confirmar Senha" />
+              </div>
+              <ButtonModal>Cadastrar</ButtonModal>
+            </>
+          }
+        />
+      )}
     </>
   );
 }
 
-export default NavBar;
+export default NavBarMain;
