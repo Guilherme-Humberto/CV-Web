@@ -30,9 +30,9 @@
 }
 
 #card-camp {
-    background: rgb(247, 192, 192);
+    background: #cce3de;
     padding: 20px;
-    box-shadow: 5px 5px 10px rgba(26, 26, 26, 0.39);
+    border: transparent;
 }
 
 #name-card-camp {

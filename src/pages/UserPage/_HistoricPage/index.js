@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { fadeIn } from 'react-animations';
 import Radium, { StyleRoot } from 'radium';
 import './styles.css'
@@ -14,26 +14,35 @@ const styles = {
 }
 
 function _HistoricPage() {
-  const [local, setLocal] = React.useState('')
-  const [date, setDate] = React.useState('')
-  const [typeDonation, seType] = React.useState('')
+  const [local, setLocal] = useState('')
+  const [date, setDate] = useState('')
+  const [typeDonation, seType] = useState('')
+  const [info, setInfo] = useState({ })
 
-  const [hist, setHist] = React.useState([])
+  const [hist, setHist] = useState([])
 
   async function handleSubmit(e) {
-    const response = await api.post("/historic", {
+    await api.post(`/historic/${info._id}`, {
       local: local,
       date: date,
       typeDonation: typeDonation
     })
-    console.log(response)
+    .then((response) => console.log(response))
+    .catch(err => console.log(err))
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     async function fetchData() {
-      const response = await api.get("/historic/list")
-      setHist(response.data.registros)
-      console.log(response.data.registros)
+
+      const userData = await localStorage.getItem('infos')
+      const obj = JSON.parse(userData)
+
+      await api.get(`/historic/list/${obj._id}`)
+        .then((response) => {
+          setHist(response.data)
+          console.log(response.data)
+        })
+        .catch(err => console.log(err))
     }
     fetchData()
   }, [])
@@ -46,18 +55,42 @@ function _HistoricPage() {
           <div id="container-content-historic">
             <p id="title-historic">Histórico</p>
             <p id="desc-historic">
-              Aqui você pode visualizar o seu histórico de doações. Basta preencher corretamente os campos abaixo.
-          </p>
+              Aqui você pode visualizar o seu histórico de doações. 
+              Basta preencher corretamente os campos abaixo.
+            </p>
             <form onSubmit={handleSubmit} id="container-form-historic">
               <select onChange={(e) => setLocal(e.target.value)} id="input-add-inst-check">
-                <option defaultValue={"Banco de sangue Paulista"}>Banco de sangue Paulista</option>
-                <option defaultValue={"Banco de sangue PróSangue"}>Banco de sangue PróSangue</option>
-                <option defaultValue={"Banco de sangue PróSangue"}>Banco de sangue Vila Olimpia</option>
-                <option defaultValue={"Banco de sangue Santo Amaro"}>Banco de sangue Santo Amaro</option>
-                <option defaultValue={"Banco de sangue Minas Gerais"}>Banco de sangue Minas Gerais</option>
-                <option defaultValue={"Banco de sangue Pernambuco"}>Banco de sangue Pernambuco</option>
+                <option 
+                  defaultValue={"Banco de sangue Paulista"}>
+                    Banco de sangue Paulista
+                </option>
+                <option 
+                  defaultValue={"Banco de sangue PróSangue"}>
+                    Banco de sangue PróSangue
+                  </option>
+                <option 
+                  defaultValue={"Banco de sangue PróSangue"}>
+                    Banco de sangue Vila Olimpia
+                </option>
+                <option 
+                  defaultValue={"Banco de sangue Santo Amaro"}>
+                    Banco de sangue Santo Amaro
+                </option>
+                <option 
+                  defaultValue={"Banco de sangue Minas Gerais"}>
+                    Banco de sangue Minas Gerais
+                </option>
+                <option 
+                  defaultValue={"Banco de sangue Pernambuco"}>
+                    Banco de sangue Pernambuco
+                </option>
               </select>
-              <input onChange={(e) => setDate(e.target.value)} max={Date.now()} id="input-add-historic" type="date" />
+              <input 
+                onChange={(e) => setDate(e.target.value)} 
+                max={Date.now()} 
+                id="input-add-historic" 
+                type="date" 
+              />
               <select onChange={(e) => seType(e.target.value)} id="input-add-historic-check">
                 <option defaultValue="Sangue">Sangue</option>
                 <option defaultValue="Palheta">Palheta</option>

@@ -3,6 +3,7 @@ import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 import { AiFillPlusCircle, AiOutlineClose} from 'react-icons/ai'
 import ModalMap from "../../../components/Modals/ModalMap";
 import './styles.css'
+import NavBar from '../../../components/Navbar/NavBarUserPage'
 
 const teste = [
   {
@@ -43,6 +44,7 @@ function Locals() {
 
   return (
     <>
+      <NavBar />
       <Map center={initialPosition} zoom={12}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

@@ -5,7 +5,7 @@
 
 div#infos-user {
     margin: 0 13%;
-    padding-top: 5%;
+    padding-top: 2%;
     display: flex;
     justify-content: space-between;
     max-width: 700px;
@@ -107,7 +107,6 @@ p#text-btn-perfil {
 img#ilustration-perfil {
     position: fixed;
     bottom: 0;
-    opacity: 0.8;
 }
 
 div#container-header {

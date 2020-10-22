@@ -1,34 +1,54 @@
 import React, { useState } from 'react';
 import { BsArrowRight } from 'react-icons/bs'
 
-import './styles.css'
+import { 
+  Container,
+  Image,
+  Texts,
+  Title,
+  Desc,
+  ModalInstText
+} from './styles';
 import imgInts from '../../../assets/imgInst.png'
 import ModalInsts from '../../../components/Modals/ModalInsts'
 
-function Institutions() {
+
+function _Institutions() {
   const [modalInst, setModalInst] = useState(false)
   return (
     <>
-        <div id="anc-inst" className="container-Institutions">
-          <div id="texts-instituicao">
-            <p id="title-insti">Instituições</p>
-            <p id="desc-insti">
-              Conheças os hemocentros que são parceiros do Conectando Vidas. Ou
-              junte-se a nós e ajude-nos a levar a doação de sangue a cada vez
-              mais áreas.
-            </p>
-            <button onClick={() => setModalInst(true)} type="button" id="btnInst">
-              Conheça nossos parceiros <BsArrowRight size={30} color={"darkred"}/>
-            </button>
-          </div>
-          <img id="image-inst" src={imgInts} alt="Imagem Instituição" />
-        </div>
+      <Container>
+        <Image src={imgInts} />
 
-        {modalInst && (
-          <ModalInsts buttonclosemodal={() => setModalInst(false)}/>
-        )}
+        <Texts>
+          <Title>Instituições</Title>
+          <Desc>
+            Conheças os hemocentros que são parceiros do Conectando Vidas. Ou
+            junte-se a nós e ajude-nos a levar a doação de sangue a cada vez
+            mais áreas.
+        </Desc>
+          <ModalInstText 
+            onClick={() => setModalInst(true)}
+          >
+          Conheça nossos parceiros
+          <BsArrowRight
+              size={35}
+              color={"darkred"}
+              style={{
+                margin: "0 10px"
+              }}
+            />
+          </ModalInstText>
+        </Texts>
+      </Container>
+
+      {modalInst && (
+          <ModalInsts 
+            buttonclosemodal={() => setModalInst(false)}
+          />
+      )}
     </>
   );
 }
 
-export default Institutions;
+export default _Institutions;

@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles.css'
-import Initial from './_Content-Initial';
+import Initial from './_Initial';
 import Depoiments from './_Depoiments';
 import Institutions from './_Institutions';
 import Campaigns from './_Campaigns';
