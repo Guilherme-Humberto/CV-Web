@@ -18,7 +18,6 @@ import {
 import {
   Container,
   ContainerButton,
-  Button,
   TextButton
 } from './styles';
 
