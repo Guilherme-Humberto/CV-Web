@@ -9,6 +9,7 @@
     "aphrodite": "^2.4.0",
     "axios": "^0.19.2",
     "framer-motion": "^2.9.3",
+    "json-server": "^0.16.2",
     "leaflet": "^1.6.0",
     "radium": "^0.26.0",
     "react": "^16.13.1",
@@ -26,7 +27,8 @@
     "start": "react-scripts start --ignore-watch node_modules",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "json-server --watch -p 5000 server.json"
   },
   "eslintConfig": {
     "extends": "react-app"
