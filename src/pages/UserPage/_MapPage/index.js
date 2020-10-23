@@ -4,6 +4,7 @@ import { AiFillPlusCircle, AiOutlineClose} from 'react-icons/ai'
 import ModalMap from "../../../components/Modals/ModalMap";
 import './styles.css'
 import NavBar from '../../../components/Navbar/NavBarUserPage'
+import Fetcher from '../../../hooks/Fetcher'
 
 const teste = [
   {
@@ -24,6 +25,7 @@ const teste = [
 ];
 
 function Locals() {
+  const { data } = Fetcher("instituicoes")
   // Definindo estados
     const [isTeste, setTeste] = useState(null)
     const [initialPosition, setInitialPosition] = useState([0, 0]);
@@ -42,6 +44,10 @@ function Locals() {
       })
     }, [])
 
+    if(!data) return <h1>Carregando...</h1>
+
+    console.log(data)
+
   return (
     <>
       <NavBar />
@@ -51,9 +57,9 @@ function Locals() {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
         {/* Iterando sobre o array teste e adcionando as informações no estado */}
-        {teste.map((item) => (
+        {data.map((item, index) => (
             <Marker 
-                key={item.index} 
+                key={index} 
                 position={[item.lat, item.long]} 
                 onclick={() => setTeste(item)}
             />
@@ -67,7 +73,7 @@ function Locals() {
         >
             <div>
                 <h5>{isTeste.name}</h5>
-                <p>{isTeste.about}</p>
+                <p>{isTeste.desc}</p>
                 <button id="btnOpen-Insti-Info" onClick={ModalMapOpen}><AiFillPlusCircle  size={30}/></button>
             </div>
           </Popup>
@@ -78,7 +84,7 @@ function Locals() {
       {isActiveModal ? 
         <ModalMap 
             buttonclose={<button id="closeModalBtn" onClick={ModalMapClose}><AiOutlineClose size={30} /></button>}
-            info_name={isTeste.name}
+            infos={isTeste}
         /> : null}
     </>
   );

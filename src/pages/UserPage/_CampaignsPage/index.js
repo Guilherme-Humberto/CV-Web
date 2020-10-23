@@ -1,6 +1,7 @@
 import React from 'react';
 import Fetcher from '../../../hooks/Fetcher'
 import NavBarUserPage from '../../../components/Navbar/NavBarUserPage'
+
 import { 
   Container,
   Texts,
