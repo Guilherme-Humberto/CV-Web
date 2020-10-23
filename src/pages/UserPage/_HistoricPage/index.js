@@ -10,9 +10,8 @@ import {
   ContainerCards,
   Card,
   Texts,
-  ImageCard,
   TitleCard,
-  DescCard,
+  DescCard
 } from './styles';
 
 function _HistoricPage() {

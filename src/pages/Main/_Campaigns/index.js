@@ -31,16 +31,7 @@ function _Campaigns() {
 
       <ContainerCards>
         {data.map((item, index) => (
-          <Card
-            key={index}
-            drag
-            dragConstraints={{
-              top: -0,
-              left: -0,
-              right: 0,
-              bottom: 0,
-            }}
-          >
+          <Card key={index}>
             <TitleCard>{item.name}</TitleCard>
             <DescCard>{item.desc}</DescCard>
           </Card>

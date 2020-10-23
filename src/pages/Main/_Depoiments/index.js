@@ -1,11 +1,9 @@
 // // Este é o componente com os depoimentos do doadores de sangue (Chamado no content-initial)
 
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { 
   Container,
-  TitleDepo,
-  DescDepo,
   ContainerCards,
   Card,
   Title,
@@ -13,17 +11,6 @@ import {
 } from './styles';
 
 function _Depoiments() {
-  // useEffect(() => {
-  //   window.addEventListener("scroll", () => {
-  //     const { scrollHeight, clientHeight, scrollTop } = document.documentElement
-  //     const pageheight = scrollTop + clientHeight >= scrollHeight - 10000
-
-  //     if(pageheight) {
-  //       alert("Faltam 10px para acabar a tela")
-  //     }
-  //   })
-  // }, [])
-  
   return (
     <Container>
       <ContainerCards>

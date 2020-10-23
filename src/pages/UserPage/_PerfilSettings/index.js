@@ -95,7 +95,7 @@ function _PerfilSettings() {
                   </form>
                 </div>
                 <div>
-                  <img id="ilustration-perfil" src={img} />
+                  <img id="ilustration-perfil" src={img} alt="Imagem"/>
                 </div>
               </div>
             </>

@@ -12,9 +12,7 @@ import {
   Card,
   Image,
   NameCamp,
-  DescCamp,
-  EmailCamp,
-  PhoneCamp 
+  DescCamp
 } from './styles';
 
 function _CampaignsPage() {
@@ -22,7 +20,6 @@ function _CampaignsPage() {
 
   if(!data) return <h1>Carregando...</h1>
 
-  console.log(data)
   return (
     <>
       <NavBarUserPage />
@@ -40,7 +37,7 @@ function _CampaignsPage() {
             <Card 
               key={index}
               whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
+              whileTap={{ scale: 0.2 }}
             >
               <Image src={item.img} alt="Foto"/>
 
