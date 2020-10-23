@@ -13,15 +13,16 @@ const styles = {
   }
 }
 
-function ModalMap(props) {
+function ModalMap({ infos, buttonclose }) {
   return (
       <>
         <StyleRoot>
             <div className="container-modal-map" style={styles.fade}>
               <div id="content-modal-map">
-                <div id="icon-top">{props.buttonclose}</div>
+                <div id="icon-top">{buttonclose}</div>
                 <div id="container-form">
-                  <p id="formtitle-map">{props.info_name}</p>
+                  <p id="formtitle-map">{infos.name}</p>
+                  <h5>{infos.text}</h5>
                 </div>
               </div>
             </div>
