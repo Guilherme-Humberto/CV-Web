@@ -5,6 +5,8 @@ export const Container = styled.div`
   right: 0;
   width: 500px;
   height: 100%;
+  background: #e1e1e1;
+  padding: 2%;
 `;
 
 export const ButtonClose = styled.button`
@@ -16,14 +18,29 @@ export const ButtonClose = styled.button`
   outline: none;
 `;
 
+export const Content = styled.div`
+    margin: 10% 0;
+`
+
 export const Title = styled.p`
-  font-size: 40px;
+  font-size: 30px;
   font-family: Alata;
   font-weight: bold;
 `;
 
 export const Desc = styled.p`
-  font-size: 20px;
+  font-size: 18px;
   font-family: Alata;
-  margin: 10px;
+  margin: 10px 0;
+`;
+
+export const Email = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    p#email-text {
+        font-size: 20px;
+        font-family: Alata;
+    }
 `;
