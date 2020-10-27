@@ -1,28 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Map, Marker, Popup, TileLayer } from "react-leaflet";
-import { AiFillPlusCircle, AiOutlineClose} from 'react-icons/ai'
-import ModalMap from "../../../components/Modals/ModalMap";
+import { AiFillPlusCircle } from 'react-icons/ai'
+
 import './styles.css'
+import ModalMap from "../../../components/Modals/ModalMap";
 import NavBar from '../../../components/Navbar/NavBarUserPage'
 import Fetcher from '../../../hooks/Fetcher'
-
-const teste = [
-  {
-    name: "Banco de sangue Paulista",
-    lat: -23.65569,
-    long: -46.705491,
-  },
-  {
-    name: "Banco de sangue Vila Olímpia",
-    lat: -23.58326,
-    long: -46.664434,
-  },
-  {
-    name: "Banco de sangue Santo Amaro",
-    lat: -23.533978,
-    long: -46.639758,
-  },
-];
 
 function Locals() {
   const { data } = Fetcher("instituicoes")
@@ -32,7 +15,12 @@ function Locals() {
     const [isActiveModal, setIsActiveModal] = useState(false)
 
     // Funcões para abrir e fechar modais
-    const ModalMapOpen = () => 
+    const ModalMapOpen = () => setIsActiveModal(true)
+
+    const handleClosePopup = () => {
+      setIsActiveModal(false)
+      setTeste(null)
+    }
 
     // Pegando localização do usuário
     useEffect(() => {
@@ -45,20 +33,18 @@ function Locals() {
 
     if(!data) return <h1>Carregando...</h1>
 
-    console.log(data)
-
   return (
     <>
       <NavBar />
       <Map center={initialPosition} zoom={12}>
         <TileLayer
+          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
         {/* Iterando sobre o array teste e adcionando as informações no estado */}
-        {data.map((item, index) => (
+        {data.map((item) => (
             <Marker 
-                key={index} 
+                key={item.id} 
                 position={[item.lat, item.long]} 
                 onclick={() => setTeste(item)}
             />
@@ -68,23 +54,24 @@ function Locals() {
         {isTeste && 
           <Popup 
             position={[isTeste.lat, isTeste.long]}
-            onClose={() => setTeste(null)}
+            onClose={handleClosePopup}
         >
             <div>
                 <h5>{isTeste.name}</h5>
                 <p>{isTeste.desc}</p>
-                <button id="btnOpen-Insti-Info" onClick={ModalMapOpen}><AiFillPlusCircle  size={30}/></button>
+                <button onClick={ModalMapOpen}><AiFillPlusCircle  size={30}/></button>
             </div>
           </Popup>
         }
       </Map>
 
       {/* Definindo condição para abrir modal e passando parametros */}
-      {isActiveModal ? 
+      {isActiveModal && (
         <ModalMap 
-            buttonclose={() => setIsActiveModal(false)}
-            infos={isTeste}
-        /> : null}
+          buttonclose={() => setIsActiveModal(false)}
+          id={isTeste.id}
+        />
+      )}
     </>
   );
 }
