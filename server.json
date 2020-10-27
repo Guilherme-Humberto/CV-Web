@@ -45,6 +45,7 @@
     ],
     "instituicoes": [
         {
+            "id": 1,
             "name": "Banco de Sangue Paulista",
             "desc": "O Banco de Sangue Paulista, nesses 60 anos de trabalho ininterrupto, incorporamos o que existe de mais moderno na área, equipamentos de última geração, além de métodos e sistemas avançados, visando a segurança, eficiência, confiabilidade e total satisfação de nossos clientes...",
             "text": "Fundado em 1957, somos pioneiros na história da Hemoterapia brasileira. Desde então, nesses 62 anos de trabalho ininterrupto, incorporamos o que existe de mais moderno na área, equipamentos de última geração, além de métodos e sistemas avançados, visando a segurança, eficiência, confiabilidade e total satisfação de nossos clientes. Atuamos em toda cadeia da Hemoterapia e Hematologia, incluindo a coleta, processamento do sangue, distribuição para os hospitais conveniados e transfusões.",
@@ -54,6 +55,7 @@
             "email": "BancodeSanguePaulista@gmail.com"
         },
         {
+            "id": 2,
             "name": "Hospital Moriah",
             "desc": "Com profissionais qualificados e comprometidos com uma assistência ética e humana, o Hospital Moriah oferece atendimento clínico nos Consultórios, em diversas especialidades. Este atendimento tem por objetivo facilitar o acesso dos pacientes ao seu médico e oferecer, no mesmo local, a possibilidade de já realizar seus exames.",
             "text": "Ser um agente da medicina movido pela coragem de transformá-la em ações cada vez mais positivas para saúde e o bem estar das pessoas. Inovar a medicina no contexto hospitalar promovendo a pesquisa científica, disseminando conhecimento, investindo em jovens talentos e tecnologia para proporcionar saúde com segurança e qualidade exemplar.",
@@ -63,6 +65,7 @@
             "email": "HospitalMoriah@gmail.com"
         },
         {
+            "id": 3,
             "name": "Banco de Sangue - Unidade Einstein Morumbi",
             "desc": "O Departamento de Hemoterapia e Terapia Celular (DHTC) é o responsável pela coleta, processamento, seleção e transfusão de sangue e de seus componentes para o Hospital Israelita Albert Einstein. Também é responsável pela coleta, armazenamento e infusão de medula óssea, células progenitoras hematopoiéticas e sangue de cordão umbilical.",
             "text": "O Hospital é certificado​ pela Joint Commission International desde 1999 e o DHTC é acreditado pela Associação Americana de Bancos de Sangue (AABB - American Association of Blood Banks) desde 1998. O DHTC possui o único Laboratório de Referência em Imunohematologia acreditado pela AABB na América Latina, além da acreditação CAP (Colégio Americano de Patologia) desde 2010. O programa de coleta de células progenitoras hematopoiéticas e o laboratório de terapia celular são certificados pelo FACT - Foundation for the Accreditation of Cellular Therapy desde 2012, e o banco de cordão umbilical público foi certificado pelo FACT em 2014.",
@@ -72,6 +75,7 @@
             "email": "Einstein@gmail.com"
         },
         {
+            "id": 4,
             "name": "Colsan - Sede Administrativa",
             "desc": "A COLSAN está lançando, um aplicativo para agendamento de doação de sangue que torna o processo de doação ainda mais acessível e prático ao… Continue lendo Aplicativo oferece descontos de R$ 30 para ir e voltar de postos de coleta em Santos",
             "text": "A Colsan – Associação Beneficente de Coleta de Sangue – foi fundada pelo engenheiro Othon. Barcellos, juntamente com um grupo de amigos, que tinham como objetivo prestar um serviço à comunidade suprindo gratuitamente as necessidades de sangue nos hospitais, prontos-socorros, clínicas, casas de misericórdia e de saúde e que prestavam, sem remuneração, assistência médica aos enfermos.",
@@ -81,6 +85,7 @@
             "email": "Colsan@gmail.com"
         },
         {
+            "id": 5,
             "name": "Banco de Sangue de São Paulo",
             "desc": "O Banco de Sangue São Paulo existe há 70 anos e é responsável por atender inúmeros hospitais da cidade de São Paulo auxiliando no suprimento de hemocomponentes para diversos pacientes que dependem dessa iniciativa para sua recuperação.",
             "text": "Dispomos de instalações modernas e Corpo Clinico especializados para a prática de uma Hemoterapia segura para doadores e pacientes dentro das normas recomendadas pelo Ministério da Saúde e Secretarias Estadual e Municipal de Vigilância Sanitária. Toda a estrutura é informatizada e integrada.Os programas de doadores e de pacientes tem seus registros em códigos de barra e foram especialmente elaborados para a nossa empresa de forma a garantir a maior segurança possível ao paciente transfundido.",
@@ -90,6 +95,7 @@
             "email": "BancoDeSangueSP@gmail.com"
         },
         {
+            "id": 6,
             "name": "Banco De Sangue Do Hospital Do Servidor Publico Estadual",
             "desc": "O Banco de Sangue do Hospital do Servidor Público Estadual (HSPE) funciona, agora, de segunda a sábado, das 8h às 16h. O acesso é pela Rua Pedro de Toledo, 1.800, no bairro do Ibirapuera.",
             "text": "O Instituto de Assistência Médica ao Servidor Público Estadual (Iamspe)  é um órgão do Governo do Estado de São Paulo, vinculado à Secretaria de Planejamento e Gestão. Antigo Departamento de Assistência Médica ao Servidor Público Estadual (Damspe), o instituto foi criado em 1966 para oferecer atendimento médico a servidores públicos estaduais, seus dependentes e agregados por meio do Hospital do Servidor Público Estadual, em São Paulo.",
@@ -99,6 +105,7 @@
             "email": "BSPE@gmail.com"
         },
         {
+            "id": 7,
             "name": "Banco de Sangue de São Paulo e Serviços de Hemoterapia",
             "desc": "Com foco em segurança e extrema qualidade em todos os procedimentos, garantimos soluções em Hemoterapia que levam saúde para milhares de pessoas.",
             "text": "Os Bancos de Sangue do Grupo GSH são responsáveis pela coleta, processamento e transfusão d e sangue e ou seus componentes, para atender pacientes que necessitem de transfusão de sangue em hospitais SUS e privados, parceiros do Grupo GSH. São mais de 50 hospitais em todo Brasil.",
@@ -108,6 +115,7 @@
             "email": "BSServicosDeHemoterapia@gmail.com"
         },
         {
+            "id": 8,
             "name": "Hospital Santa Paula",
             "desc": "O Hospital Santa Paula reúne profissionais das mais diferentes especialidades. Neurologia 24h O Hospital Santa Paula disponibiliza uma equipe de Médicos Neurologistas 24 horas por dia para o seu atendimento em nosso pronto socorro.",
             "text": "O Hospital Santa Paula disponibiliza uma equipe de Médicos Neurologistas 24 horas por dia para o seu atendimento em nosso pronto socorro. O Instituto de Oncologia do Hospital Santa Paula foi criado para oferecer o que há de mais atual no tratamento do câncer. O Instituto de Ortopedia Santa Paula oferece uma nova solução para os pacientes que necessitam de tratamento cirúrgico especializado na área de ortopedia. O Instituto de Cardiologia de São Paulo há 26 anos no mercado, tornou-se um Modelo de Excelência no atendimento intervencionista e em diagnósticos.",
