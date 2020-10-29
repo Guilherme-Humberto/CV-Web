@@ -6,6 +6,8 @@ export default function Fetcher (url) {
         const response = await api.get(url)
 
         return response.data
+    }, {
+        refreshInterval: 500
     })
 
     return { data, error, mutate }
