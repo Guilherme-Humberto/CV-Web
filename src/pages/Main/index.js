@@ -1,5 +1,6 @@
-import React from 'react';
-import './styles.css'
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom'
+
 import Initial from './_Initial';
 import Depoiments from './_Depoiments';
 import Institutions from './_Institutions';
@@ -9,17 +10,22 @@ import Footer from '../../components/Footer';
 
 
 function Main() {
+  const history = useHistory(null)
+
+  useEffect(() => {
+    if(localStorage.getItem("infos")) {
+      history.push("/Home")
+    }
+  }, [history])
 
   return (
     <>
-      <div className="container-initial">
-        <Initial />
-        <Campaigns />
-        <Depoiments />
-        <Institutions />
-        <About />
-        <Footer />
-      </div>
+      <Initial />
+      <Campaigns />
+      <Depoiments />
+      <Institutions />
+      <About />
+      <Footer />
     </>
   );
 }

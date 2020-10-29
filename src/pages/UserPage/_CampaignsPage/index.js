@@ -12,11 +12,13 @@ import {
   Card,
   Image,
   NameCamp,
-  DescCamp
+  DescCamp,
+  Contacts,
+  TextContact
 } from './styles';
 
 function _CampaignsPage() {
-  const { data } = Fetcher("campanhas")
+  const { data } = Fetcher("campaign")
 
   if(!data) return <h1>Carregando...</h1>
 
@@ -33,18 +35,19 @@ function _CampaignsPage() {
         </Header>
 
         <ContainerCards>
-          {data.map((item, index) => (
-            <Card 
-              key={index}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.2 }}
-            >
+          {data.map((item) => (
+            <Card key={item._id}>
               <Image src={item.img} alt="Foto"/>
 
               <Texts>
                 <NameCamp>{item.name}</NameCamp>
                 <DescCamp>{item.desc}</DescCamp>
+              <Contacts>
+                <TextContact>E-Mail: <b>{item.email}</b></TextContact>
+                <TextContact>Telefone: <b>{item.phone}</b></TextContact>
+              </Contacts>
               </Texts>
+
             </Card>
           ))}
         </ContainerCards>

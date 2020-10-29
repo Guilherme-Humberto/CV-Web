@@ -31,6 +31,8 @@ hr#linha-perfil {
 
 form#form-edit-perfil {
     margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 label#label-form-perfil {

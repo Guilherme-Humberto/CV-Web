@@ -1,7 +1,11 @@
-import React from 'react';
-import NavBarUserPage from '../../../components/Navbar/NavBarUserPage'
+import React, { useState, useMemo, useCallback } from 'react';
+import { AiOutlineClose } from 'react-icons/ai'
 
-import { 
+import NavBarUserPage from '../../../components/Navbar/NavBarUserPage'
+import Fetcher from '../../../hooks/Fetcher'
+import api from '../../../service/api';
+
+import {
   Container,
   ContainerMessage,
   Title,
@@ -11,13 +15,79 @@ import {
   Card,
   Texts,
   TitleCard,
-  DescCard
+  DescCard,
+  ContainerContentHist,
+  TitleContent,
+  DescContent,
+  InputLocal,
+  CheckBox,
+  Check,
+  ButtonAddHist,
+  ButtonDelete
 } from './styles';
 
 function _HistoricPage() {
+  const [infos, setInfos] = useState({})
+  const [local, setLocal] = useState("")
+  const [sangue, setSangue] = useState(false)
+  const [palheta, setPalheta] = useState(false)
+  const [typeDonation, setTypeDonation] = useState("")
+  const [newHistoric, setNewHistoric] = useState(false)
+
+  const { data, mutate } = Fetcher(`/historic/list/${infos._id}`)
+
+  useMemo(() => {
+    async function loadInfos() {
+      setInfos(JSON.parse(localStorage.getItem("infos")))
+    }
+    loadInfos()
+  }, [])
+
+  const handleDelete = useCallback((id) => {
+    api.delete(`historic/${id}`)
+
+    const teste = data.map((item) => {
+      if (item.id === id) {
+        return { ...item }
+      }
+
+      return item
+    })
+
+    mutate(teste, false)
+  }, [data, mutate])
+
+  async function handleAddHist() {
+
+    if (sangue === true) {
+      setTypeDonation("sangue")
+    }
+    else if (palheta === true) {
+      setTypeDonation("Palheta")
+    }
+    else {
+      alert("Escolha um tipo de doação")
+    }
+
+    await api.post(`/historic/${infos._id}`, {
+      local,
+      typeDonation
+    }).then((response) => {
+      if (typeDonation) {
+        setNewHistoric(false)
+        setTypeDonation("")
+      }
+      console.log(response.data)
+    }).catch((err) => console.log(err))
+
+
+  }
+
+  if (!data) return <h1>Carregando...</h1>
+
   return (
     <>
-    <NavBarUserPage />
+      <NavBarUserPage />
       <Container>
         <ContainerMessage
           initial={{ y: "-100%", opacity: 0 }}
@@ -25,49 +95,59 @@ function _HistoricPage() {
           transition={{ duration: 0.5 }}
         >
           <Title>Histórico de doações</Title>
-          <Message>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium laudantium iure consectetur illum, eius perferendis nam explicabo excepturi placeat harum possimus aut. Architecto ipsam tempore quidem pariatur, esse magni odit dolore magnam officia repellendus laudantium accusantium praesentium consectetur consequatur iure nobis placeat natus debitis quaerat culpa reiciendis fugiat quasi ratione.</Message>
-          <ButtonAddHistoric>
+          <Message>
+            Aqui ficão seus históricos de doações, clique no botão para adicionar uma nova doação.
+          </Message>
+          <ButtonAddHistoric onClick={() => setNewHistoric(true)}>
             Adicionar
           </ButtonAddHistoric>
         </ContainerMessage>
 
-        <ContainerCards>
-          <Card>
-            <Texts>
-            <h6>24/07/2000</h6>
-              <TitleCard>Nome do banco de sangue</TitleCard>
-              <DescCard>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias inventore hic consequuntur qui ab aperiam optio nam? Veniam, ullam consectetur.</DescCard>
-              <h6>Tipo de doação</h6>
-            </Texts>
-          </Card>
-
-          <Card>
-            <Texts>
-            <h6>24/07/2000</h6>
-              <TitleCard>Nome do banco de sangue</TitleCard>
-              <DescCard>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias inventore hic consequuntur qui ab aperiam optio nam? Veniam, ullam consectetur.</DescCard>
-              <h6>Tipo de doação</h6>
-            </Texts>
-          </Card>
-
-          <Card>
-            <Texts>
-            <h6>24/07/2000</h6>
-              <TitleCard>Nome do banco de sangue</TitleCard>
-              <DescCard>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias inventore hic consequuntur qui ab aperiam optio nam? Veniam, ullam consectetur.</DescCard>
-              <h6>Tipo de doação</h6>
-            </Texts>
-          </Card>
-
-          <Card>
-            <Texts>
-            <h6>24/07/2000</h6>
-              <TitleCard>Nome do banco de sangue</TitleCard>
-              <DescCard>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias inventore hic consequuntur qui ab aperiam optio nam? Veniam, ullam consectetur.</DescCard>
-              <h6>Tipo de doação</h6>
-            </Texts>
-          </Card>
-        </ContainerCards>
+        {newHistoric ? (
+          <ContainerContentHist>
+            <TitleContent>Registre aqui suas doações</TitleContent>
+            <DescContent>Suas doações serão listadas aqui, adicione novas</DescContent>
+            <hr />
+            <InputLocal
+              onChange={(e) => setLocal(e.target.value)}
+              placeholder="Digite o local de doação"
+            />
+            <CheckBox>
+              <Check>
+                <input
+                  id="checkbox"
+                  onChange={() => setSangue(true)}
+                  type="checkbox"
+                />
+                <h5>Sangue</h5>
+              </Check>
+              <Check>
+                <input
+                  id="checkbox"
+                  onChange={() => setPalheta(true)}
+                  type="checkbox"
+                />
+                <h5>Palheta</h5>
+              </Check>
+              <ButtonAddHist onClick={() => handleAddHist()}>Adicionar</ButtonAddHist>
+            </CheckBox>
+          </ContainerContentHist>
+        ) : (
+            <ContainerCards>
+              {data.map((item) => (
+                <Card key={item._id}>
+                  <ButtonDelete onClick={() => handleDelete(item._id)}>
+                    <AiOutlineClose size={20} />
+                  </ButtonDelete>
+                  <Texts>
+                    <h6>{item.date}</h6>
+                    <TitleCard>{item.local}</TitleCard>
+                    <DescCard>Tipo de doação: <b>{item.typeDonation}</b></DescCard>
+                  </Texts>
+                </Card>
+              ))}
+            </ContainerCards>
+          )}
       </Container>
     </>
   );

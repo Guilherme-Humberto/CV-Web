@@ -24,7 +24,7 @@ export const Title = styled.p`
 export const Message = styled.p`
   font-size: 20px;
   font-family: Alata;
-  max-width: 850px;
+  max-width: 600px;
 `;
 
 export const ButtonAddHistoric = styled.button`
@@ -51,15 +51,12 @@ export const ContainerCards = styled.div`
 
 export const Card = styled.div`
     display: flex;
+    width: 50%;
     align-items: center;
     max-width: 650px;
     background: #fde1de;
     padding: 20px;
     border-radius: 5px;
-
-    :hover {
-        opacity: 0.8;
-    }
 `
 
 export const Texts = styled.div`
@@ -81,4 +78,63 @@ export const DescCard = styled.p`
     font-family: Alata;
 `
 
-export const ImageCard = styled.img``
+export const ContainerContentHist = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 5% 0;
+
+    #checkbox {
+        margin: 0;
+    }
+`
+
+export const TitleContent = styled.p`
+    font-size: 40px;
+    font-family: Alata;
+`
+
+export const DescContent = styled.p`
+    font-size: 20px;
+    font-family: Alata;
+`
+
+export const InputLocal = styled.input`
+    width: 40%;
+    background: transparent;
+    border: 2px solid #000;
+    padding: 6px 10px;
+`
+
+export const CheckBox = styled.div`
+    display: flex;
+    justify-content: space-around;
+    width: 40%;
+    margin: 10px 0;
+`
+
+export const Check = styled.div`
+    display: flex;
+    gap: 0 10px;
+    align-items: center;
+`
+
+export const ButtonAddHist = styled.button`
+    width: 150px;
+    background: #000;
+    border: none;
+    color: #fff;
+    padding: 4px 10px;
+`
+
+export const ButtonDelete = styled.button`
+    background: #ffb5a7;
+    border-radius: 25px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    border: none;
+    transform: translate(-80%, -180%);
+`

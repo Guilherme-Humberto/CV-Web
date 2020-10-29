@@ -7,10 +7,14 @@ import ModalMap from "../../../components/Modals/ModalMap";
 import NavBar from '../../../components/Navbar/NavBarUserPage'
 import Fetcher from '../../../hooks/Fetcher'
 
+import {
+  ButtonOpenModal
+} from './styles'
+
 function Locals() {
-  const { data } = Fetcher("instituicoes")
+  const { data } = Fetcher("institutions")
   // Definindo estados
-    const [isTeste, setTeste] = useState(null)
+    const [isInst, setInst] = useState(null)
     const [initialPosition, setInitialPosition] = useState([0, 0]);
     const [isActiveModal, setIsActiveModal] = useState(false)
 
@@ -19,7 +23,7 @@ function Locals() {
 
     const handleClosePopup = () => {
       setIsActiveModal(false)
-      setTeste(null)
+      setInst(null)
     }
 
     // Pegando localização do usuário
@@ -44,22 +48,25 @@ function Locals() {
         {/* Iterando sobre o array teste e adcionando as informações no estado */}
         {data.map((item) => (
             <Marker 
-                key={item.id} 
+                key={item._id} 
                 position={[item.lat, item.long]} 
-                onclick={() => setTeste(item)}
+                onclick={() => setInst(item)}
             />
         ))}
 
           {/* Definindo estrutura do popup */}
-        {isTeste && 
+        {isInst && 
           <Popup 
-            position={[isTeste.lat, isTeste.long]}
+            position={[isInst.lat, isInst.long]}
             onClose={handleClosePopup}
         >
             <div>
-                <h5>{isTeste.name}</h5>
-                <p>{isTeste.desc}</p>
-                <button onClick={ModalMapOpen}><AiFillPlusCircle  size={30}/></button>
+                <h5>{isInst.name}</h5>
+                <p>{isInst.desc}</p>
+                <ButtonOpenModal 
+                  onClick={ModalMapOpen}>
+                    <AiFillPlusCircle  size={30}/>
+                </ButtonOpenModal>
             </div>
           </Popup>
         }
@@ -69,7 +76,7 @@ function Locals() {
       {isActiveModal && (
         <ModalMap 
           buttonclose={() => setIsActiveModal(false)}
-          id={isTeste.id}
+          id={isInst._id}
         />
       )}
     </>

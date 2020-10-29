@@ -14,11 +14,10 @@ export const ContainerCards = styled.div`
 export const Card = styled(motion.div)`
   padding: 20px 10px;
   background: #fde1de;
-  max-width: 600px;
+  max-width: 650px;
   display: flex;
   align-items: center;
   box-shadow: 0px 10px 20px #e4b1ab;
-  cursor: pointer;
 `;
 export const Header = styled.div`
   background-image: linear-gradient(100deg,#fde1de, #e4b1ab); 
@@ -32,10 +31,8 @@ export const Header = styled.div`
 `;
 
 export const Image = styled.img`
-  height: 130px;
-  width: 230px;
-  border-radius: 10px;
-  opacity: 0.8;
+  height: 120px;
+  border-radius: 5px;
   box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.2);
 `;
 
@@ -69,9 +66,22 @@ export const Title = styled.p`
   font-size: 44px;
   font-family: Alata;
   font-weight: bold;
+  text-decoration: underline;
 `;
 export const Desc = styled.p`
   font-size: 23px;
   font-family: Alata;
   max-width: 850px;
+`;
+
+export const Contacts = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+export const TextContact = styled.p`
+  font-size: 16px;
+  font-family: Alata;
+  margin: 0;
 `;

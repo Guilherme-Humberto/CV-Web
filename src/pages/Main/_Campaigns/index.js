@@ -11,13 +11,16 @@ import {
   ContainerCards,
   Card,
   TitleCard,
-  DescCard
+  DescCard,
+  ContentCards,
+  Img
 } from './styles';
 
 function _Campaigns() {
-  const { data } = Fetcher("campanhas?_limit=4")
+  const { data } = Fetcher("/campaign?limit=4")
 
   if (!data) return <h1>Carregando...</h1>
+
   return (
     <Container>
       <Texts>
@@ -32,8 +35,11 @@ function _Campaigns() {
       <ContainerCards>
         {data.map((item, index) => (
           <Card key={index}>
-            <TitleCard>{item.name}</TitleCard>
-            <DescCard>{item.desc}</DescCard>
+            <Img src={item.img}/>
+            <ContentCards>
+              <TitleCard>{item.name}</TitleCard>
+              <DescCard>{item.desc}</DescCard>
+            </ContentCards>
           </Card>
         ))}
       </ContainerCards>

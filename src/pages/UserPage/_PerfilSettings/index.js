@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { BiEdit } from 'react-icons/bi'
-import { fadeIn } from 'react-animations';
-import Radium, { StyleRoot } from 'radium';
 
 import api from '../../../service/api'
 import './styles.css'
@@ -15,13 +13,6 @@ function _PerfilSettings() {
   const [adress, setAdress] = useState('')
   const [bloodtype, setBlood] = useState('')
   const [infos, setInfos] = useState({})
-
-  const styles = {
-    fade: {
-      animation: 'x 1s',
-      animationName: Radium.keyframes(fadeIn, 'fade')
-    }
-  }
 
   useEffect(() => {
     function getInfos() {
@@ -50,8 +41,7 @@ function _PerfilSettings() {
   return (
     <>
       <NavBarUserPage />
-      <StyleRoot>
-        <div className="container-perfiluser" style={styles.fade}>
+        <div className="container-perfiluser">
 
           {infos.bloodtype === '' | infos.cell === '' ? (
             <>
@@ -132,7 +122,6 @@ function _PerfilSettings() {
               </>
             )}
         </div>
-      </StyleRoot>
     </>
   );
 }

@@ -1,6 +1,4 @@
-import React from 'react';
-
-
+import React, { useEffect, useState } from 'react';
 
 import {
   Container,
@@ -15,9 +13,16 @@ import {
   Linha,
   Summary
 } from './styles';
+
 import NavBarUserPage from '../../../components/Navbar/NavBarUserPage'
 
 function _MainPage() {
+  const [infos, setInfos] = useState({})
+
+  useEffect(() => {
+    const user = localStorage.getItem("infos")
+    setInfos(JSON.parse(user))
+  }, [])
 
   return (
     <>
@@ -28,7 +33,7 @@ function _MainPage() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <NameUser>Guilherme Melo</NameUser>
+          <NameUser>Olá {infos.name}</NameUser>
           <Message>
             Sabia que o Conectando Vidas também tem um aplicativo? Faça o download para continuar conectado :)
           </Message>
@@ -48,7 +53,7 @@ function _MainPage() {
             <TitleCard>RAZÕES PARA DOAR SANGUE</TitleCard>
             <DescCard>
               As bolsas de sangue coletadas anualmente no país – ao todo são 3,5 milhões – são insuficientes para atender à demanda.
-              O ideal, segundo o Ministério da Saúde, é alcançar <marker style={{ backgroundColor: "#ccc" }}>5,7 milhões de bolsas a cada ano</marker>;
+              O ideal, segundo o Ministério da Saúde, é alcançar 5,7 milhões de bolsas a cada ano;
           </DescCard>
           </Card>
         </ContainerCards>
@@ -83,7 +88,7 @@ function _MainPage() {
 
           <TitleCard style={{ fontSize: 20 }}>2 - TRIAGEM CLÍNICA</TitleCard>
           <DescCard>
-          Após o cadastro, o doador é orientado a se dirigir a um local onde será realizado um questionário <marker style={{ backgroundColor: "#ccc" }}>individual e confidencial</marker> sobre sua saúde, 
+          Após o cadastro, o doador é orientado a se dirigir a um local onde será realizado um questionário individual e confidencial sobre sua saúde, 
           a fim de avaliar se está apto para realizar a doação. Com base nos resultados do questionário será realizado o teste de hematócrito e verificado os sinais vitais. Se o doador não tiver condições para doar, 
           o triador irá lhe explicar o motivo da inaptidão e se esta situação é temporária ou definitiva. Se o doador estiver apto para doar, assinará um termo de consentimento e será encaminhado para a sala de coleta.
           </DescCard>
@@ -101,71 +106,3 @@ function _MainPage() {
 }
 
 export default _MainPage;
-
-
-// import React, { useState, useEffect } from 'react';
-// import { BsCheckBox } from 'react-icons/bs'
-// import './styles.css'
-// import NavBarUserPage from '../../../components/Navbar/NavBarUserPage'
-
-// function _MainPage() {
-//   const [info, setInfo] = useState({ })
-
-//   // Pegando informações do LocalStorage
-//   useEffect(() => {
-//     async function getInfos() {
-//       const userData = await localStorage.getItem('infos')
-//       const obj = JSON.parse(userData)
-//       setInfo(obj)
-//     }
-//     getInfos()
-//   }, [])
-
-
-//   return (
-//       <>
-//         <NavBarUserPage />
-
-//         <div className="container-user-page">
-//           <div id="container-card-message">
-//             <p id="title-card-message">Olá Guilherme</p>
-//             <p id="desc-card-message"></p>
-//             <button id="btn-card-message">Saiba Mais</button>
-//           </div>
-
-//           <div id="container-cards">
-//             <div id="cards">
-//               <p id="title-card-info">COM UM ATO DE SOLIDARIEDADE, VOCÊ PODE SALVAR ATÉ 4 VIDAS.</p>
-//               <p id="desc-card-info">A doação é um procedimento totalmente seguro. O volume coletado é de aproximadamente 450 ml (padrão internacional), o que representa uma fração muito pequena do total de sangue de um adulto.</p>
-//             </div>
-//             <div id="cards">
-//               <p id="title-card-info">RAZÕES PARA DOAR SANGUE</p>
-//               <p id="desc-card-info">As bolsas de sangue coletadas anualmente no país – ao todo são 3,5 milhões – são insuficientes para atender à demanda. O ideal, segundo o Ministério da Saúde, é alcançar 5,7 milhões de bolsas a cada ano;</p>
-//             </div>
-//             <div id="cards-extend">
-//               <p id="title-card-info">O QUE VOCÊ PRECISA PARA DOAR SANGUE?</p>
-//               <div id="list-card-info">
-//                 <p><BsCheckBox size={25}/></p>
-//                 <p id="item-list-card-info">Apresentar um documento oficial com foto (RG, CNH, etc.) em bom estado de conservação.</p>
-//               </div>
-//               <div id="list-card-info">
-//                 <p><BsCheckBox size={25}/></p>
-//                 <p id="item-list-card-info">Estar em boas condições de saúde e pesar no mínimo 50 kg.</p>
-//               </div>
-//               <div id="list-card-info">
-//                 <p><BsCheckBox size={25}/></p>
-//                 <p id="item-list-card-info">Não ter feito uso de bebida alcoólica nas últimas 12 horas.</p>
-//               </div>
-//               <div id="list-card-info">
-//                 <p><BsCheckBox size={25}/></p>
-//                 <p id="item-list-card-info">Após o almoço ou ingestão de alimentos gordurosos, aguardar 3 horas. Não é necessário estar em jejum.</p>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-
-//       </>
-//   );
-// }
-
-// export default _MainPage;
