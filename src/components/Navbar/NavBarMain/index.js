@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import ModalAcess from '../../Modals/ModalAcess'
+import ModalRegister from '../../Modals/ModalRegister'
+import ModalLogin from '../../Modals/ModalLogin'
 
 import {
   Container,
@@ -7,17 +8,13 @@ import {
   ContainerButtons,
   Logo,
   Link,
-  Button,
-  Title,
-  Text,
-  Input,
-  ButtonModal
+  Button
 } from './styles';
 
 function NavBarMain() {
   const [isActiveLog, setIsActiveLog] = useState(false)
   const [isActiveCad, setIsActiveCad] = useState(false)
-  const [isForgotPassword, setIsForgotPassword] = useState(false)
+  
 
   return (
     <>
@@ -44,7 +41,7 @@ function NavBarMain() {
           <Button
             onClick={() => setIsActiveCad(true)}
             style={{
-              background: "#e5989b",
+              background: "#ff5964",
               outline: "none",
               border: "none",
               color: "#fff"
@@ -53,66 +50,8 @@ function NavBarMain() {
         </ContainerButtons>
       </Container>
 
-      {isActiveLog && (
-        <ModalAcess
-          buttonclose={() => setIsActiveLog(false)}
-          form={
-            <>
-              {isForgotPassword ? (
-                <>
-                  <Title>Alterar Senha</Title>
-                  <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, vitae.</Text>
-                  <Input type="text" placeholder="Nova senha" />
-                  <Input type="text" placeholder="Confirmar Senha" />
-                  <Text
-                      onClick={() => setIsForgotPassword(false)}
-                      style={{
-                        color: "red",
-                        cursor: "pointer"
-                      }}>Voltar
-                  </Text>
-                  <ButtonModal>Alterar</ButtonModal>
-                </>
-              ) : (
-                  <>
-                    <Title>Acessar</Title>
-                    <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, vitae.</Text>
-                    <Input type="text" placeholder="Email" />
-                    <Input type="text" placeholder="Senha" />
-                    <Text
-                      onClick={() => setIsForgotPassword(true)}
-                      style={{
-                        color: "red",
-                        cursor: "pointer"
-                      }}>Esqueci minha senha
-                    </Text>
-                    <ButtonModal>Acessar</ButtonModal>
-                  </>
-                )}
-            </>
-          }
-        />
-      )}
-
-      {isActiveCad && (
-        <ModalAcess
-          buttonclose={() => setIsActiveCad(false)}
-          form={
-            <>
-              <Title>Criar Conta</Title>
-              <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, vitae.</Text>
-              <Input type="text" placeholder="Nome" />
-              <Input type="text" placeholder="Email" />
-              <Input type="text" placeholder="Idade" />
-              <div>
-                <Input type="text" placeholder="Senha" />
-                <Input type="text" placeholder="Confirmar Senha" />
-              </div>
-              <ButtonModal>Cadastrar</ButtonModal>
-            </>
-          }
-        />
-      )}
+      {isActiveLog && <ModalLogin buttonclose={() => setIsActiveLog(false)} />}
+      {isActiveCad && <ModalRegister buttonclose={() => setIsActiveCad(false)} />}
     </>
   );
 }

@@ -4,11 +4,17 @@ import { motion } from 'framer-motion'
 export const Container = styled(motion.div)`
   position: fixed;
   z-index: 2;
+  top: 0;
   left: 0;
   width: 500px;
   background: #e9ecef;
   height: 100%;
   box-shadow: 0px -10px 20px rgb(0, 0, 0, 0.2);
+  overflow-y: auto;
+
+  ::-webkit-scrollbar {
+        background: transparent
+  }
 `;
 
 export const Button = styled.div`
@@ -36,7 +42,7 @@ export const Content = styled.div`
   padding: 2%;
 `
 export const NameInst = styled.p`
-  font-size: 20px;
+  font-size: 27px;
   font-family: Alata;
   font-weight: bold;
   padding: 5px 0;
@@ -44,7 +50,7 @@ export const NameInst = styled.p`
 `
 
 export const DescInst = styled.p`
-  font-size: 16px;
+  font-size: 18px;
   font-family: Alata;
 `
 

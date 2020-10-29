@@ -1,5 +1,6 @@
 import React from 'react';
 import { AiOutlineClose } from 'react-icons/ai'
+import Fetcher from '../../../hooks/Fetcher'
 
 import { 
   Container,
@@ -12,6 +13,11 @@ import {
 } from './styles';
 
 function ModalInsts({ buttonclosemodal }) {
+
+  const { data } = Fetcher("institutions")
+
+  if(!data) return <h3>Carregando...</h3>
+  
   return (
       <Container
         initial={{ x: "-100%" }}
@@ -23,41 +29,14 @@ function ModalInsts({ buttonclosemodal }) {
         </Button>
 
         <ContainerCards>
-        <Content>
-          <img 
-            style={{ borderRadius: "50%" }}
-            src={"https://picsum.photos/100/100"} 
-            alt=""
-          />
-          <Texts>
-            <NameInst>Lorem ipsum dolor sit amet.</NameInst>
-            <DescInst>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni optio repellat inventore? Nemo, illum molestiae.</DescInst>
-          </Texts>
-        </Content>
-
-        <Content>
-          <img 
-            style={{ borderRadius: "50%" }}
-            src={"https://picsum.photos/100/100"} 
-            alt=""
-          />
-          <Texts>
-            <NameInst>Lorem ipsum dolor sit amet.</NameInst>
-            <DescInst>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni optio repellat inventore? Nemo, illum molestiae.</DescInst>
-          </Texts>
-        </Content>
-
-        <Content>
-          <img 
-            style={{ borderRadius: "50%" }}
-            src={"https://picsum.photos/100/100"} 
-            alt=""
-          />
-          <Texts>
-            <NameInst>Lorem ipsum dolor sit amet.</NameInst>
-            <DescInst>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni optio repellat inventore? Nemo, illum molestiae.</DescInst>
-          </Texts>
-        </Content>
+          {data.map((item) => (
+            <Content key={item._id}>
+              <Texts>
+                <NameInst>{item.name}</NameInst>
+                <DescInst>{item.desc}</DescInst>
+              </Texts>
+            </Content>
+          ))}
         </ContainerCards>
       </Container>
   );

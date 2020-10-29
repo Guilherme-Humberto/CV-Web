@@ -5,7 +5,7 @@ export const Container = styled.div`
   right: 0;
   width: 500px;
   height: 100%;
-  background: #e1e1e1;
+  background: #fde1de;
   padding: 2%;
 `;
 

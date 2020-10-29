@@ -18,7 +18,7 @@ import {
 import Fetcher from '../../../hooks/Fetcher'
 
 function ModalMap({ id, buttonclose }) {
-  const { data } = Fetcher(`instituicoes/${id}`)
+  const { data } = Fetcher(`institutions/${id}`)
 
   if(!data) return <h1>Carregando...</h1>
 

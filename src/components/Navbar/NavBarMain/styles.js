@@ -10,7 +10,7 @@ export const Container = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background: #f4f3ee;
+  background: #eee;
 `;
 
 export const ContainerLinks = styled.div`
@@ -42,33 +42,4 @@ export const Button = styled.button`
     font-family: Roboto;
     outline: none;
     cursor: pointer;
-`
-export const Title = styled.p`
-    font-size: 35px;
-    font-family: Roboto;
-`
-
-export const Text = styled.p`
-    font-size: 20px;
-    font-family: Roboto;
-`
-
-export const Input = styled.input`
-    width: 100%;
-    padding: 5px 10px;
-    margin: 5px 0;
-    background: #f8edeb;
-    font-size: 20px;
-    border: none;
-    font-family: Roboto;
-`
-export const ButtonModal = styled.button`
-    font-size: 20px;
-    font-family: Roboto;
-    width: 40%;
-    background: #f8f9fa;
-    border: none;
-    outline: none;
-    padding: 7px;
-    margin: 20px 0;
 `
