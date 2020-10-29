@@ -1,10 +1,11 @@
 import React from 'react';
 import Routes from './routes/routes'
-import './styles/global.css'
+import GLobalStyles from './styles/global'
 
 function App() {
   return (
     <>
+      <GLobalStyles />
       <Routes />
     </>
   )
