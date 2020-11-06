@@ -1,90 +1,162 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useHistory } from 'react-router-dom'
 import { AiOutlineClose } from 'react-icons/ai'
+import { Form } from '@unform/web'
+import * as Yup from 'yup'
+
 
 import api from '../../../service/api'
 import { login } from '../../../config/auth'
+import Input from '../../Form'
 
 import {
   ButtonCloseModal,
   Container,
   ButtonModal,
-  Input,
+  // Input,
   Text,
   Title,
-  Form
+  FormContainer
 } from './styles';
 
+function validateField() {
+  const schema = Yup.object().shape({
+    email: Yup.string()
+      .email("Digite um email válido")
+      .required("Digite seu email"),
+    password: Yup.string()
+      .min(5, "Digite no minímo 6 dígitos")
+      .max(8, "Digite no máximo 8 dígitos"),
+    confimPassword: Yup.string()
+      .min(5, "Digite no minímo 6 dígitos")
+      .max(8, "Digite no máximo 8 dígitos")
+  })
+
+  return schema
+}
+
 const ModalLogin = ({ buttonclose }) => {
+  const formRef = useRef(null)
   const history = useHistory(null)
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isForgotPassword, setIsForgotPassword] = useState(false)
 
-  async function handleSubmit(e) {
-    e.preventDefault()
+  async function handleSubmit(data, { reset }) {
     try {
-      await api.post("/login", { email, password }).then((response) => {
-          const { user, token } = response.data
-            login(token)
-            localStorage.setItem("infos", JSON.stringify(user))
-            history.push("Home")
+      const schema = validateField()
+      formRef.current.setErrors({})
+
+      await schema.validate(data, {
+        abortEarly: false
+      });
+
+      reset()
+      await api.post("/login", {
+        email,
+        password
+      })
+      .then((response) => {
+        const { user, token } = response.data
+        login(token)
+        localStorage.setItem("infos", JSON.stringify(user))
+        history.push("Home")
+      })
+      .catch((err) => console.log(err))
+      
+    } catch (err) {
+      const validationErrors = {}
+
+      if(err instanceof Yup.ValidationError) {
+        err.inner.forEach(error => {
+          validationErrors[error.path] = error.message
         })
-        .catch((err) => console.log(err))
-    }
-    catch (err) {
-      console.log(err)
+
+        formRef.current.setErrors(validationErrors)
+      }
     }
   }
 
   return (
-    <Container>
+    <Container
+      initial={{ x: "100%" }}
+      animate={{ x: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <ButtonCloseModal onClick={buttonclose}>
-        <AiOutlineClose size={35}/>
+        <AiOutlineClose size={35} />
       </ButtonCloseModal>
       {isForgotPassword ? (
         <>
-          <Title>Alterar Senha</Title>
-          <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, vitae.</Text>
-          <Input type="text" placeholder="Nova senha" />
-          <Input type="text" placeholder="Confirmar Senha" />
-          <Text
-            onClick={() => setIsForgotPassword(false)}
-            style={{
-              color: "red",
-              cursor: "pointer"
-            }}>Voltar
-                  </Text>
-          <ButtonModal>Alterar</ButtonModal>
+          <FormContainer>
+            <Title>Alterar Senha</Title>
+            <Text>
+              Preencha os dados abaixo para alterar sua senha
+            </Text>
+            <Form ref={formRef} onSubmit={handleSubmit}>
+              <Input
+                name="email" 
+                label="E-Mail"
+                type="text" 
+                placeholder="Seu E-mail" 
+              />
+              <Input
+                name="password"
+                label="Nova Senha"
+                type="text" 
+                placeholder="Nova senha" 
+              />
+              <Input
+                name="confimPassword" 
+                label="Confirmar Senha"
+                type="text" 
+                placeholder="Confirmar Senha" 
+              />
+              <Text
+                onClick={() => setIsForgotPassword(false)}
+                style={{
+                  color: "red",
+                  cursor: "pointer"
+                }}>Voltar
+              </Text>
+              <ButtonModal type="submit">Alterar</ButtonModal>
+            </Form>
+          </FormContainer>
         </>
       ) : (
-          <Form onSubmit={handleSubmit}>
+          <FormContainer>
             <Title>Acessar</Title>
             <Text>
               Bem vindo de volta
             </Text>
-            <Input 
-              type="text" 
-              onChange={(e) => setEmail(e.target.value)} 
-              placeholder="Email" 
-            />
-            <Input 
-              type="password" 
-              onChange={(e) => setPassword(e.target.value)} 
-              placeholder="Senha" 
-            />
-            <Text
-              onClick={() => setIsForgotPassword(true)}
-              style={{
-                color: "red",
-                cursor: "pointer"
-              }}>Esqueci minha senha
-                    </Text>
-            <ButtonModal type="submit">
-              Acessar
+            <Form ref={formRef} onSubmit={handleSubmit}>
+              <Input
+                name="email"
+                label="E-Mail"
+                type="text"
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email"
+              />
+              <Input
+                label="Senha"
+                name="password"
+                type="password"
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Senha"
+              />
+              <Text
+                onClick={() => setIsForgotPassword(true)}
+                style={{
+                  color: "red",
+                  cursor: "pointer"
+                }}>Esqueci minha senha
+            </Text>
+              <ButtonModal type="submit">
+                Acessar
             </ButtonModal>
-          </Form>
+            </Form>
+          </FormContainer>
         )}
     </Container>
   );

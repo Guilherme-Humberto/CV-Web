@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion'
 
-export const Container = styled.div`
+export const Container = styled(motion.div)`
     position: fixed;
     z-index: 2;
     top: 0;
@@ -11,7 +12,7 @@ export const Container = styled.div`
     background: #f5f1ed;
     box-shadow: -10px 0px 20px rgb(0, 0, 0, 0.3);
 `;
-export const Form = styled.form`
+export const FormContainer = styled.div`
     padding: 30% 5%;
     display: flex;
     flex-direction: column;
