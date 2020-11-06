@@ -34,12 +34,12 @@ export const ButtonMessage = styled.button`
   padding: 6px 25px;
   border: none;
   border-radius: 25px;
-  background: #000;
-  color: #e1e1e1;
+  background: #fff;
+  color: #000;
 
   :hover {
-      background: #fff;
-      color: #121212;
+      background: #121212;
+      color: #fff;
   }
 `;
 

@@ -13,7 +13,7 @@ function Main() {
   const history = useHistory(null)
 
   useEffect(() => {
-    if(localStorage.getItem("infos")) {
+    if(localStorage.getItem("token")) {
       history.push("/Home")
     }
   }, [history])

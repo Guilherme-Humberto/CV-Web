@@ -1,127 +1,171 @@
-import React, { useState, useEffect } from 'react';
-import { BiEdit } from 'react-icons/bi'
-
+import React, { useState, useEffect, useMemo } from 'react';
+import { AiOutlineCamera } from 'react-icons/ai'
 import api from '../../../service/api'
-import './styles.css'
+
 import NavBarUserPage from '../../../components/Navbar/NavBarUserPage'
-import img from '../../../assets/imgPerfil.gif'
+import {
+  Container,
+  Content,
+  ImagePerfil,
+  ImageContainer,
+  ImageContent,
+  Form,
+  Title,
+  Desc,
+  Label,
+  Input,
+  TextArea,
+  InputGroup,
+  Selected,
+  Option,
+  ButtonCompletPerfil,
+  ImagePerfilCompleted,
+  InfosPerfilCompleted,
+  InputPerfil,
+  ButtonEditUser
+} from './styles';
 
 function _PerfilSettings() {
-  const [bio, setBio] = useState('')
-  const [cell, setCell] = useState('')
-  const [phone, setTelef] = useState('')
-  const [adress, setAdress] = useState('')
-  const [bloodtype, setBlood] = useState('')
   const [infos, setInfos] = useState({})
+  const [adress, setAdress] = useState("")
+  const [number, setNumber] = useState(0)
+  const [bio, setBio] = useState("")
+  const [cell, setCell] = useState("")
+  const [blood, setBlood] = useState("")
+  const [img, setImage] = useState(null)
 
   useEffect(() => {
-    function getInfos() {
-      const userData = localStorage.getItem('infos')
-      const obj = JSON.parse(userData)
-      setInfos(obj)
-    }
-    getInfos()
+    const user = JSON.parse(localStorage.getItem("infos"))
+    setInfos(user)
+    console.log(user)
   }, [])
 
+  const preview = useMemo(() => {
+    return img ? URL.createObjectURL(img) : null
+  }, [img])
+
   const handleSubmit = async (e) => {
-    await api.put(`/editUser/${infos._id}`, {
-      bio,
-      cell,
-      phone,
-      adress,
-      bloodtype
-    })
-      .then(async (response) => {
-        const user = response.data
-        localStorage.setItem('infos', JSON.stringify(user))
+    const data = new FormData()
+
+    data.append("img", img)
+    data.append("adress", adress)
+    data.append("number", number)
+    data.append("bio", bio)
+    data.append("cell", cell)
+    data.append("blood", blood)
+
+    await api.put(`editUser/${infos._id}`, data)
+      .then((response) => {
+        localStorage.setItem("infos", JSON.stringify(response.data))
       })
       .catch(err => console.log(err))
   }
-
   return (
     <>
       <NavBarUserPage />
-        <div className="container-perfiluser">
-
-          {infos.bloodtype === '' | infos.cell === '' ? (
+      <Container>
+        <Content>
+          {infos.blood != "" ? (
             <>
-              <div id="infos-user">
-                <div>
-                  <p id="title-perfil">Complete seu perfil</p>
-                  <p id="desc-perfil">{infos.name}, preencha os dados abaixo para completar seu perfil</p>
-                  <hr id="linha-perfil" />
+              <ImagePerfilCompleted src={infos.image_url} alt="" />
 
-                  <form onSubmit={handleSubmit} id="form-edit-perfil">
-                    <textarea onChange={(e) => setBio(e.target.value)} placeholder="Conte um pouco sobre você" id="bio-user"></textarea>
-
-                    <label id="label-form-perfil">Endereço</label>
-                    <div id="inputs-adress">
-                      <input onChange={(e) => setAdress(e.target.value)} id="input-perfil" placeholder="Informe seu Endereço" />
-                      <input id="input-perfil-num" placeholder="Número" />
-                    </div>
-
-                    <label id="label-form-perfil">Contatos</label>
-                    <div id="inputs-perfil">
-                      <input onChange={(e) => setTelef(e.target.value)} id="input-perfil" placeholder="Informe seu Telefone" />
-                      <input onChange={(e) => setCell(e.target.value)} id="input-perfil" placeholder="Informe seu Celular" />
-                    </div>
-
-                    <label id="label-form-perfil">Tipo Sanguíneo</label>
-                    <select onChange={(e) => setBlood(e.target.value)} id="selected-bloodtype">
-                      <option defaultValue="A+">A+</option>
-                      <option defaultValue="B+">B+</option>
-                      <option defaultValue="AB+">AB+</option>
-                      <option defaultValue="O+">O+</option>
-                      <option defaultValue="A-">A-</option>
-                      <option defaultValue="B-">B-</option>
-                      <option defaultValue="AB-">AB-</option>
-                      <option defaultValue="O-">O-</option>
-                    </select>
-
-                    <button type="submit" id="btn-edit-perfil">
-                      <p id="text-btn-perfil">Atualizar</p>
-                      <p id="text-btn-perfil"><BiEdit /></p>
-                    </button>
-                  </form>
-                </div>
-                <div>
-                  <img id="ilustration-perfil" src={img} alt="Imagem"/>
-                </div>
-              </div>
+              <InfosPerfilCompleted>
+                <Label>Nome</Label>
+                <InputPerfil
+                  placeholder={`Nome: ${infos.name}`}
+                  disabled
+                />
+                <TextArea
+                  style={{ width: 700, marginTop: 10 }}
+                  defaultValue={infos.bio}
+                  disabled
+                />
+                <Label>Endereço</Label>
+                <InputGroup>
+                  <InputPerfil
+                    placeholder={`Endereço: ${infos.adress}`}
+                    disabled
+                  />
+                  <InputPerfil
+                    style={{ width: 100 }}
+                    placeholder={`N: ${infos.number}`}
+                    disabled
+                  />
+                </InputGroup>
+                <InputGroup style={{ margin: "10px 0" }}>
+                  <InputPerfil
+                    placeholder={`Contato: ${infos.cell}`}
+                    disabled
+                  />
+                  <InputPerfil
+                    style={{ width: 60 }}
+                    defaultValue={infos.blood}
+                    disabled
+                  />
+                  <InputPerfil
+                    style={{ width: 130 }}
+                    placeholder={`Idade: ${infos.age}`}
+                    disabled
+                  />
+                </InputGroup>
+              </InfosPerfilCompleted>
             </>
+
           ) : (
-              <>
-                <div id="container-header">
-                  <div id="container-form-perfil">
-                    <p id="nameuser-perfil">{infos.name}</p>
-                    <p id="bio-user-perfil">{infos.bio}</p>
-                    <div id="field-info">
-                      <label id="label-field">Seu Email</label>
-                      <input id="input-field-info" disabled defaultValue={infos.email} />
-                    </div>
-                    <label id="label-field">Contatos</label>
-                    <div id="field-info2">
-                      <input id="input-field-info" disabled defaultValue={infos.cell} />
-                      <input id="input-field-info" disabled defaultValue={infos.phone} />
-                    </div>
-                    <label id="label-field">Seu Endereço</label>
-                    <div id="field-info2">
-                      <input id="input-field-info" disabled defaultValue={infos.adress} />
-                      <input id="input-field-info2" disabled defaultValue={infos.adress} />
-                    </div>
-                    <div id="field-info">
-                      <label id="label-field">Seu CPF</label>
-                      <input id="input-field-info" disabled defaultValue={infos.cpf} />
-                    </div>
-                    <div id="field-info">
-                      <label id="label-field">Tipo Sanguíneo</label>
-                      <input id="input-field-info3" disabled defaultValue={infos.bloodtype} />
-                    </div>
-                  </div>
-                </div>
-              </>
+              <Form onSubmit={handleSubmit}>
+                <ImageContainer style={{ backgroundImage: `url(${preview})` }}>
+                  <ImagePerfil
+                    type="file"
+                    onChange={(e) => setImage(e.target.files[0])}
+                    className={img ? "has-image" : ""}
+                  />
+                  <ImageContent>
+                    <AiOutlineCamera color="#444" size={40} />
+                  </ImageContent>
+                </ImageContainer>
+
+                <Title>Completar seu perfil</Title>
+                <Desc>Falta pouco para completar seu perfil</Desc>
+                <Label>Endereço *</Label>
+                <InputGroup>
+                  <Input
+                    placeholder="Digite seu endereço"
+                    onChange={(e) => setAdress(e.target.value)}
+                  />
+                  <Input
+                    style={{ width: 200 }}
+                    placeholder="Numero"
+                    onChange={(e) => setNumber(e.target.value)}
+                  />
+                </InputGroup>
+                <Label>Conhecer você é muito importante para nós</Label>
+                <TextArea
+                  placeholder="Conte-nos um pouco sobre você"
+                  onChange={(e) => setBio(e.target.value)}
+                />
+                <InputGroup style={{ margin: "10px 0" }}>
+                  <Input
+                    placeholder="Celular: (xx) xxxxx-xxxx"
+                    onChange={(e) => setCell(e.target.value)}
+                  />
+                  <Selected onChange={(e) => setBlood(e.target.value)}>
+                    <Option value="A+">A+</Option>
+                    <Option value="A-">A-</Option>
+                    <Option value="B+">B+</Option>
+                    <Option value="B-">B-</Option>
+                    <Option value="AB+">AB+</Option>
+                    <Option value="AB-">AB-</Option>
+                    <Option value="O+">O+</Option>
+                    <Option value="O-">O-</Option>
+                  </Selected>
+                </InputGroup>
+                <ButtonCompletPerfil type="submit">
+                  Enviar
+            </ButtonCompletPerfil>
+              </Form>
             )}
-        </div>
+        </Content>
+      </Container>
     </>
   );
 }
