@@ -34,8 +34,9 @@ export const ButtonMessage = styled.button`
   padding: 6px 25px;
   border: none;
   border-radius: 25px;
-  background: #fff;
-  color: #000;
+  font-weight: bold;
+  background: #eee;
+  color: #121212;
 
   :hover {
       background: #121212;

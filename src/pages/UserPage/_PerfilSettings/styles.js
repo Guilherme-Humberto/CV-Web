@@ -4,9 +4,10 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #fde1de;
+  background: #eee;
   height: 100vh;
   width: 100%;
+  padding: 2% 0;
 `;
 
 export const Content = styled.div`
@@ -39,7 +40,7 @@ export const Desc = styled.p`
 `
 
 export const Form = styled.form`
-    max-width: 700px;
+    max-width: 800px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -48,10 +49,11 @@ export const Form = styled.form`
 export const Label = styled.p`
     font-size: 20px;
     font-family: Alata;
-    margin: 10px 0;
+    margin: 5px 0;
 `
 export const InputGroup = styled.div`
     display: flex;
+    align-items: center;
     gap: 0 10px;
 `
 export const ImageContainer = styled.label`
@@ -82,8 +84,8 @@ export const Input = styled.input`
 `
 export const TextArea = styled.textarea`
     width: 100%;
-    border: 2px solid #000;
-    background: transparent;
+    border: none;
+    background: #fcd5ce;
     outline: none;
     height: 130px;
     font-size: 16px;
@@ -117,16 +119,17 @@ export const ImagePerfilCompleted = styled.img`
     height: 200px;
     width: 200px;
     border-radius: 10%;
-    box-shadow: 0px 10px 20px rgb(0, 0, 0, 0.8);
+    box-shadow: 0px 10px 20px rgb(0, 0, 0, 0.3);
+    filter: brightness(80%);
 `
 export const InputPerfil = styled.input`
     width: 700px;
-    border: 2px solid #000;
-    background: transparent;
+    border: none;
+    background: #fcd5ce;
     outline: none;
     font-size: 20px;
     font-family: Alata;
-    padding: 5px 10px;
+    padding: 10px;
 `
 
 export const InfosPerfilCompleted = styled.div`

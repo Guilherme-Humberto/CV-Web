@@ -11,7 +11,6 @@ import Input from '../../Form'
 import {
   Container,
   ButtonModal,
-  // Input,
   Text,
   Title,
   ButtonCloseModal,
@@ -135,7 +134,9 @@ const ModalRegister = ({ buttonclose }) => {
               placeholder="Senha"
             />
             <Input
+              type="password"
               name="confirmPassword"
+              onChange={(e) => setConfirmPassword(e.target.value)}
               placeholder="Confirmar Senha"
             />
           </div>

@@ -40,7 +40,7 @@ function Locals() {
   return (
     <>
       <NavBar />
-      <Map center={initialPosition} zoom={12}>
+      <Map center={initialPosition} zoom={5}>
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

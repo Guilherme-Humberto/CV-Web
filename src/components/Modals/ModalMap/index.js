@@ -20,11 +20,14 @@ import Fetcher from '../../../hooks/Fetcher'
 function ModalMap({ id, buttonclose }) {
   const { data } = Fetcher(`institutions/${id}`)
 
-  if(!data) return <h1>Carregando...</h1>
+  if(!data) return null
 
-  console.log(data)
   return (
-    <Container>
+    <Container
+      initial={{ x: "100%" }}
+      animate={{ x: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <ButtonClose onClick={buttonclose}>
         <AiOutlineClose size={40}/>
       </ButtonClose>

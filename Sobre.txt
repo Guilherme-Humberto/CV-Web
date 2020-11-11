@@ -1,18 +1,18 @@
 
 -- Sobre a estrutura do projeto --
 
-** Página Main **
+** Sobre as Pastas **
 A pasta assets guarda as imagens do site
 A pasta components guarda os componentes presentes nas páginas
  - Dentro de components, a pasta footer é chamada no final da página inicial (Dentro de content-initial)
  - Dentro de components, a pasta modals é chamada na página inicial (Dentro de content-initial)
  - Dentro de components, a pasta navbar é chamada na página inicial e nos componentes de userpage
 A pasta config guarda as configurações de autenticação do usuário no site
+A pasta hooks guarda a implementação do swr (Estratégia de consumo de API)
 A pasta routes é responsável por criar as rotas para as páginas do site
 A pasta service contém as configurações do axios (ferramenta para serviços rest)
 A pasta styles contém as estilizações globais do site
 O arquivo App.js é o arquivo principal da aplicação (Ele chama a pasta Routes)
-
 
 -- Sobre as páginas --
 
@@ -36,3 +36,4 @@ A página userpage é renderizada quando o usuário estiver logado no site (Esta
  - Cada componente contém um arquivo js para implementação do código JSX
  - Cada componente contém um arquivo css para implementação do código de estilo
  - O arquivo js é reponsável por chamar os componentes e criar as rotas
+

@@ -12,13 +12,14 @@ export const ContainerMessage = styled(motion.div)`
   align-items: center;
   text-align: center;
   padding: 5%;
-  background-image: linear-gradient(100deg,#fde1de, #e4b1ab); 
+  background-image: linear-gradient(100deg,#fde1de, #e4b1ab);
 `;
 
 export const Title = styled.p`
   font-size: 40px;
   font-family: Alata;
   font-weight: bold;
+  text-decoration: underline;
 `;
 
 export const Message = styled.p`
@@ -28,15 +29,21 @@ export const Message = styled.p`
 `;
 
 export const ButtonAddHistoric = styled.button`
-    width: 150px;
-    background: #121212;
+    width: 200px;
+    outline: none;
+    background: #eee;
     padding: 6px 10px;
-    color: #fff;
+    color: #121212;
     border: none;
     border-radius: 25px;
-    font-size: 20px;
+    font-size: 23px;
     font-family: Alata;
-    outline: none;
+    font-weight: bold;
+
+    :hover {
+        background: #121212;
+        color: #eee;
+    }
 `
 
 export const ContainerCards = styled.div`
@@ -100,17 +107,15 @@ export const DescContent = styled.p`
     font-family: Alata;
 `
 
-export const InputLocal = styled.input`
-    width: 40%;
-    background: transparent;
-    border: 2px solid #000;
-    padding: 6px 10px;
+export const Form = styled.form`
+    max-width: 700px;
 `
 
 export const CheckBox = styled.div`
     display: flex;
     justify-content: space-around;
-    width: 40%;
+    width: 100%;
+    gap: 0 10px;
     margin: 10px 0;
 `
 
@@ -137,4 +142,32 @@ export const ButtonDelete = styled.button`
     position: absolute;
     border: none;
     transform: translate(-80%, -180%);
+`
+
+export const SelectedBlood = styled.select`
+    width: 250px;
+    background: transparent;
+    border: 2px solid #444;
+    padding: 5px;
+    outline: none;
+    cursor: pointer;
+    font-family: Alata;
+    font-size: 16px;
+`
+export const SelectedLocal = styled.select`
+    width: 100%;
+    background: #ccc;
+    outline: none;
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    font-family: Alata;
+    font-size: 19px;
+    color: #444;
+`
+
+export const OptionLocal = styled.option`
+    background: #eee;
+    font-family: Alata;
+    font-size: 18px;
 `

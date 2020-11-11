@@ -19,22 +19,24 @@ import {
   ContainerContentHist,
   TitleContent,
   DescContent,
-  InputLocal,
+  Form,
   CheckBox,
-  Check,
+  OptionLocal,
   ButtonAddHist,
-  ButtonDelete
+  ButtonDelete,
+  SelectedBlood,
+  SelectedLocal,
 } from './styles';
 
 function _HistoricPage() {
   const [infos, setInfos] = useState({})
   const [local, setLocal] = useState("")
-  const [sangue, setSangue] = useState(false)
-  const [palheta, setPalheta] = useState(false)
   const [typeDonation, setTypeDonation] = useState("")
+  const [date, setDate] = useState("")
   const [newHistoric, setNewHistoric] = useState(false)
 
   const { data, mutate } = Fetcher(`/historic/list/${infos._id}`)
+  const { data: institutions } = Fetcher(`/institutions`)
 
   useMemo(() => {
     async function loadInfos() {
@@ -57,33 +59,19 @@ function _HistoricPage() {
     mutate(teste, false)
   }, [data, mutate])
 
-  async function handleAddHist() {
-
-    if (sangue === true) {
-      setTypeDonation("Sangue")
-    }
-    else if (palheta === true) {
-      setTypeDonation("Plaqueta")
-    }
-    else {
-      alert("Escolha um tipo de doação")
-    }
-
+  async function handleAddHist(e) {
+    e.preventDefault()
     await api.post(`/historic/${infos._id}`, {
       local,
-      typeDonation
-    }).then((response) => {
-      if (typeDonation) {
-        setNewHistoric(false)
-        setTypeDonation("")
-      }
-      console.log(response.data)
-    }).catch((err) => console.log(err))
-
-
+      typeDonation,
+      date
+    })
+    .then(() => setNewHistoric(false))
+    .catch((err) => console.log(err))
   }
 
-  if (!data) return <h1>Carregando...</h1>
+  if (!data) return null
+  if (!institutions) return null
 
   return (
     <>
@@ -107,51 +95,39 @@ function _HistoricPage() {
           <ContainerContentHist>
             <TitleContent>Registre aqui suas doações</TitleContent>
             <DescContent>Suas doações serão listadas aqui, adicione novas</DescContent>
-            <hr />
-            <InputLocal
-              onChange={(e) => setLocal(e.target.value)}
-              placeholder="Digite o local de doação"
-            />
-            <CheckBox>
-              <Check>
+            <Form onSubmit={handleAddHist}>
+              <SelectedLocal onChange={(e) => setLocal(e.target.value)}>
+                {institutions.map((item) => (
+                  <OptionLocal key={item._id} value={`${item.name}`}>{item.name}</OptionLocal>
+                ))}
+              </SelectedLocal>
+              <CheckBox>
                 <input
-                  id="checkbox"
-                  onChange={() => setSangue(true)}
-                  type="checkbox"
+                  onChange={(e) => setDate(e.target.value)}
+                  type="date"
                 />
-                <h5>Sangue</h5>
-              </Check>
-              <Check>
-                <input
-                  id="checkbox"
-                  onChange={() => setPalheta(true)}
-                  type="checkbox"
-                />
-                <h5>Palheta</h5>
-              </Check>
-              <ButtonAddHist onClick={() => handleAddHist()}>Adicionar</ButtonAddHist>
-            </CheckBox>
+                <SelectedBlood onChange={(e) => setTypeDonation(e.target.value)}>
+                  <option selected={true} disabled >Selecione o tipo de doação</option>
+                  <option value="Sangue">Sangue</option>
+                  <option value="Plaqueta">Plaqueta</option>
+                </SelectedBlood>
+                <ButtonAddHist type="submit">Adicionar</ButtonAddHist>
+              </CheckBox>
+            </Form>
           </ContainerContentHist>
         ) : (
             <ContainerCards>
-              {data.map((item, index, array) => (
-                <>
-                  {array.length === 0 ? (
-                    <h1>Historico vazio</h1>
-                  ) : (
-
-                      <Card key={item._id}>
-                        <ButtonDelete onClick={() => handleDelete(item._id)}>
-                          <AiOutlineClose size={20} />
-                        </ButtonDelete>
-                        <Texts>
-                          <h6>{item.date}</h6>
-                          <TitleCard>{item.local}</TitleCard>
-                          <DescCard>Tipo de doação: <b>{item.typeDonation}</b></DescCard>
-                        </Texts>
-                      </Card>
-                    )}
-                </>
+              {data.map((item) => (
+                <Card key={item._id}>
+                  <ButtonDelete onClick={() => handleDelete(item._id)}>
+                    <AiOutlineClose size={20} />
+                  </ButtonDelete>
+                  <Texts>
+                    <h6>{item.date}</h6>
+                    <TitleCard>{item.local}</TitleCard>
+                    <DescCard>Tipo de doação: <b>{item.typeDonation}</b></DescCard>
+                  </Texts>
+                </Card>
               ))}
             </ContainerCards>
           )}
