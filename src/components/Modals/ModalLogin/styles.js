@@ -30,6 +30,7 @@ export const ButtonCloseModal = styled.button`
 export const Title = styled.p`
     font-size: 35px;
     font-family: Roboto;
+    margin: 0;
 `
 
 export const Text = styled.p`

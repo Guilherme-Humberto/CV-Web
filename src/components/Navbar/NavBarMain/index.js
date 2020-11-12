@@ -24,10 +24,10 @@ function NavBarMain() {
         transition={{ duration: 0.6 }}
       >
         <ContainerLinks>
-          <Logo>Conectando Vidas</Logo>
-          <Link>Quem Somos</Link>
-          <Link>Campanhas</Link>
-          <Link>Instituições</Link>
+          <Logo>CV</Logo>
+          <Link href="#QuemSomos">Quem Somos</Link>
+          <Link href="#Campanhas">Campanhas</Link>
+          <Link href="#Instituições">Instituições</Link>
         </ContainerLinks>
         <ContainerButtons>
           <Button
@@ -35,8 +35,8 @@ function NavBarMain() {
             style={{
               background: "transparent",
               outline: "none",
-              border: "1px solid #000"
-            }}>Acessa
+              border: "2px solid #000"
+            }}>Acessar
         </Button>
           <Button
             onClick={() => setIsActiveCad(true)}

@@ -18,6 +18,7 @@ export default function Input({ name, label, ...rest }) {
       {label &&
         <label
           style={{
+            margin: 0,
             fontSize: 20,
             fontFamily: "Alata"
           }}
@@ -25,6 +26,7 @@ export default function Input({ name, label, ...rest }) {
           {error &&
             <span
               style={{
+                margin: 0,
                 fontSize: 17,
                 color: "#f00"
               }}>{error}
@@ -40,7 +42,7 @@ export default function Input({ name, label, ...rest }) {
           margin: "5px 0",
           background: "transparent",
           fontSize: "20px",
-          border: "2px solid #000",
+          border: "3px solid #444",
           fontFamily: "Roboto"
         }}
         ref={inputRef}

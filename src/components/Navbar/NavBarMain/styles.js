@@ -10,31 +10,37 @@ export const Container = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background: #eee;
+  background: #fff;
 `;
 
 export const ContainerLinks = styled.div`
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 0 20px;
     align-items: center;
 `
 
-export const Link = styled.p`
+export const Link = styled.a`
     font-size: 25px;
     font-family: Alata;
-`
+    text-decoration: none;
+    outline: none;
+    color: #000;
 
+    :hover {
+        color: #000;
+    }
+`
 export const Logo = styled.p`
     font-size: 35px;
     font-family: Alata;
+    font-weight: bold;
 `
 
 export const ContainerButtons = styled.div`
     display: flex;
     gap: 20px;
 `
-
 export const Button = styled.button`
     padding: 8px 25px;
     border-radius: 25px;

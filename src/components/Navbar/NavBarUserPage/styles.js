@@ -12,6 +12,7 @@ export const Container = styled(motion.div)`
   /* background-image: linear-gradient(90deg,#fadde1, #ffc4d6);  */
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   box-shadow: 10px 0px 20px #e4b1ab;
 

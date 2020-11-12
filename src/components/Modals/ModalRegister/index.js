@@ -31,9 +31,6 @@ function validateField() {
     password: Yup.string()
       .min(5, "Digite no minímo 6 dígitos")
       .max(8, "Digite no máximo 8 dígitos"),
-    confirmPassword: Yup.string()
-      .min(5, "Digite no minímo 6 dígitos")
-      .max(8, "Digite no máximo 8 dígitos"),
   })
 
   return schema
@@ -47,7 +44,6 @@ const ModalRegister = ({ buttonclose }) => {
   const [email, setEmail] = useState('')
   const [age, setAge] = useState('')
   const [password, setPassword] = useState('')
-  const [confimPassword, setConfirmPassword] = useState('')
   const [bio] = useState('')
   const [adress] = useState('')
   const [cell] = useState('')
@@ -99,9 +95,7 @@ const ModalRegister = ({ buttonclose }) => {
       </ButtonCloseModal>
       <FormContainer>
         <Title>Criar Conta</Title>
-        <Text>
-          Não perca mais tempo, salve a vide outras pessoas. Conecte Vidas.
-        </Text>
+        <Text>Crie sua conta</Text>
         <Form 
           ref={formRef} 
           onSubmit={handleSubmit} 
@@ -111,7 +105,7 @@ const ModalRegister = ({ buttonclose }) => {
             name="name"
             label="Nome e Sobrenome"
             onChange={(e) => setName(e.target.value)}
-            placeholder="Nome Completo"
+            placeholder="Nome e Sobrenome"
           />
           <Input
             name="email"
@@ -126,20 +120,13 @@ const ModalRegister = ({ buttonclose }) => {
             onChange={(e) => setAge(e.target.value)}
             placeholder="Idade"
           />
-          <div style={{ display: "flex", gap: 10 }}>
-            <Input
-              name="password"
-              type="password"
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Senha"
-            />
-            <Input
-              type="password"
-              name="confirmPassword"
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              placeholder="Confirmar Senha"
-            />
-          </div>
+          <Input
+            label="Senha"
+            name="password"
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Senha"
+          />
           <ButtonModal type="submit">Cadastrar</ButtonModal>
         </Form>
       </FormContainer>

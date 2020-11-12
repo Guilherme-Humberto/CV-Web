@@ -13,7 +13,7 @@ export const Container = styled(motion.div)`
     box-shadow: -10px 0px 20px rgb(0, 0, 0, 0.3);
 `;
 export const FormContainer = styled.div`
-    padding: 30% 5%;
+    padding: 20% 5%;
     display: flex;
     flex-direction: column;
     width: 90%;
@@ -35,6 +35,7 @@ export const ButtonCloseModal = styled.button`
 export const Title = styled.p`
     font-size: 35px;
     font-family: Roboto;
+    margin: 0;
 `
 
 export const Text = styled.p`
