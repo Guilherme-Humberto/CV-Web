@@ -11,6 +11,37 @@ export const ContainerMessage = styled(motion.div)`
   text-align: center;
   padding: 5%;
   background-image: linear-gradient(100deg,#fde1de, #e4b1ab);
+
+  @media (max-width: 860px) {
+      p:nth-child(1) {
+          font-size: 30px;
+      }
+      p:nth-child(2) {
+          font-size: 20px;
+          max-width: 400px;
+      }
+      button {
+          padding: 5px 10px;
+          font-size: 15px;
+          width: 100px;
+      }
+      margin-left: 15%;
+  }
+  @media (max-width: 440px) {
+      p:nth-child(1) {
+          font-size: 25px;
+      }
+      p:nth-child(2) {
+          font-size: 17px;
+          max-width: 300px;
+      }
+      button {
+          padding: 5px 10px;
+          font-size: 15px;
+          width: 100px;
+      }
+      margin-left: 20%;
+  }
 `;
 
 export const Title = styled.p`
@@ -49,18 +80,25 @@ export const ContainerCards = styled.div`
     justify-content: center;
     align-items: center;
     margin-top: 2%;
-    margin-left: 10%;
     flex-wrap: wrap;
+    width: 100%;
+
+    @media (max-width: 800px) {
+        div {
+            margin-left: 14%;
+        }
+    }
 `
 
 export const Card = styled.div`
     display: flex;
-    width: 50%;
+    width: 25rem;
     align-items: center;
     max-width: 650px;
     background: #fde1de;
     padding: 20px;
     border-radius: 5px;
+    position: relative;
 `
 
 export const Texts = styled.div`

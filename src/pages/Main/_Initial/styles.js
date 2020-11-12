@@ -6,6 +6,25 @@ export const Container = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 8%;
+
+  @media (max-width: 700px) {
+    img {
+      height: 250px
+    }
+    p:nth-child(1){
+      font-size: 30px;
+      margin-bottom: 0;
+    }
+    p:nth-child(2){
+      font-size:17px;
+    }
+    div:nth-child(1) {
+      margin-top: 18%;
+      margin-left: 2%;
+      margin-right: 2%;
+    }
+  }
+  
 `;
 export const Texts = styled.div`
   display: flex;

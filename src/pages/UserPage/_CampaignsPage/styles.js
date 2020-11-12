@@ -9,6 +9,18 @@ export const ContainerCards = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   margin: 5% 0 5% 8%;
+
+  @media (max-width: 860px) {
+    div {
+      display: block;
+      max-width: 400px;
+      margin-left: 10%;
+
+      p:nth-child(2) {
+        max-width: 350px;
+      }
+    }
+  }
 `;
 
 export const Card = styled(motion.div)`
@@ -18,6 +30,17 @@ export const Card = styled(motion.div)`
   display: flex;
   align-items: center;
   box-shadow: 0px 10px 20px #e4b1ab;
+
+  @media (max-width: 860px) {
+    div:nth-child(3) {
+      display: block;
+      margin: 0;
+    }
+
+    img {
+      margin: 0 10%
+    }
+  }
 `;
 export const Header = styled.div`
   background-image: linear-gradient(100deg,#fde1de, #e4b1ab); 
@@ -28,6 +51,27 @@ export const Header = styled.div`
   justify-content: center;
   padding: 5%;
 
+  @media (max-width: 900px) {
+    p:nth-child(1) {
+      font-size: 35px;
+    }
+    p:nth-child(2) {
+      font-size: 20px;
+      max-width: 600px;
+    }
+    margin-left: 8%;
+  }
+  @media (max-width: 700px) {
+    p:nth-child(1) {
+      font-size: 30px;
+    }
+    p:nth-child(2) {
+      font-size: 17px;
+      max-width: 400px;
+    }
+    padding-left: 20%;
+  }
+ 
 `;
 
 export const Image = styled.img`

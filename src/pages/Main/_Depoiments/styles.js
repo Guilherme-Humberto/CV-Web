@@ -7,6 +7,17 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     margin: 2% 0;
+
+    @media (max-width: 700px) {
+        p:nth-child(1) {
+            font-size: 30px;
+            margin: 0;
+        }
+        p:nth-child(2) {
+            font-size: 14px;
+            margin: 0;
+        }
+    }
 `;
 export const ContainerCards = styled.div`
     display: flex;
@@ -17,7 +28,7 @@ export const ContainerCards = styled.div`
     margin: 10px 0;
 `;
 
-export const Card = styled(motion.div)`
+export const Card = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -31,6 +42,11 @@ export const Card = styled(motion.div)`
     border-radius: 10px;
     cursor: pointer;
     box-shadow: 0px 10px 20px rgb(0, 0, 0, 0.3);
+
+    @media (max-width: 700px) {
+        padding: 10px 10px;
+        height: 250px
+    }
 `
 
 export const Title = styled.p`

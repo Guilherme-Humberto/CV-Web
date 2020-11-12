@@ -6,6 +6,27 @@ export const Container = styled.div`
   align-items: center;
   flex-wrap: wrap;
   margin: 5% 0;
+
+  @media (max-width: 700px) {
+    img {
+      height: 200px
+    }
+    p:nth-child(1) {
+      font-size: 33px;
+      margin: 0;
+      padding-top: 10px;
+    }
+    p:nth-child(2) {
+      font-size: 17px;
+      margin: 0;
+    }
+    p:nth-child(3) {
+      font-size: 16px;
+    }
+    div:nth-child(2) {
+      margin: 10px 3%;
+    }
+  }
 `;
 
 export const Image = styled.img`

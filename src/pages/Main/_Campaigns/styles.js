@@ -3,6 +3,17 @@ import { motion } from 'framer-motion'
 
 export const Container = styled.div`
   margin: 5% 0;
+
+  @media (max-width: 700px) {
+    p:nth-child(1) {
+      font-size: 35px;
+      margin-bottom: 0;
+      font-weight: bold;
+    }
+    p:nth-child(2) {
+      font-size: 20px;
+    }
+  }
 `;
 
 export const Texts = styled.div`
@@ -10,6 +21,10 @@ export const Texts = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
+
+  @media (max-width: 700px) {
+    margin: 10px 2%;
+  }
 `;
 
 export const Title = styled.p`
@@ -49,12 +64,20 @@ export const Card = styled(motion.div)`
 export const TitleCard = styled.div`
     font-size: 30px;
     font-family: Alata;
+
+    @media (max-width: 700px) {
+      font-size: 22px;
+    }
 `
 
 export const DescCard = styled.div`
     font-size: 18px;
     font-family: Alata;
     max-width: 500px;
+
+    @media (max-width: 700px) {
+      font-size: 16px;
+    }
 `
 export const ContentCards = styled.div`
   display: flex;
