@@ -25,10 +25,10 @@ function validateField() {
       .email("Digite um email válido")
       .required("Digite seu email"),
     password: Yup.string()
-      .min(5, "Digite no minímo 6 dígitos")
+      .min(5, "Digite no minímo 5 dígitos")
       .max(8, "Digite no máximo 8 dígitos"),
     confimPassword: Yup.string()
-      .min(5, "Digite no minímo 6 dígitos")
+      .min(5, "Digite no minímo 5 dígitos")
       .max(8, "Digite no máximo 8 dígitos")
   })
 
@@ -53,25 +53,29 @@ const ModalLogin = ({ buttonclose }) => {
         abortEarly: false
       });
 
+      if (data.password !== data.confimPassword) {
+        setError("As Senha não correspondem")
+      }
+
       reset()
       await api.post("/login", {
         email,
         password
       })
-      .then((response) => {
-        const { user, token } = response.data
-        login(token)
-        localStorage.setItem("infos", JSON.stringify(user))
-        history.push("Home")
-      })
-      .catch(() => {
-        setError("Usuário não encontrado, revise as informações.")
-      })
-      
+        .then((response) => {
+          const { user, token } = response.data
+          login(token)
+          localStorage.setItem("infos", JSON.stringify(user))
+          history.push("Home")
+        })
+        .catch(() => {
+          setError("Usuário não encontrado, revise as informações.")
+        })
+
     } catch (err) {
       const validationErrors = {}
 
-      if(err instanceof Yup.ValidationError) {
+      if (err instanceof Yup.ValidationError) {
         err.inner.forEach(error => {
           validationErrors[error.path] = error.message
         })
@@ -81,15 +85,38 @@ const ModalLogin = ({ buttonclose }) => {
     }
   }
 
-  async function handleForgotPassword () {
-    await api.put("/forgot", { email, password })
-      .then((response) => {
-        const { users, token } = response.data
-        login(token)
-        localStorage.setItem("infos", JSON.stringify(users))
-        history.push("Home")
-      })
-      .catch(err => console.log(err))
+  async function handleForgotPassword(data, { reset }) {
+    try {
+      const schema = validateField()
+      formRef.current.setErrors({})
+
+      await schema.validate(data, {
+        abortEarly: false
+      });
+
+      if (data.password !== data.confimPassword) {
+        setError("As senhas não correspondem")
+      } else {
+        await api.put("/forgot", { email, password })
+          .then((response) => {
+            const { users, token } = response.data
+            login(token)
+            localStorage.setItem("infos", JSON.stringify(users))
+            history.push("Home")
+          })
+          .catch(err => console.log(err))
+      }
+    }
+    catch (err) {
+      const validationErrors = {}
+
+      if (err instanceof Yup.ValidationError) {
+        err.inner.forEach(error => {
+          validationErrors[error.path] = error.message
+        })
+        formRef.current.setErrors(validationErrors)
+      }
+    }
   }
 
   return (
@@ -108,26 +135,27 @@ const ModalLogin = ({ buttonclose }) => {
             <Text>
               Preencha os dados abaixo para alterar sua senha
             </Text>
+            <Text style={{ color: "red" }}>{error}</Text>
             <Form ref={formRef} onSubmit={handleForgotPassword}>
               <Input
-                name="email" 
+                name="email"
                 label="E-Mail"
-                type="text" 
-                placeholder="Seu E-mail" 
+                type="text"
+                placeholder="Seu E-mail"
                 onChange={(e) => setEmail(e.target.value)}
               />
               <Input
                 name="password"
                 label="Nova Senha"
-                type="password" 
-                placeholder="Nova senha" 
+                type="password"
+                placeholder="Nova senha"
                 onChange={(e) => setPassword(e.target.value)}
               />
               <Input
-                name="confimPassword" 
+                name="confimPassword"
                 label="Confirmar Senha"
-                type="password" 
-                placeholder="Confirmar Senha" 
+                type="password"
+                placeholder="Confirmar Senha"
               />
               <Text
                 onClick={() => setIsForgotPassword(false)}
@@ -169,7 +197,7 @@ const ModalLogin = ({ buttonclose }) => {
                   cursor: "pointer"
                 }}>Esqueci minha senha
             </Text>
-            <ButtonModal type="submit">Acessar</ButtonModal>
+              <ButtonModal type="submit">Acessar</ButtonModal>
             </Form>
           </FormContainer>
         )}
