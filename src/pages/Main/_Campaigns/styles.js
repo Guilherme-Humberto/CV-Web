@@ -36,13 +36,13 @@ export const Card = styled(motion.div)`
     display: flex;
     align-items: center;
     gap: 0 20px;
-    width: 700px;
+    max-width: 700px;
     height: 250px;
     max-width: 900px;
-    background: #e9ecef;
-    border: transparent;
+    background: transparent;
+    border: 2.5px solid #444;
+    border-radius: 5px;
     padding: 30px 20px;
-    box-shadow: 0px 7px 20px rgb(0, 0, 0, 0.2);
     cursor: pointer;
 `
 
@@ -54,12 +54,7 @@ export const TitleCard = styled.div`
 export const DescCard = styled.div`
     font-size: 18px;
     font-family: Alata;
-`
-export const Img = styled.img`
-  height: 130px;
-  filter: grayscale(30%);
-  border-radius: 5px;
-  box-shadow: 0px 10px 20px rgb(0, 0, 0, 0.5);
+    max-width: 500px;
 `
 export const ContentCards = styled.div`
   display: flex;

@@ -13,7 +13,6 @@ import {
   TitleCard,
   DescCard,
   ContentCards,
-  Img
 } from './styles';
 
 function _Campaigns() {
@@ -22,7 +21,7 @@ function _Campaigns() {
   if (!data) return <h1>Carregando...</h1>
 
   return (
-    <Container>
+    <Container id="Campanhas">
       <Texts>
         <Title>Campanhas</Title>
         <Desc>
@@ -35,7 +34,6 @@ function _Campaigns() {
       <ContainerCards>
         {data.map((item, index) => (
           <Card key={index}>
-            <Img src={item.img}/>
             <ContentCards>
               <TitleCard>{item.name}</TitleCard>
               <DescCard>{item.desc}</DescCard>

@@ -1,28 +1,29 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { AiOutlineCamera } from 'react-icons/ai'
+import { AiOutlineEdit } from 'react-icons/ai'
 import { Form } from '@unform/web'
 import * as Yup from 'yup'
 
 import api from '../../../service/api'
 import Input from '../../../components/Form/index'
 import NavBarUserPage from '../../../components/Navbar/NavBarUserPage'
+import ModalEditUser from '../../../components/Modals/ModalEditUser'
+
 import {
   Container,
-  Content,
-  ImagePerfil,
-  ImageContainer,
-  ImageContent,
-  Title,
-  Desc,
-  Label,
-  TextArea,
+  ContainerPerfil,
+  PerfilTop,
+  Image,
+  ContainerImage,
+  InputFile,
+  ContainerForm,
   InputGroup,
   Selected,
   Option,
-  ButtonCompletPerfil,
-  ImagePerfilCompleted,
-  InfosPerfilCompleted,
-  InputPerfil,
+  ButtoneCompletePerfil,
+  PerfilDown,
+  Infos,
+  FieldInfo,
+  ButtonEditPerfil
 } from './styles';
 
 function validateField() {
@@ -32,7 +33,7 @@ function validateField() {
     number: Yup.string()
       .required("Digite o numero"),
     cell: Yup.string()
-      .required("Digite o numero do seu endereço")
+      .required("Digite seu numero de celular")
   })
 
   return schema
@@ -41,11 +42,10 @@ function validateField() {
 function _PerfilSettings() {
   const formRef = useRef(null)
 
+  const [teste, setTeste] = useState(false)
   const [infos, setInfos] = useState({})
-  const [adress, setAdress] = useState("")
-  const [number, setNumber] = useState(0)
+
   const [bio, setBio] = useState("")
-  const [cell, setCell] = useState("")
   const [blood, setBlood] = useState("")
   const [img, setImage] = useState(null)
 
@@ -71,22 +71,23 @@ function _PerfilSettings() {
       const dataForm = new FormData()
 
       dataForm.append("img", img)
-      dataForm.append("adress", adress)
-      dataForm.append("number", number)
+      dataForm.append("adress", data.adress)
+      dataForm.append("number", data.number)
       dataForm.append("bio", bio)
-      dataForm.append("cell", cell)
+      dataForm.append("cell", data.cell)
       dataForm.append("blood", blood)
 
       await api.put(`editUser/${infos._id}`, dataForm)
         .then((response) => {
           localStorage.setItem("infos", JSON.stringify(response.data))
+          window.location.reload()
         })
         .catch(err => console.log(err))
     }
     catch (err) {
       const validationErrors = {}
 
-      if(err instanceof Yup.ValidationError) {
+      if (err instanceof Yup.ValidationError) {
         err.inner.forEach(error => {
           validationErrors[error.path] = error.message
         })
@@ -99,117 +100,103 @@ function _PerfilSettings() {
     <>
       <NavBarUserPage />
       <Container>
-        <Content>
-          {infos.blood !== "" || infos.blood !== undefined ? (
-            <>
-              <ImagePerfilCompleted src={infos.image_url} alt="" />
+        {infos.blood !== "" ? (
+          <ContainerPerfil>
+            <PerfilTop>
+              <ButtonEditPerfil onClick={() => setTeste(true)}>
+                  <AiOutlineEdit size={30}/>
+              </ButtonEditPerfil>
+              <Image src={infos.image_url}/>
+              <div>
+                <h1 style={{ fontWeight: "bold" }}>{infos.name}</h1>
+                <p style={{ fontSize: 18 }}>{infos.bio}</p>
+              </div>
+            </PerfilTop>
 
-              <InfosPerfilCompleted>
-                <Label>Nome</Label>
-                <InputPerfil
-                  placeholder={`Nome: ${infos.name}`}
-                  disabled
-                />
-                <TextArea
-                  style={{ width: 700, marginTop: 10 }}
-                  defaultValue={infos.bio}
-                  disabled
-                />
-                <Label>Endereço</Label>
-                <InputGroup>
-                  <InputPerfil
-                    placeholder={`Endereço: ${infos.adress}`}
-                    disabled
-                  />
-                  <InputPerfil
-                    style={{ width: 100 }}
-                    placeholder={`N: ${infos.number}`}
-                    disabled
-                  />
+            <PerfilDown>
+              <div>
+              <h3 style={{ fontWeight: "bold" }}>Informações</h3>
+              <h5>Estas são suas informações, você poderá altera-las quando quiser.</h5>
+              </div>
+              <br />
+              <Infos>
+                <FieldInfo>
+                  <h4>Email: </h4>
+                  <h5>{infos.email}</h5>
+                </FieldInfo>
+                <InputGroup style={{ width: "100%" }}>
+                <FieldInfo>
+                  <h4>Endereço: </h4>
+                  <h5>{infos.adress}</h5>
+                </FieldInfo>
+                <FieldInfo style={{ width: 150 }}>
+                  <h4>N: </h4>
+                  <h5>{infos.number}</h5>
+                </FieldInfo>
                 </InputGroup>
-                <InputGroup style={{ margin: "10px 0" }}>
-                  <InputPerfil
-                    placeholder={`Contato: ${infos.cell}`}
-                    disabled
-                  />
-                  <InputPerfil
-                    style={{ width: 60 }}
-                    defaultValue={infos.blood}
-                    disabled
-                  />
-                  <InputPerfil
-                    style={{ width: 130 }}
-                    placeholder={`Idade: ${infos.age}`}
-                    disabled
-                  />
+                <InputGroup style={{ width: "100%" }}>
+                <FieldInfo>
+                  <h4>Celular: </h4>
+                  <h5>{infos.cell}</h5>
+                </FieldInfo>
+                <FieldInfo>
+                  <h4>Tipo Sanguíneo: </h4>
+                  <h5>{infos.blood}</h5>
+                </FieldInfo>
                 </InputGroup>
-              </InfosPerfilCompleted>
-            </>
+              </Infos>
+            </PerfilDown>
+          </ContainerPerfil>
+        ): (
+          <ContainerPerfil>
 
-          ) : (
-              <Form style={{ maxWidth: "130%" }} ref={formRef} onSubmit={handleSubmit}>
-                <ImageContainer style={{ backgroundImage: `url(${preview})` }}>
-                  <ImagePerfil
+            <ContainerForm>
+              <Form ref={formRef} onSubmit={handleSubmit}>
+                <ContainerImage 
+                  style={{ 
+                    backgroundImage: `url(${preview})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center"
+                  }}>
+                  <InputFile
                     type="file"
                     onChange={(e) => setImage(e.target.files[0])}
-                    className={img ? "has-image" : ""}
                   />
-                  <ImageContent>
-                    <AiOutlineCamera color="#444" size={40} />
-                  </ImageContent>
-                </ImageContainer>
-
-                <Title>Completar seu perfil</Title>
-                <Desc>Falta pouco para completar seu perfil</Desc>
+                </ContainerImage>
+                <h3 style={{ fontWeight: "bold" }}>Completar perfil</h3>
+                <h5>
+                  Falta bem pouco para finalizar o seu cadastro. <br />
+                  Preencha as informações abaixo.
+                </h5>
+                <br />
                 <InputGroup>
-                  <div style={{ width: "100%" }}>
-                  <Input
-                    label="Endereço *"
-                    name="adress"
-                    placeholder="Digite seu endereço"
-                    o
-                    nChange={(e) => setAdress(e.target.value)}
-                  />
-                  </div>
-                  <div>
-                  <Input
-                    style={{
-                      width: "200px",
-                      padding: "5px 10px",
-                      margin: "5px 0",
-                      background: "transparent",
-                      fontSize: "20px",
-                      border: "2px solid #000",
-                      fontFamily: "Roboto",
-                      display: "flex",
-                      flexDirection: "column"
-                    }}
-                    label="Numero *"
-                    name="number"
-                    placeholder="Numero"
-                    onChange={(e) => setNumber(e.target.value)}
-                  />
-                  </div>
-                </InputGroup>
-                <Label>Conhecer você é muito importante para nós</Label>
-                <TextArea
-                  name="bio"
-                  placeholder="Conte-nos um pouco sobre você"
-                  onChange={(e) => setBio(e.target.value)}
+                <div>
+                <Input 
+                  name="adress"
+                  label="Endereço"
+                  placeholder="Digite seu endereço"
                 />
-                <InputGroup style={{ margin: "10px 0" }}>
-                  <div style={{ width: "100%" }}>
+                </div>
+                <div style={{ width: 200 }}>
+                <Input
+                  name="number"
+                  label="Numero"
+                  placeholder="Número"
+                />
+                </div>
+                </InputGroup>
+                <InputGroup>
+                  <div>
                   <Input
                     name="cell"
-                    type="tel"
                     label="Celular"
-                    placeholder="Celular"
-                    onChange={(e) => setCell(e.target.value)}
+                    placeholder="Digite seu número de celular"
                   />
                   </div>
-                  <div>
-                  <Label>Tipo sanguíneo</Label>
+                  <div style={{ width: 200 }}>
+                  <h6>Tipo Sanguíneo</h6>
                   <Selected onChange={(e) => setBlood(e.target.value)}>
+                    <Option selected disabled>Tipo Sanguíneo</Option>
                     <Option value="A+">A+</Option>
                     <Option value="A-">A-</Option>
                     <Option value="B+">B+</Option>
@@ -221,13 +208,24 @@ function _PerfilSettings() {
                   </Selected>
                   </div>
                 </InputGroup>
-                <ButtonCompletPerfil
-                  type="submit">Enviar
-                </ButtonCompletPerfil>
+                <textarea
+                  maxLength={150}
+                  onChange={(e) => setBio(e.target.value)}
+                  placeholder="Conhecer você é algo importante para nós. Conte-nos um pouco sobre você e como conheceu o Conectando Vidas."
+                />
+                <ButtoneCompletePerfil
+                  type="submit"
+                >
+                  Completar Perfil
+                </ButtoneCompletePerfil>
               </Form>
-            )}
-        </Content>
+            </ContainerForm>
+
+          </ContainerPerfil>
+        )}
       </Container>
+
+      {teste && <ModalEditUser id={infos._id} closeModal={() => setTeste(false)}/>}
     </>
   );
 }

@@ -26,7 +26,7 @@ export const Card = styled(motion.div)`
     background: #edf2f4;
     border: none;
     padding: 40px 20px;
-    max-width: 470px;
+    max-width: 430px;
     height: 400px;
     border-radius: 10px;
     cursor: pointer;

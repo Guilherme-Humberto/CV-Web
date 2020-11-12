@@ -105,6 +105,8 @@ function _HistoricPage() {
                 <input
                   onChange={(e) => setDate(e.target.value)}
                   type="date"
+                  min="2020-01-01"
+                  max="2020-12-31"
                 />
                 <SelectedBlood onChange={(e) => setTypeDonation(e.target.value)}>
                   <option selected={true} disabled >Selecione o tipo de doação</option>
@@ -123,7 +125,7 @@ function _HistoricPage() {
                     <AiOutlineClose size={20} />
                   </ButtonDelete>
                   <Texts>
-                    <h6>{item.date}</h6>
+                    <h6>{item.date.toLocaleString()}</h6>
                     <TitleCard>{item.local}</TitleCard>
                     <DescCard>Tipo de doação: <b>{item.typeDonation}</b></DescCard>
                   </Texts>

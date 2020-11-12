@@ -11,7 +11,6 @@ import {
   TitleCard,
   DescCard,
   Linha,
-  Summary
 } from './styles';
 
 import NavBarUserPage from '../../../components/Navbar/NavBarUserPage'
@@ -60,30 +59,27 @@ function _MainPage() {
         <Linha />
         <ContainerCards>
           <Card>
-            <details open style={{ width: 600 }}>
-              <Summary>O QUE VOCÊ PRECISA PARA DOAR SANGUE?</Summary>
+              <TitleCard>O QUE VOCÊ PRECISA PARA DOAR SANGUE?</TitleCard>
               <DescCard>Apresentar um documento oficial com foto (RG, CNH, etc.) em bom estado de conservação.</DescCard>
               <DescCard>Estar em boas condições de saúde e pesar no mínimo 50 kg.</DescCard>
               <DescCard>Não ter feito uso de bebida alcoólica nas últimas 12 horas.</DescCard>
               <DescCard>Após o almoço ou ingestão de alimentos gordurosos, aguardar 3 horas. Não é necessário estar em jejum.</DescCard>
-            </details>
           </Card>
           <Card style={{ textAlign: "right" }}>
-            <details open style={{ width: 600 }}>
-              <Summary>CUIDADOS APÓS A DOAÇÃO DE SANGUE</Summary>
+              <TitleCard>CUIDADOS APÓS A DOAÇÃO DE SANGUE</TitleCard>
               <DescCard>Ingerir líquidos em grande quantidade durante o dia da doação;</DescCard>
               <DescCard>Permanecer em nossas instalações de 15 a 30 minutos após sair da sala de doação;</DescCard>
               <DescCard>Não carregar peso ou fazer qualquer esforço com o braço utilizado para doação</DescCard>
               <DescCard>Não fazer exercícios e esforços físicos intensos no dia da doação;</DescCard>
-            </details>
           </Card>
         </ContainerCards>
         <Linha />
-        <ContainerCards style={{ maxWidth: "75%", flexDirection: "column"}}>
+        <ContainerCards style={{ flexDirection: "column" }}>
           <TitleCard>ETAPAS DO PROCESSO DE DOAÇÃO DE SANGUE</TitleCard>
           <TitleCard style={{ fontSize: 20 }}>1 - RECEPÇÃO E CADASTRO</TitleCard>
           <DescCard>
-            O doador é cadastrado no Banco de Sangue, com base na apresentação de documento oficial de identificação com foto (carteira identidade, CPTS, Carteira Nacional de Habilitação, etc).
+            O doador é cadastrado no Banco de Sangue, com base na apresentação de documento oficial de 
+            identificação com foto (carteira identidade, CPTS, Carteira Nacional de Habilitação, etc).
           </DescCard>
 
           <TitleCard style={{ fontSize: 20 }}>2 - TRIAGEM CLÍNICA</TitleCard>

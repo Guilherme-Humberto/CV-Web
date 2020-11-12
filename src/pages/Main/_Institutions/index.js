@@ -17,7 +17,7 @@ function _Institutions() {
   const [modalInst, setModalInst] = useState(false)
   return (
     <>
-      <Container>
+      <Container id="Instituições">
         <Image src={imgInts} />
 
         <Texts>

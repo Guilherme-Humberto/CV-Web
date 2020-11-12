@@ -10,7 +10,7 @@ export const Container = styled(motion.div)`
 export const ContainerMessage = styled(motion.div)`
   text-align: center;
   padding: 5% 0;
-  background-image: linear-gradient(100deg,#fde1de, #e4b1ab); 
+  background-image: linear-gradient(100deg,#fde1de, #e4b1ab);
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -31,15 +31,15 @@ export const Message = styled.p`
 export const ButtonMessage = styled.button`
   font-size: 20px;
   font-family: Alata;
-  padding: 6px 25px;
-  border: none;
+  padding: 10px 25px;
+  border: 3px solid #444;
   border-radius: 25px;
   font-weight: bold;
-  background: #eee;
-  color: #121212;
+  background: transparent;
+  color: #444;
 
   :hover {
-      background: #121212;
+      background: #444;
       color: #fff;
   }
 `;
@@ -47,9 +47,11 @@ export const ButtonMessage = styled.button`
 export const ContainerCards = styled.div`
   display: flex;
   gap: 10px;
+  justify-content: center;
   flex-wrap: wrap;
   margin-left: 4%;
   margin-top: 4%;
+  width: 80%;
 `
 
 export const Linha = styled.div`

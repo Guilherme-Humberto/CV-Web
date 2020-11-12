@@ -14,7 +14,7 @@ import ImgAbout from '../../../assets/imgAbout.jpg'
 
 function _About() {
   return (
-    <Container>
+    <Container id="QuemSomos">
       <Image src={ImgAbout} alt="Imagem"/>
 
       <Texts>

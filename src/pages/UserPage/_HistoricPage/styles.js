@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion'
 
-export const Container = styled.div`
-  
-`;
+export const Container = styled.div``;
 
 export const ContainerMessage = styled(motion.div)`
   display: flex;
@@ -19,7 +17,6 @@ export const Title = styled.p`
   font-size: 40px;
   font-family: Alata;
   font-weight: bold;
-  text-decoration: underline;
 `;
 
 export const Message = styled.p`
@@ -31,18 +28,18 @@ export const Message = styled.p`
 export const ButtonAddHistoric = styled.button`
     width: 200px;
     outline: none;
-    background: #eee;
+    background: transparent;
     padding: 6px 10px;
-    color: #121212;
-    border: none;
+    color: #444;
+    border: 3px solid #444;
     border-radius: 25px;
     font-size: 23px;
     font-family: Alata;
     font-weight: bold;
 
     :hover {
-        background: #121212;
-        color: #eee;
+        background: #444;
+        color: #fff;
     }
 `
 

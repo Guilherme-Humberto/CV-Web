@@ -66,7 +66,6 @@ export const Title = styled.p`
   font-size: 44px;
   font-family: Alata;
   font-weight: bold;
-  text-decoration: underline;
 `;
 export const Desc = styled.p`
   font-size: 23px;
