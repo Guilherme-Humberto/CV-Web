@@ -34,11 +34,7 @@ function NavBarUserPage() {
   }
 
   return (
-    <Container
-      initial={{ x: "-100%", opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      transition={{ duration: 0.6 }}
-    >
+    <Container>
       <ContainerButton
         style={{ margin: "20px 0" }}
       >

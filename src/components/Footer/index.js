@@ -15,14 +15,14 @@ function Footer() {
     <Container>
       <Text>© 2020 Conectando Vidas - Todos os Direitos Reservados</Text>
       <ContainerButtons>
-        <ImageStore 
+        {/* <ImageStore 
           src={imgStore1} 
           alt="Imagem store App"
         />
         <ImageStore 
           src={imgStore2} 
           alt="Imagem store App"
-        />
+        /> */}
       </ContainerButtons>
     </Container>
   );

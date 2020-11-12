@@ -11,6 +11,19 @@ export const Container = styled(motion.div)`
   align-items: center;
   justify-content: space-around;
   background: #fff;
+
+  @media (max-width: 860px) {
+      a {
+          display: none;
+      }
+  }
+  @media (max-width: 680px) {
+      button {
+          font-size: 16px;
+          padding: 5px 10px;
+      }
+    padding: 5px;
+  }
 `;
 
 export const ContainerLinks = styled.div`
