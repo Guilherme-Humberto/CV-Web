@@ -26,6 +26,11 @@ export const ContainerMessage = styled(motion.div)`
           width: 100px;
       }
   }
+
+  @media (max-width: 500px) {
+    padding-top: 30%;
+  }
+
   @media (max-width: 440px) {
       p:nth-child(1) {
           font-size: 25px;
@@ -40,6 +45,7 @@ export const ContainerMessage = styled(motion.div)`
           width: 100px;
       }
   }
+  
 `;
 
 export const Title = styled.p`
@@ -77,7 +83,7 @@ export const ContainerCards = styled.div`
     gap: 20px;
     justify-content: center;
     align-items: center;
-    margin-top: 2%;
+    margin-top: 5%;
     flex-wrap: wrap;
     width: 100%;
 
@@ -122,7 +128,9 @@ export const ContainerContentHist = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
     margin: 5% 0;
+    width: 100%;
 
     #checkbox {
         margin: 0;
@@ -132,23 +140,63 @@ export const ContainerContentHist = styled.div`
 export const TitleContent = styled.p`
     font-size: 40px;
     font-family: Alata;
+    margin: 0;
+    text-align: center;
+    
+    @media (max-width: 540px) {
+        font-size: 30px;
+        font-weight: bold;
+    }
+    @media (max-width: 400px) {
+        font-size: 20px;
+        font-weight: bold;
+    }
 `
 
 export const DescContent = styled.p`
     font-size: 20px;
     font-family: Alata;
+    text-align: center;
+
+    @media (max-width: 400px) {
+        font-size: 17px;
+        text-align: center;
+    }
 `
 
 export const Form = styled.form`
-    max-width: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 400px;
+    flex-wrap: wrap;
+
+    @media (max-weight: 615px) {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
 `
 
 export const CheckBox = styled.div`
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
-    gap: 0 10px;
     margin: 10px 0;
+
+    input {
+        padding: 10px;
+        border: 3px solid #444;
+    }
+
+    @media (max-width: 400px) {
+        input {
+            margin: 0;
+            padding: 5px 10px;
+        }
+        margin: 10px 2%;
+    }
 `
 
 export const Check = styled.div`
@@ -177,14 +225,17 @@ export const ButtonDelete = styled.button`
 `
 
 export const SelectedBlood = styled.select`
-    width: 250px;
+    width: 100%;
     background: transparent;
-    border: 2px solid #444;
+    border: 3px solid #444;
     padding: 5px;
     outline: none;
     cursor: pointer;
     font-family: Alata;
     font-size: 16px;
+    margin: 10px 0;
+
+    
 `
 export const SelectedLocal = styled.select`
     width: 100%;
@@ -196,6 +247,11 @@ export const SelectedLocal = styled.select`
     font-family: Alata;
     font-size: 19px;
     color: #444;
+
+    @media (max-width: 400px) {
+        margin: 0 2%;
+        padding: 5px 10px;
+    }
 `
 
 export const OptionLocal = styled.option`

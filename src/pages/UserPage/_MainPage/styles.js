@@ -16,6 +16,10 @@ export const ContainerMessage = styled(motion.div)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 500px) {
+    padding-top: 30%;
+  }
 `;
 export const NameUser = styled.p`
   font-size: 40px;

@@ -44,6 +44,14 @@ export const Card = styled(motion.div)`
       background: #000
     }
   }
+
+  @media (max-width: 450px) {
+    margin: 0 7%;
+
+    img {
+      height: 170px;
+    }
+  }
 `;
 export const Header = styled(motion.div)`
   background-image: linear-gradient(100deg,#fde1de, #e4b1ab); 
@@ -71,6 +79,10 @@ export const Header = styled(motion.div)`
       font-size: 17px;
       max-width: 500px;
     }
+  }
+
+  @media (max-width: 500px) {
+    padding-top: 30%;
   }
  
 `;
