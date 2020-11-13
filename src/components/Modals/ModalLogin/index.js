@@ -13,7 +13,6 @@ import {
   ButtonCloseModal,
   Container,
   ButtonModal,
-  // Input,
   Text,
   Title,
   FormContainer
@@ -39,7 +38,8 @@ const ModalLogin = ({ buttonclose }) => {
   const formRef = useRef(null)
   const history = useHistory(null)
 
-  const [error, setError] = useState("")
+  const [invalidPassword, setInvalidPassword] = useState("")
+  const [userNotFound, setUserNotFound] = useState("")
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isForgotPassword, setIsForgotPassword] = useState(false)
@@ -54,7 +54,7 @@ const ModalLogin = ({ buttonclose }) => {
       });
 
       if (data.password !== data.confimPassword) {
-        setError("As Senha não correspondem")
+        setInvalidPassword("As Senha não correspondem")
       }
 
       reset()
@@ -69,7 +69,7 @@ const ModalLogin = ({ buttonclose }) => {
           history.push("Home")
         })
         .catch(() => {
-          setError("Usuário não encontrado, revise as informações.")
+          setUserNotFound("Usuário não encontrado, revise as informações.")
         })
 
     } catch (err) {
@@ -95,7 +95,7 @@ const ModalLogin = ({ buttonclose }) => {
       });
 
       if (data.password !== data.confimPassword) {
-        setError("As senhas não correspondem")
+        setInvalidPassword("As senhas não correspondem")
       } else {
         await api.put("/forgot", { email, password })
           .then((response) => {
@@ -135,7 +135,7 @@ const ModalLogin = ({ buttonclose }) => {
             <Text>
               Preencha os dados abaixo para alterar sua senha
             </Text>
-            <Text style={{ color: "red" }}>{error}</Text>
+            <Text style={{ color: "red" }}>{invalidPassword}</Text>
             <Form ref={formRef} onSubmit={handleForgotPassword}>
               <Input
                 name="email"
@@ -174,7 +174,7 @@ const ModalLogin = ({ buttonclose }) => {
             <Text>
               Bem vindo de volta
             </Text>
-            <Text style={{ color: "red" }}>{error}</Text>
+            <Text style={{ color: "red" }}>{userNotFound}</Text>
             <Form ref={formRef} onSubmit={handleSubmit}>
               <Input
                 name="email"

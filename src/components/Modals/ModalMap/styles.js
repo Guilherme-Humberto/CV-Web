@@ -5,7 +5,7 @@ export const Container = styled(motion.div)`
   position: fixed;
   z-index: 9;
   right: 0;
-  max-width: 500px;
+  width: 100%;
   height: 100%;
   background: #fde1de;
   box-shadow: -10px 0px 20px rgb(0, 0, 0, 0.3);
