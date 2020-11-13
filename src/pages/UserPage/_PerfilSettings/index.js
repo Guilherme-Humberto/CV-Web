@@ -231,7 +231,7 @@ function _PerfilSettings() {
         )}
       </Container>
 
-      {teste && <ModalEditUser id={infos._id} closeModal={() => setTeste(false)}/>}
+      {teste && <ModalEditUser infos={infos} closeModal={() => setTeste(false)}/>}
     </>
   );
 }

@@ -28,8 +28,6 @@ export const Container = styled.div`
 
 export const ContainerPerfil = styled.div`
   display: flex;
-  height: 100%;
-  flex: 1;
   align-items: center;
   flex-direction: column;
   justify-content: center;
