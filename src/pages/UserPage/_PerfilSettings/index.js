@@ -9,6 +9,7 @@ import NavBarUserPage from '../../../components/Navbar/NavBarUserPage'
 import ModalEditUser from '../../../components/Modals/ModalEditUser'
 
 import {
+  MessageNavBar,
   Container,
   ContainerPerfil,
   PerfilTop,
@@ -98,7 +99,18 @@ function _PerfilSettings() {
   }
   return (
     <>
-      <NavBarUserPage />
+      {infos.blood !== "" ? (
+        <NavBarUserPage />
+      ): (
+        <MessageNavBar
+          initial={{ y: "-100%" }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h3>Complete seu perfil</h3>
+          <h6>Falta pouco para completar o seu cadastro. Preencha os campos abaixo ;)</h6>
+        </MessageNavBar>
+      )}
       <Container>
         {infos.blood !== "" ? (
           <ContainerPerfil>
@@ -109,14 +121,14 @@ function _PerfilSettings() {
               <Image src={infos.image_url}/>
               <div>
                 <h1 style={{ fontWeight: "bold" }}>{infos.name}</h1>
-                <p style={{ fontSize: 18 }}>{infos.bio}</p>
+                <p style={{ fontSize: 18, maxWidth: 500 }}>{infos.bio}</p>
               </div>
             </PerfilTop>
 
             <PerfilDown>
               <div>
-              <h3 style={{ fontWeight: "bold" }}>Informações</h3>
-              <h5>Estas são suas informações, você poderá altera-las quando quiser.</h5>
+                <h3 style={{ fontWeight: "bold" }}>Informações</h3>
+                <h5>Estas são suas informações, você poderá altera-las quando quiser.</h5>
               </div>
               <br />
               <Infos>
@@ -163,12 +175,6 @@ function _PerfilSettings() {
                     onChange={(e) => setImage(e.target.files[0])}
                   />
                 </ContainerImage>
-                <h3 style={{ fontWeight: "bold" }}>Completar perfil</h3>
-                <h5>
-                  Falta bem pouco para finalizar o seu cadastro. <br />
-                  Preencha as informações abaixo.
-                </h5>
-                <br />
                 <InputGroup>
                 <div>
                 <Input 

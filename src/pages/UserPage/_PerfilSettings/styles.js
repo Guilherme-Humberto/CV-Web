@@ -1,21 +1,61 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion'
+
+export const MessageNavBar = styled(motion.div)`
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background: #444;
+  padding: 10px 5%;
+
+  h3, h6 {
+    font-weight: bold;
+    color: #fff;
+  }
+`
 
 export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background: #eee;
+
+    @media (max-width: 670px) {
+      height: 100%;
+    }
 `;
+
 export const ContainerPerfil = styled.div`
   display: flex;
+  height: 100%;
+  flex: 1;
   align-items: center;
   flex-direction: column;
   justify-content: center;
+
+  @media (max-width: 670px) {
+    img {
+      height: 150px;
+      margin-bottom: 10px;
+    }
+    h1 {
+      font-size: 30px;
+      text-align: center;
+    }
+    p {
+      text-align: center;
+      font-size: 15px;
+    }
+    margin-left: 3%;
+    margin-right: 3%;
+    padding: 10% 0;
+  }
 `;
 
 export const ContainerForm = styled.div`
-  margin-top: -30%;
-  margin: 0 auto;
+  padding-top: 20%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,7 +71,7 @@ export const ContainerForm = styled.div`
   }
 
   div {
-    width: 100%
+    width: 100%;
   }
 `;
 
@@ -41,22 +81,38 @@ export const InputGroup = styled.div`
   width: 700px;
   align-items: center;
 
+  @media (max-width: 670px) {
+    flex-wrap: wrap;
+  }
+
 `;
 export const ContainerImage = styled.label`
   background: #ccc;
   width: 200px;
   height: 200px;
+  border-radius: 50%;
 `;
 
 export const ButtonEditPerfil = styled.button`
   position: absolute;
-  transform: translate(-50%, -100%);
+  transform: translate(-40%, -90%);
   height: 60px;
   width: 60px;
   border: none;
   border-radius: 50%;
   background: lightgreen;
   outline: none;
+
+  @media (max-width: 670px) {
+    transform: translate(-50%, -200%);
+    height: 50px;
+    width: 50px;
+  }
+  @media (max-width: 500px) {
+    transform: translate(160%, -200%);
+    height: 50px;
+    width: 50px;
+  }
 `
 
 export const InputFile = styled.input`
@@ -85,14 +141,20 @@ export const ButtoneCompletePerfil = styled.button`
 
 export const PerfilTop = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 0 20px;
   width: 100%;
   max-width: 700px;
   align-items: center;
+
+  @media (max-width: 500px) {
+    margin-top: 30%;
+    justify-content: center;
+  }
 `;
 
 export const Image = styled.img`
-  height: 200px;
+  height: 160px;
   border-radius: 50%;
   box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.3);
 `;
@@ -102,12 +164,38 @@ export const PerfilDown = styled.div`
   width: 100%;
   max-width: 700px;
   margin-top: 5%;
+
+  @media (max-width: 500px) {
+    h3 {
+      font-size: 25px;
+    }
+
+    h5 {
+      font-size: 17px;
+    }
+  }
 `;
 
 export const Infos = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  @media (max-width: 500px) {
+    div {
+      h4 {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      h5 {
+        font-size: 16px;
+        margin: 0;
+      }
+      div {
+        min-width: 100%;
+      }
+    }
+  }
 `
 
 export const FieldInfo = styled.div`
