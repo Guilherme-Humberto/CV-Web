@@ -9,7 +9,7 @@ export const ContainerMessage = styled(motion.div)`
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 5%;
+  padding: 10% 0;
   background-image: linear-gradient(100deg,#fde1de, #e4b1ab);
 
   @media (max-width: 860px) {
@@ -25,7 +25,6 @@ export const ContainerMessage = styled(motion.div)`
           font-size: 15px;
           width: 100px;
       }
-      margin-left: 15%;
   }
   @media (max-width: 440px) {
       p:nth-child(1) {
@@ -40,7 +39,6 @@ export const ContainerMessage = styled(motion.div)`
           font-size: 15px;
           width: 100px;
       }
-      margin-left: 20%;
   }
 `;
 
@@ -85,19 +83,18 @@ export const ContainerCards = styled.div`
 
     @media (max-width: 800px) {
         div {
-            margin-left: 14%;
+            margin: 0 5%;
         }
     }
 `
 
 export const Card = styled.div`
     display: flex;
-    width: 25rem;
+    width: 50rem;
     align-items: center;
     max-width: 650px;
     background: #fde1de;
     padding: 20px;
-    border-radius: 5px;
     position: relative;
 `
 

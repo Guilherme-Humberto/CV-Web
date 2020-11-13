@@ -4,7 +4,6 @@ import NavBarUserPage from '../../../components/Navbar/NavBarUserPage'
 
 import { 
   Container,
-  Texts,
   Title,
   Desc,
   Header,
@@ -26,7 +25,11 @@ function _CampaignsPage() {
     <>
       <NavBarUserPage />
       <Container>
-        <Header>
+        <Header
+          initial={{ y: "-100%", opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
           <Title>Campanhas</Title>
           <Desc>
             A sua visita é muito importante para nós. Venha conhecer todo procedimento que envolve a doação de sangue, traga seus colegas de trabalho, alunos, ou quem você quiser.
@@ -37,16 +40,23 @@ function _CampaignsPage() {
         <ContainerCards>
           {data.map((item) => (
             <Card key={item._id}>
-              <Image src={item.img} alt="Foto"/>
-
-              <Texts>
-                <NameCamp>{item.name}</NameCamp>
-                <DescCamp>{item.desc}</DescCamp>
+              <div 
+                style={{ 
+                  display: "flex",
+                  alignItems: "center", 
+                  gap: 20
+                }}>
+                <Image src={item.img} alt="Foto"/>
+                <div>
+                  <NameCamp>{item.name}</NameCamp>
+                  <DescCamp>{item.desc}</DescCamp>
+                </div>
+              </div>
+              <hr />
               <Contacts>
                 <TextContact>E-Mail: <b>{item.email}</b></TextContact>
                 <TextContact>Telefone: <b>{item.phone}</b></TextContact>
               </Contacts>
-              </Texts>
 
             </Card>
           ))}

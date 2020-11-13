@@ -8,13 +8,12 @@ export const ContainerCards = styled.div`
   gap: 20px;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 5% 0 5% 8%;
+  margin-top: 5%;
 
   @media (max-width: 860px) {
     div {
       display: block;
       max-width: 400px;
-      margin-left: 10%;
 
       p:nth-child(2) {
         max-width: 350px;
@@ -28,28 +27,32 @@ export const Card = styled(motion.div)`
   background: #fde1de;
   max-width: 650px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   box-shadow: 0px 10px 20px #e4b1ab;
 
   @media (max-width: 860px) {
-    div:nth-child(3) {
-      display: block;
-      margin: 0;
+    div:nth-child(1) {
+      flex-wrap: wrap;
     }
 
     img {
-      margin: 0 10%
+      margin: 0 5%;
+    }
+
+    hr {
+      background: #000
     }
   }
 `;
-export const Header = styled.div`
+export const Header = styled(motion.div)`
   background-image: linear-gradient(100deg,#fde1de, #e4b1ab); 
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   justify-content: center;
-  padding: 5%;
+  padding: 10% 5%;
 
   @media (max-width: 900px) {
     p:nth-child(1) {
@@ -59,7 +62,6 @@ export const Header = styled.div`
       font-size: 20px;
       max-width: 600px;
     }
-    margin-left: 8%;
   }
   @media (max-width: 700px) {
     p:nth-child(1) {
@@ -67,9 +69,8 @@ export const Header = styled.div`
     }
     p:nth-child(2) {
       font-size: 17px;
-      max-width: 400px;
+      max-width: 500px;
     }
-    padding-left: 20%;
   }
  
 `;
@@ -81,8 +82,9 @@ export const Image = styled.img`
 `;
 
 export const NameCamp = styled.p`
-  font-size: 27px;
+  font-size: 25px;
   font-family: Alata;
+  font-weight: bold;
   margin: 0;
   padding: 5px 0;
 `;
@@ -90,6 +92,7 @@ export const NameCamp = styled.p`
 export const DescCamp = styled.p`
   font-size: 14px;
   font-family: Alata;
+  max-width: 500px;
 `;
 
 export const EmailCamp = styled.p`
@@ -100,10 +103,6 @@ export const EmailCamp = styled.p`
 export const PhoneCamp = styled.p`
   font-size: 16px;
   font-family: Alata;
-`;
-
-export const Texts = styled.div`
-  margin: 0 3%;
 `;
 
 export const Title = styled.p`
@@ -120,7 +119,8 @@ export const Desc = styled.p`
 export const Contacts = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: left;
+  width: 100%;
 `;
 
 export const TextContact = styled.p`

@@ -74,7 +74,8 @@ function _MainPage() {
           </Card>
         </ContainerCards>
         <Linha />
-        <ContainerCards style={{ flexDirection: "column" }}>
+        <ContainerCards >
+          <div id="containerCards">
           <TitleCard>ETAPAS DO PROCESSO DE DOAÇÃO DE SANGUE</TitleCard>
           <TitleCard style={{ fontSize: 20 }}>1 - RECEPÇÃO E CADASTRO</TitleCard>
           <DescCard>
@@ -94,6 +95,7 @@ function _MainPage() {
             É realizada por profissionais de saúde treinados, e o material utilizado é de uso único, estéril e descartável. 
             A cada doação, é coletada uma bolsa de sangue de aproximadamente 450 ml.
           </DescCard>
+          </div>
         </ContainerCards>
 
       </Container>

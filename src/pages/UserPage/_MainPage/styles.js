@@ -6,27 +6,16 @@ export const Container = styled(motion.div)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  @media (max-width: 800px) {
-    div:nth-child(6) {
-      margin-left: 23%
-    }
-  }
 `;
 export const ContainerMessage = styled(motion.div)`
   text-align: center;
-  padding: 5% 0;
+  padding: 10% 0;
   background-image: linear-gradient(100deg,#fde1de, #e4b1ab);
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
-  @media (max-width: 950px) {
-    margin-left: 10%
-  }
-
 `;
 export const NameUser = styled.p`
   font-size: 40px;
@@ -43,7 +32,6 @@ export const Message = styled.p`
   max-width: 700px;
 
   @media (max-width: 800px) {
-    max-width: 450px;
     font-size: 20px;
   }
 `;
@@ -71,19 +59,24 @@ export const ButtonMessage = styled.button`
 export const ContainerCards = styled.div`
   display: flex;
   gap: 10px;
+  align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  margin-left: 4%;
-  margin-top: 4%;
-  width: 80%;
+  width: 100%;
 
-  
+  #containerCards {
+    width: 78%;
+
+    @media (max-width: 700px) {
+      width: 90%;
+    }
+  }
 `
 
 export const Linha = styled.div`
   width: 100%;
-  height: 0.5px;
-  background: #000;
+  height: 2px;
+  background: #4444;
   border-radius: 10px;
   margin: 10px;
 `
@@ -91,10 +84,6 @@ export const Linha = styled.div`
 export const Card = styled.div`
   max-width: 600px;
   padding: 20px;
-
-  @media (max-width: 800px) {
-    margin-left: 10%;
-  }
 `
 
 export const TitleCard = styled.p`

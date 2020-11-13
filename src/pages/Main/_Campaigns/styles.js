@@ -59,6 +59,10 @@ export const Card = styled(motion.div)`
     border-radius: 5px;
     padding: 30px 20px;
     cursor: pointer;
+
+    @media (max-width: 450px) {
+      margin: 0 3%;
+    }
 `
 
 export const TitleCard = styled.div`
