@@ -21,7 +21,7 @@ const ModalNav = ({ closeModal }) => {
     <Container
       initial={{ x: "100%" }}
       animate={{ x: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.3 }}
     >
       <ButtonCloseModal onClick={closeModal}>
         <AiOutlineClose size={30}/>

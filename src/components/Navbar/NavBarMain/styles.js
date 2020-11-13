@@ -22,7 +22,6 @@ export const Container = styled(motion.div)`
           font-size: 16px;
           padding: 5px 10px;
       }
-    padding: 5px;
   }
 `;
 
@@ -52,7 +51,7 @@ export const Logo = styled.p`
 
 export const ContainerButtons = styled.div`
     display: flex;
-    gap: 20px;
+    gap: 10px;
 `
 export const Button = styled.button`
     padding: 8px 25px;
