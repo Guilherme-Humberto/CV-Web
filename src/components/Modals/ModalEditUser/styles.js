@@ -12,7 +12,7 @@ export const Container = styled(motion.div)`
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    overflow: auto;
 `;
 
 export const ContainerForm = styled.div`

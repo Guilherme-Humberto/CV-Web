@@ -4,7 +4,6 @@ import { AiOutlineClose } from 'react-icons/ai'
 import { Form } from '@unform/web'
 import * as Yup from 'yup'
 
-
 import api from '../../../service/api'
 import { login } from '../../../config/auth'
 import Input from '../../Form'
@@ -66,7 +65,13 @@ const ModalLogin = ({ buttonclose }) => {
           const { user, token } = response.data
           login(token)
           localStorage.setItem("infos", JSON.stringify(user))
-          history.push("Home")
+          const infos = JSON.parse(localStorage.getItem("infos"))
+          if(infos.blood === "") {
+            history.push("Home/perfil")
+          }
+          else {
+            history.push("Home")
+          }
         })
         .catch(() => {
           setUserNotFound("Usuário não encontrado, revise as informações.")
@@ -94,16 +99,12 @@ const ModalLogin = ({ buttonclose }) => {
         abortEarly: false
       });
 
+      reset()
       if (data.password !== data.confimPassword) {
         setInvalidPassword("As senhas não correspondem")
       } else {
         await api.put("/forgot", { email, password })
-          .then((response) => {
-            const { users, token } = response.data
-            login(token)
-            localStorage.setItem("infos", JSON.stringify(users))
-            history.push("Home")
-          })
+          .then(() => setIsForgotPassword(false))
           .catch(err => console.log(err))
       }
     }
