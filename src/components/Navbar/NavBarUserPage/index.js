@@ -50,7 +50,7 @@ function NavBarUserPage() {
           <Link onClick={handleLogout}>Sair</Link>
         </div>
         <div id="menuMobile" onClick={() => setOpenModal(true)}>
-          <AiOutlineMenu size={30} />
+          <AiOutlineMenu size={30} color="#eee"/>
         </div>
       </Container>
 

@@ -68,7 +68,7 @@ const ModalRegister = ({ buttonclose }) => {
           const { user, token } = response.data
           login(token)
           localStorage.setItem("infos", JSON.stringify(user))
-          history.push("Home")
+          history.push("/home/perfil")
         })
         .catch((err) => console.log(err))
     }

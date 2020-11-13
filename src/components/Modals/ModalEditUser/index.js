@@ -89,6 +89,7 @@ const ModalEditUser = ({ id, closeModal }) => {
       <ContainerForm>
         <Form ref={formRef} onSubmit={handleUpdatePerfil}>
           <ContainerImage
+            id="labelImage"
             style={{
               backgroundImage: `url(${preview})`,
               backgroundSize: "cover",
@@ -136,6 +137,7 @@ const ModalEditUser = ({ id, closeModal }) => {
             placeholder="Conhecer você é algo importante para nós. Conte-nos um pouco sobre você e como conheceu o Conectando Vidas."
           />
           <div
+            id="buttonsDown"
             style={{
               display: "flex",
               justifyContent: "space-between",
