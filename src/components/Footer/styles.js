@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   background: #000;
   padding: 20px;
@@ -13,13 +13,8 @@ export const Container = styled.div`
 export const Text = styled.p`
   font-size: 20px;
   color: #e1e1e1;
-`;
 
-export const ContainerButtons = styled.div`
-  display: flex;
-  gap: 20px;
-`;
-
-export const ImageStore = styled.img`
-  height: 70px
+  @media (max-width: 540px) {
+    font-size: 17px;
+  }
 `;

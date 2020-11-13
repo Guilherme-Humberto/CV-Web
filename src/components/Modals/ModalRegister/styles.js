@@ -7,13 +7,13 @@ export const Container = styled(motion.div)`
     top: 0;
     right: 0;
     height: 100%;
-    width: 500px;
+    width: 100%;
     max-width: 500px;
     background: #f5f1ed;
     box-shadow: -10px 0px 20px rgb(0, 0, 0, 0.3);
 `;
 export const FormContainer = styled.div`
-    padding: 20% 5%;
+    padding: 30% 5%;
     display: flex;
     flex-direction: column;
     width: 90%;

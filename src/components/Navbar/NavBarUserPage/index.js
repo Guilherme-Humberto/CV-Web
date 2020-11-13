@@ -1,31 +1,28 @@
 // // Este é navbar da página userpage
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom'
 
 import {
-  AiOutlineUser,
-  AiOutlineAppstore,
-  AiOutlineAudit,
-  AiOutlineUsergroupAdd
+  AiOutlineMenu
 } from 'react-icons/ai'
 
-import { 
-  FiMapPin, 
-  FiLogOut 
-} from 'react-icons/fi'
 
 import {
   Container,
-  ContainerButton,
-  TextButton
 } from './styles';
-
+import ModalNav from '../../Modals/ModalNav'
 import { logout } from '../../../config/auth'
-
 
 function NavBarUserPage() {
   const history = useHistory(null)
+  const [openModal, setOpenModal] = useState(false)
+  const [infos, setInfos] = useState({})
+
+  useEffect(() => {
+    const user = localStorage.getItem("infos")
+    setInfos(JSON.parse(user))
+  }, [])
 
   const handleLogout = () => {
     logout()
@@ -34,72 +31,31 @@ function NavBarUserPage() {
   }
 
   return (
-    <Container>
-      <ContainerButton
-        style={{ margin: "20px 0" }}
-      >
-        <Link 
-          id="buttonLink" 
-          to="/Home/perfil"
-        >
-          <AiOutlineUser color="#000" size={35} />
-        </Link >
-        <TextButton>Perfil</TextButton>
-      </ContainerButton>
+    <>
+      <Container>
+        <div id="linkPerfil">
+          <Link to="/home/perfil">
+            <img src={infos.image_url} alt="Foto"/>
+          </Link>
+          <Link to="/home/perfil">
+            {infos.name}
+          </Link>
+        </div>
 
-      <ContainerButton>
-        <Link 
-          id="buttonLink" 
-          to="/Home"
-        >
-          <AiOutlineAppstore color="#000" size={35} />
-        </Link >
-        <TextButton>Inicial</TextButton>
-      </ContainerButton>
+        <div id="links">
+          <Link to="/home">Inicial</Link>
+          <Link to="/home/campaigns">Campanhas</Link>
+          <Link to="/home/map">Locais</Link>
+          <Link to="/home/historic">Histórico</Link>
+          <Link onClick={handleLogout}>Sair</Link>
+        </div>
+        <div id="menuMobile" onClick={() => setOpenModal(true)}>
+          <AiOutlineMenu size={30} />
+        </div>
+      </Container>
 
-      <ContainerButton>
-        <Link 
-          id="buttonLink" 
-          to="/Home/historic"
-        >
-          <AiOutlineAudit color="#000" size={35} />
-        </Link >
-        <TextButton>Histórico</TextButton>
-      </ContainerButton>
-
-      <ContainerButton>
-        <Link 
-          id="buttonLink" 
-          to="/Home/campaigns"
-        >
-          <AiOutlineUsergroupAdd color="#000" size={35} />
-        </Link >
-        <TextButton>Campanhas</TextButton>
-      </ContainerButton>
-
-      <ContainerButton>
-        <Link 
-          id="buttonLink" 
-          to="/Home/map"
-        >
-          <FiMapPin color="#000" size={35} />
-        </Link >
-        <TextButton>Locais</TextButton>
-      </ContainerButton>
-      <br />
-      <ContainerButton
-        onClick={handleLogout}
-        style={{ margin: "30px 0" }}
-      >
-        <Link 
-          id="buttonLink" 
-          to="/Home/campaigns"
-        >
-          <FiLogOut color="#000" size={35} />
-        </Link >
-        <TextButton>Sair</TextButton>
-      </ContainerButton>
-    </Container>
+      {openModal && <ModalNav closeModal={() => setOpenModal(false)}/>}
+    </>
   );
 }
 

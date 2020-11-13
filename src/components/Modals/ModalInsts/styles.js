@@ -6,7 +6,8 @@ export const Container = styled(motion.div)`
   z-index: 2;
   top: 0;
   left: 0;
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   background: #e9ecef;
   height: 100%;
   box-shadow: 0px -10px 20px rgb(0, 0, 0, 0.2);
