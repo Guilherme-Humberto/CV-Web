@@ -16,16 +16,20 @@ const ModalEditUser = ({ closeModal, infos }) => {
   const formRef = useRef(null)
 
   const [bio, setBio] = useState("")
+  const [alertMessage, setAlertImage] = useState("")
   const [img, setImage] = useState(null)
 
   const preview = useMemo(() => {
     return img ? URL.createObjectURL(img) : null
   }, [img])
 
-
   async function handleUpdatePerfil(data) {
     try {
       const dataForm = new FormData()
+
+      if(img === null) {
+        setAlertImage("Adicione uma imagem ao seu perfil")
+      }
 
       dataForm.append("img", img)
       dataForm.append("email", data.email)
@@ -67,6 +71,16 @@ const ModalEditUser = ({ closeModal, infos }) => {
               onChange={(e) => setImage(e.target.files[0])}
             />
           </ContainerImage>
+          <p 
+            style={{ 
+              color: "red",
+              fontSize: 17,
+              maxWidth: 400,
+              fontWeight: "bold"
+             }}
+          >
+            {alertMessage}
+          </p>
           <div>
           <Input
             defaultValue={infos.email}
