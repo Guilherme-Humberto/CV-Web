@@ -18,6 +18,7 @@ function NavBarUserPage() {
   const history = useHistory(null)
   const [openModal, setOpenModal] = useState(false)
   const [infos, setInfos] = useState({})
+  const [image_URL] = useState("http://localhost:5001/files/undefined")
 
   useEffect(() => {
     const user = localStorage.getItem("infos")
@@ -34,9 +35,13 @@ function NavBarUserPage() {
     <>
       <Container>
         <div id="linkPerfil">
-          <Link to="/home/perfil">
-            <img src={infos.image_url} alt="Foto"/>
-          </Link>
+          {infos.image_url !== image_URL ? (
+            <Link to="/home/perfil">
+              <img src={infos.image_url} alt="Foto"/>
+            </Link>
+          ): (
+            <h4>Guilherme</h4>
+          )}
           <Link to="/home/perfil">
             {infos.name}
           </Link>
