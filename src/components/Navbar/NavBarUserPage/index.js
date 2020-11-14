@@ -26,22 +26,18 @@ function NavBarUserPage() {
   }, [])
 
   const handleLogout = () => {
-    logout()
-    localStorage.removeItem('infos')
-    history.push("/")
+    // logout()
+    // localStorage.removeItem('infos')
+    // history.push("/")
   }
 
   return (
     <>
       <Container>
         <div id="linkPerfil">
-          {infos.image_url !== image_URL ? (
-            <Link to="/home/perfil">
-              <img src={infos.image_url} alt="Foto"/>
-            </Link>
-          ): (
-            <h4>Guilherme</h4>
-          )}
+          <Link to="/home/perfil">
+            <img src={infos.image_url} alt="Foto"/>
+          </Link>
           <Link to="/home/perfil">
             {infos.name}
           </Link>
