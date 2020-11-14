@@ -83,7 +83,7 @@ function _PerfilSettings() {
       dataForm.append("cell", data.cell)
       dataForm.append("blood", blood)
 
-      await api.put(`editUser/${infos._id}`, dataForm)
+      await api.put(`editUser/${infos.id}`, dataForm)
         .then((response) => {
           localStorage.setItem("infos", JSON.stringify(response.data))
           window.location.reload()
