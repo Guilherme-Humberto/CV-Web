@@ -1,5 +1,6 @@
 import React, { useState, useRef, useMemo } from 'react';
 import { Form } from '@unform/web'
+import { AiOutlineCamera } from 'react-icons/ai'
 import Input from '../../Form'
 
 import api from '../../../service/api';
@@ -70,6 +71,7 @@ const ModalEditUser = ({ closeModal, infos }) => {
               type="file"
               onChange={(e) => setImage(e.target.files[0])}
             />
+            <AiOutlineCamera size={50} color="#444"/>
           </ContainerImage>
           <p 
             style={{ 
@@ -115,12 +117,6 @@ const ModalEditUser = ({ closeModal, infos }) => {
               />
             </div>
           </InputGroup>
-          <Input
-            type="password"
-            name="password"
-            label="Senha"
-            placeholder="Digite sua nova senha"
-          />
           <textarea
             maxLength={150}
             onChange={(e) => setBio(e.target.value)}

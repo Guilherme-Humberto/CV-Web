@@ -71,6 +71,9 @@ export const ContainerImage = styled.label`
   cursor: pointer;
   border-radius: 50%;
   margin: 5% 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   @media (max-width: 510px) {
     text-align: center;
