@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { AiOutlineEdit } from 'react-icons/ai'
+import { AiOutlineEdit, AiOutlineCamera } from 'react-icons/ai'
 import { Form } from '@unform/web'
 import * as Yup from 'yup'
 
@@ -49,6 +49,7 @@ function _PerfilSettings() {
   const [bio, setBio] = useState("")
   const [blood, setBlood] = useState("")
   const [img, setImage] = useState(null)
+  const [alertMessage, setAlertMessage] = useState("")
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("infos"))
@@ -69,6 +70,10 @@ function _PerfilSettings() {
       });
 
       reset()
+
+      if(img === null) {
+        setAlertMessage("Adicione uma imagem ao seu perfil")
+      }
       const dataForm = new FormData()
 
       dataForm.append("img", img)
@@ -174,7 +179,18 @@ function _PerfilSettings() {
                     type="file"
                     onChange={(e) => setImage(e.target.files[0])}
                   />
+                  <AiOutlineCamera size={50} color="#444"/>
                 </ContainerImage>
+                <p
+                  style={{ 
+                    color: "red",
+                    fontSize: 17,
+                    maxWidth: 400,
+                    fontWeight: "bold"
+                  }}
+                >
+                  {alertMessage}
+                </p>
                 <InputGroup>
                 <div>
                 <Input 

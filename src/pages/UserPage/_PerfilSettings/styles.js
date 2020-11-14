@@ -89,6 +89,9 @@ export const ContainerImage = styled.label`
   width: 200px;
   height: 200px;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const ButtonEditPerfil = styled.button`
