@@ -26,9 +26,9 @@ function NavBarUserPage() {
   }, [])
 
   const handleLogout = () => {
-    // logout()
-    // localStorage.removeItem('infos')
-    // history.push("/")
+    logout()
+    localStorage.removeItem('infos')
+    history.push("/")
   }
 
   return (
