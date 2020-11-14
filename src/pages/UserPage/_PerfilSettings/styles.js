@@ -19,7 +19,9 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: #eee;
+    place-self: center;
+    width: 100%;
+    flex: 1;
 
     @media (max-width: 670px) {
       height: 100%;
@@ -53,7 +55,6 @@ export const ContainerPerfil = styled.div`
 
 export const ContainerForm = styled.div`
   padding-top: 20%;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;

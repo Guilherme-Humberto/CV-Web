@@ -7,6 +7,11 @@ export default createGlobalStyle`
         box-sizing: border-box
     }
 
+    body {
+        height: 100vh;
+        width: 100vw;
+    }
+
     button, input {
         font-family: Alata
     }
