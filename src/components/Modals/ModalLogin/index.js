@@ -103,7 +103,7 @@ const ModalLogin = ({ buttonclose }) => {
       if (data.password !== data.confimPassword) {
         setInvalidPassword("As senhas não correspondem")
       } else {
-        await api.put("/forgot", { email, password })
+        await api.patch("/forgot", { email, password })
           .then(() => setIsForgotPassword(false))
           .catch(err => console.log(err))
       }
